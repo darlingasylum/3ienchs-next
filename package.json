@@ -1,0 +1,27 @@
+{
+  "name": "serverside",
+  "version": "1.0.0",
+  "description": "API and server of 3ienchs website",
+  "main": "server.js",
+  "scripts": {
+    "client": "cd clientside && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Elisa Hery",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.2"
+  },
+  "devDependencies": {}
+}

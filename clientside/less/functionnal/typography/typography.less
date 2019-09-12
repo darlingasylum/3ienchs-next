@@ -1,0 +1,80 @@
+@import 'https://use.typekit.net/aoo6xbu.css';
+
+@font-face {
+  font-family: 'roadgeek_2005_engschriftRg';
+  src: url('./../../../assets/font/Roadgeek/roadgeek_2005_engschrift-webfont.woff2')
+      format('woff2'),
+    url('./../../../assets/font/Roadgeek/roadgeek_2005_engschrift-webfont.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'nicknameregular';
+  src: url('./../../../assets/font/Nickname/pizzadude.dk_-_nickname-webfont.woff2')
+      format('woff2'),
+    url('./../../../assets/font/Nickname/pizzadude.dk_-_nickname-webfont.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@light: 300;
+@normal: 400;
+@medium: 500;
+@bold: 700;
+
+@basefont: 1.5;
+@font-size: @basefont + 0em;
+@font-family: 'roadgeek_2005_engschriftRg', sans-serif;
+
+html {
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+body {
+  font-size: @font-size;
+  font-family: @font-family;
+  font-weight: @normal;
+  color: @purple-dark;
+}
+
+.roboto {
+  font-family: 'roboto-slab', serif;
+}
+
+.sofia {
+  font-family: 'sofia-pro', sans-serif;
+}
+
+.roadgeek {
+  font-family: 'roadgeek_2005_engschriftRg';
+}
+
+.nickname {
+  font-family: 'nicknameregular';
+}
+
+@media screen and (max-width: @breakpoint-md) {
+  .sofia-md {
+    .sofia;
+  }
+
+  .roboto-md {
+    .roboto;
+  }
+}
+
+@media screen and (max-width: @breakpoint-xs) {
+  .sofia-xs {
+    .sofia;
+  }
+
+  .roboto-xs {
+    .roboto;
+  }
+}
