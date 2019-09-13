@@ -4,7 +4,7 @@
   "description": "API and server of 3ienchs website",
   "main": "server.js",
   "scripts": {
-    "client": "cd clientside && npm run dev",
+    "client": "cd client && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
