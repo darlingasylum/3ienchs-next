@@ -6,10 +6,11 @@ const productsService = require('./products.service');
 
 // routes
 // router.post('/create', requireAuth, createProduct);
+router.post('/create', createProduct);
 router.get('/getAll', getAllProducts);
 router.get('/getProduct', getProduct);
 router.patch('/update', updateProduct);
-// router.patch("/delete", deleteProduct);
+router.delete('/delete', deleteProduct);
 
 module.exports = router;
 
@@ -38,7 +39,17 @@ function getProduct(req, res) {
 }
 
 function updateProduct(req, res) {
-  userService.updateProduct(req.body, result => {
+  productsService.updateProduct(req.body, result => {
+    result.success
+      ? res.status(201).json(result)
+      : res.status(401).json(result);
+  });
+}
+
+function deleteProduct(req, res) {
+  console.log('depuis controller -->', req.body);
+
+  productsService.deleteProduct(req.body, result => {
     result.success
       ? res.status(201).json(result)
       : res.status(401).json(result);

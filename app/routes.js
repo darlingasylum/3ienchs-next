@@ -17,7 +17,7 @@ module.exports = function(app) {
 
   // Create API group routes
   var apiRoutes = express.Router(); // créer un router
-  //   var userRoutes = require('./users/users.controller');
+  var userRoutes = require('./users/users.controller');
   var productsRoutes = require('./products/products.controller');
 
   //Protected authenticated route with JWT
@@ -45,7 +45,7 @@ module.exports = function(app) {
   //   });
 
   // Set url for API group routes
-  //   app.use('/api', apiRoutes); // on préfixe par /api
-  //   app.use('/api/users', userRoutes);
+  app.use('/api', apiRoutes); // on préfixe par /api
+  app.use('/api/users', userRoutes);
   app.use('/api/products', productsRoutes);
 };

@@ -8,8 +8,8 @@ import Burger from './BurgerMenu/Burger.js';
 import './../../../less/style.less';
 
 import tinyLogo from './../../../assets/logos/3ienchs_white_logo.png';
-// import connexion_icon from "./../../../assets/icons/user_white.svg";
-// import basket from "./../../../assets/icons/basket_white.svg";
+import userIcon from './../../../assets/icons/user_white.svg';
+import basketIcon from './../../../assets/icons/basket_white.svg';
 // import style from "./navbar.module.css";
 
 // const mapStateToProps = state => {
@@ -87,7 +87,7 @@ export default class Header extends Component {
                   <img
                     src={tinyLogo}
                     alt='logo_iench'
-                    className='ml-4 max-width-50 max-height-0'
+                    className='ml-4 max-width-50'
                   />
                 </a>
               </Link>
@@ -110,16 +110,12 @@ export default class Header extends Component {
         </div>
         <div className='spacer' />
         <div>
-          <ul>
-            {/* <li>
-              <Link to="/login">
-                <img
-                  src={connexion_icon}
-                  className={style.userIcon}
-                  alt="connexion_icon"
-                />
+          <ul className='flex items-center p-0'>
+            <li>
+              <Link to='/login'>
+                <img src={userIcon} className='w-8 mr-2' alt='connexion_icon' />
               </Link>
-            </li> */}
+            </li>
             <li className='pr-10'>
               <Link href='/login'>Connexion</Link>
             </li>
@@ -137,15 +133,14 @@ export default class Header extends Component {
                 </NavLink>
               </li>
             )} */}
-            {/* <li className={style.li_right}>
-              <Link exact="true" activeClassName="isActive" to="/panier">
-                <img
-                  src={basket}
-                  className={style.basketIcon}
-                  alt="panier_icon"
-                />{" "}
+            <li>
+              <Link exact='true' to='/basket'>
+                <img src={basketIcon} className='w-8 mr-2' alt='panier_icon' />
               </Link>
-            </li> */}
+            </li>
+            <li className='pr-10'>
+              <Link href='/login'>Acheter</Link>
+            </li>
           </ul>
         </div>
         {/* {this.props.articlesPanier.length > 0 && (

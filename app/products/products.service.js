@@ -9,7 +9,8 @@ module.exports = {
   createProduct,
   getAllProducts,
   getProduct,
-  updateProduct
+  updateProduct,
+  deleteProduct
 };
 
 function createProduct(body, callback) {
@@ -105,6 +106,25 @@ function updateProduct(body, callback) {
       return callback({
         success: false,
         message: 'Cannot update product.'
+      });
+    }
+  );
+}
+
+function deleteProduct(body, callback) {
+  db.deleteProduct(
+    body,
+    function(res) {
+      return callback({
+        success: true,
+        message: 'Successfully deleted product',
+        product: res
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot delete product.'
       });
     }
   );

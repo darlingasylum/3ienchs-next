@@ -1,6 +1,6 @@
 'use strict';
 const mysql = require('mysql');
-// var crypt = require('./crypt');
+var crypt = require('./crypt');
 const config = require('./config');
 const db = {};
 // Creating a connection object for connecting to mysql database
@@ -24,42 +24,40 @@ connection.connect(function(err) {
 
 //USER
 
-// db.createUser = function(user, successCallback, failureCallback) {
-//   var passwordHash;
-//   crypt.createHash(
-//     user.password,
-//     function(res) {
-//       passwordHash = res;
-//       connection.query(
-//         "INSERT INTO `3ienchs-next`.`users` (`lastname`, `firstname`, `email`, `password`) VALUES ('" +
-//           user.lastname +
-//           "', '" +
-//           user.firstname +
-//           "', '" +
-//           user.email +
-//           "', '" +
-//           passwordHash +
-//           "');",
-//         function(err, rows, fields, res) {
-//           if (err) {
-//             failureCallback(err);
-//             return;
-//           }
-//           successCallback();
-//         }
-//       );
-//     },
-//     function(err) {
-//       failureCallback();
-//     }
-//   );
-// };
+db.createUser = function(user, successCallback, failureCallback) {
+  var passwordHash;
+  crypt.createHash(
+    user.password,
+    function(res) {
+      passwordHash = res;
+      connection.query(
+        "INSERT INTO `3ienchs-next`.`users` (`lastname`, `firstname`, `email`, `password`) VALUES ('" +
+          user.lastname +
+          "', '" +
+          user.firstname +
+          "', '" +
+          user.email +
+          "', '" +
+          passwordHash +
+          "');",
+        function(err, rows, fields, res) {
+          if (err) {
+            failureCallback(err);
+            return;
+          }
+          successCallback();
+        }
+      );
+    },
+    function(err) {
+      failureCallback();
+    }
+  );
+};
 
 db.findUser = function(user, successCallback, failureCallback) {
   var sqlQuery =
-    "SELECT * FROM `passport-auth`.users WHERE `user_email` = '" +
-    user.email +
-    "';";
+    "SELECT * FROM `3ienchs-next`.users WHERE `email` = '" + user.email + "';";
   connection.query(sqlQuery, function(err, rows, fields, res) {
     if (err) {
       failureCallback(err);
@@ -98,9 +96,20 @@ db.getAllUsers = function(successCallback, failureCallback) {
 // PRODUCT
 
 db.createProduct = function(product, successCallback, failureCallback) {
-  const { name, description, price, category } = product.body;
-  const sqlQuery = `INSERT INTO products (name, description, price, category) VALUES ("${name}", "${description}", ${price}, ${category});`;
-  connection.query(sqlQuery, function(err, rows, res) {
+  const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_packable, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ? );`;
+  const payload = [
+    product.product_name,
+    product.product_type,
+    product.product_price,
+    product.product_proof,
+    product.product_descr,
+    product.product_img,
+    product.product_packable,
+    product.product_stock,
+    product.product_id
+  ];
+  connection.query(sqlQuery, payload, function(err, rows, res) {
+    console.log(this.sql);
     if (err) {
       failureCallback(err);
       return;
@@ -122,7 +131,7 @@ db.getAllProducts = function(successCallback, failureCallback) {
 
 db.getProduct = function(product, successCallback, failureCallback) {
   const { id } = product.body;
-  const sqlQuery = `SELECT * FROM products WHERE id=${id}`;
+  const sqlQuery = `SELECT * FROM products WHERE product_id=${id}`;
   connection.query(sqlQuery, function(err, rows, res) {
     if (err) {
       failureCallback(err);
@@ -137,14 +146,40 @@ db.getProduct = function(product, successCallback, failureCallback) {
 };
 
 db.updateProduct = function(product, successCallback, failureCallback) {
-  const { name, description, price, category } = product.body;
-  const sqlQuery = `INSERT INTO products (name, description, price, category) VALUES ("${name}", "${description}", ${price}, ${category});`;
-  connection.query(sqlQuery, function(err, rows, res) {
+  const sqlQuery = `UPDATE products SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_packable = ?, product_stock = ? WHERE product_id = ?`;
+  const payload = [
+    product.product_name,
+    product.product_type,
+    product.product_price,
+    product.product_proof,
+    product.product_descr,
+    product.product_img,
+    product.product_packable,
+    product.product_stock,
+    product.product_id
+  ];
+  connection.query(sqlQuery, payload, function(err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
     }
     successCallback(rows);
+  });
+};
+
+db.deleteProduct = function(product, successCallback, failureCallback) {
+  const { id } = product;
+  const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
+  connection.query(sqlQuery, [id], function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    if (rows.affectedRows > 0) {
+      successCallback(rows[0]);
+    } else {
+      failureCallback('Product not found.');
+    }
   });
 };
 

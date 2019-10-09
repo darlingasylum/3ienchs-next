@@ -93,6 +93,28 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/icons/basket_white.svg":
+/*!***************************************!*\
+  !*** ./assets/icons/basket_white.svg ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiB4bWxuczp4PSJodHRwOi8vbnMuYWRvYmUuY29tL0V4dGVuc2liaWxpdHkvMS4wLyIgeG1sbnM6aT0iaHR0cDovL25zLmFkb2JlLmNvbS9BZG9iZUlsbHVzdHJhdG9yLzEwLjAvIiB4bWxuczpncmFwaD0iaHR0cDovL25zLmFkb2JlLmNvbS9HcmFwaHMvMS4wLyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3dpdGNoPjxmb3JlaWduT2JqZWN0IHJlcXVpcmVkRXh0ZW5zaW9ucz0iaHR0cDovL25zLmFkb2JlLmNvbS9BZG9iZUlsbHVzdHJhdG9yLzEwLjAvIiB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIj48L2ZvcmVpZ25PYmplY3Q+PGcgaTpleHRyYW5lb3VzPSJzZWxmIj48cGF0aCBkPSJNOTEsMzcuOEg3My4xdi01LjZDNzMuMSwxOS40LDYyLjgsOSw1MCw5UzI2LjksMTkuNCwyNi45LDMyLjF2NS42SDljLTQuMywwLTcuNCw0LTYuMiw4LjJsMTAuOSw0MC4zICAgIGMwLjgsMi44LDMuMyw0LjgsNi4zLDQuOGg2MC4zYzIuOSwwLDUuNS0yLDYuMi00LjhsMTAuOS00MC4zQzk4LjQsNDEuOCw5NS4zLDM3LjgsOTEsMzcuOHogTTM3LjYsMzIuMWMwLTYuOCw1LjUtMTIuNCwxMi40LTEyLjQgICAgczEyLjQsNS41LDEyLjQsMTIuNHY1LjZIMzcuNlYzMi4xeiI+PC9wYXRoPjwvZz48L3N3aXRjaD48L3N2Zz4="
+
+/***/ }),
+
+/***/ "./assets/icons/user_white.svg":
+/*!*************************************!*\
+  !*** ./assets/icons/user_white.svg ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxwYXRoIGQ9Ik0xLDQ5N2MxLjMtOS43LDIuMy0xOS41LDQtMjkuMWMxMy4xLTcwLjUsNDkuOS0xMjUuNiwxMDguMy0xNjcuMWM0MC40LDM4LjMsODgsNTguNSwxNDMuNiw1OC40ICAgYzU1LjQsMCwxMDIuOS0yMCwxNDMuNy01OC42YzguMSw2LjQsMTYuNiwxMi41LDI0LjQsMTkuNGM0OS4yLDQzLjcsNzguMiw5OC4yLDg2LjEsMTYzLjdjMC41LDQuNCwxLjIsOC45LDEuOCwxMy4zICAgYzAsNS4zLDAsMTAuNywwLDE2Yy0xNzAuNywwLTM0MS4zLDAtNTEyLDBDMSw1MDcuNywxLDUwMi4zLDEsNDk3eiI+PC9wYXRoPjxwYXRoIGQ9Ik0yNjksMWMxMC4xLDIsMjAuNCwzLjMsMzAuMiw2LjFjNjAsMTYuNywxMDQuNCw2OS44LDExMC42LDEzMS45YzguNiw4Ni4xLTU0LjYsMTYxLjctMTQxLjEsMTY4LjggICBjLTc3LjksNi41LTE0OS42LTQ5LTE2Mi44LTEyNi4xQzkxLjcsOTkuMywxNDMuMiwyMi41LDIyNC45LDQuNGM2LjYtMS41LDEzLjQtMi4zLDIwLjEtMy40QzI1MywxLDI2MSwxLDI2OSwxeiI+PC9wYXRoPjwvZz48L3N2Zz4="
+
+/***/ }),
+
 /***/ "./assets/logos/3ienchs_white_logo.png":
 /*!*********************************************!*\
   !*** ./assets/logos/3ienchs_white_logo.png ***!
@@ -372,6 +394,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _less_style_less__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_less_style_less__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _assets_logos_3ienchs_white_logo_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../assets/logos/3ienchs_white_logo.png */ "./assets/logos/3ienchs_white_logo.png");
 /* harmony import */ var _assets_logos_3ienchs_white_logo_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_logos_3ienchs_white_logo_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_icons_user_white_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../assets/icons/user_white.svg */ "./assets/icons/user_white.svg");
+/* harmony import */ var _assets_icons_user_white_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_user_white_svg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _assets_icons_basket_white_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../../assets/icons/basket_white.svg */ "./assets/icons/basket_white.svg");
+/* harmony import */ var _assets_icons_basket_white_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_icons_basket_white_svg__WEBPACK_IMPORTED_MODULE_6__);
 var _jsxFileName = "/Applications/MAMP/htdocs/3ienchs-next/3ienchs-next-v1/client/layouts/components/Header/Navbar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  // import { Link, NavLink } from "react-router-dom"
@@ -380,9 +406,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
- // import connexion_icon from "./../../../assets/icons/user_white.svg";
-// import basket from "./../../../assets/icons/basket_white.svg";
-// import style from "./navbar.module.css";
+
+
+ // import style from "./navbar.module.css";
 // const mapStateToProps = state => {
 //   return {
 //     connectedUser: state.connectedUser,
@@ -493,7 +519,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }, __jsx("img", {
       src: _assets_logos_3ienchs_white_logo_png__WEBPACK_IMPORTED_MODULE_4___default.a,
       alt: "logo_iench",
-      className: "ml-4 max-width-50 max-height-0",
+      className: "ml-4 max-width-50",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 87
@@ -555,26 +581,86 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx("ul", {
+      className: "flex items-center p-0",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 113
       },
       __self: this
     }, __jsx("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 114
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      to: "/login",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 115
+      },
+      __self: this
+    }, __jsx("img", {
+      src: _assets_icons_user_white_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
+      className: "w-8 mr-2",
+      alt: "connexion_icon",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 116
+      },
+      __self: this
+    }))), __jsx("li", {
       className: "pr-10",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123
+        lineNumber: 119
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
       href: "/login",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124
+        lineNumber: 120
       },
       __self: this
-    }, "Connexion")))));
+    }, "Connexion")), __jsx("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 136
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      exact: "true",
+      to: "/basket",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 137
+      },
+      __self: this
+    }, __jsx("img", {
+      src: _assets_icons_basket_white_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
+      className: "w-8 mr-2",
+      alt: "panier_icon",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138
+      },
+      __self: this
+    }))), __jsx("li", {
+      className: "pr-10",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 141
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/login",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 142
+      },
+      __self: this
+    }, "Acheter")))));
   }
 
 } // export default connect(mapStateToProps)(HeaderClass);
