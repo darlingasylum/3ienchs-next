@@ -75,43 +75,44 @@ export default class Header extends Component {
     // }
 
     return (
-      <nav className='items-center bg-black text-white flex justify-around pin-t h-14 fixed z-index-3 w-full '>
-        <div className='display-none block-xs'>
-          <Burger click={this.props.burgerClickHandler} />
-        </div>
-        <div>
-          <ul className='flex items-center p-0'>
-            <li className='pr-10'>
-              <Link to='/'>
-                <a>
-                  <img
-                    src={tinyLogo}
-                    alt='logo_iench'
-                    className='ml-4 max-width-50'
-                  />
-                </a>
-              </Link>
-            </li>
-            <li className='hover-pink-iench pr-10'>
-              <Link href='/'>Accueil</Link>
-            </li>
-            <li className='pr-10'>
-              <Link href='/products'>Nos bières</Link>
-            </li>
-            <li className='pr-10'>
-              <Link href='/about'>À propos</Link>
-            </li>
-            {/* <li>
-              <Link exact="true" activeClassName="isActive" to="/vente">
-                Points de vente
-              </Link>
-            </li> */}
-          </ul>
-        </div>
-        <div className='spacer' />
-        <div>
-          <ul className='flex items-center p-0'>
-            <li>
+      <>
+        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed z-index-3 w-full nickname'>
+          <div className='display-none block-xs'>
+            <Burger click={this.props.burgerClickHandler} />
+          </div>
+          <div>
+            <ul className='flex items-center p-0'>
+              <li className='hover-pink-iench pr-10'>
+                <Link href='/'>Les bières</Link>
+              </li>
+              <li className='pr-10'>
+                <Link href='/products'>Agenda</Link>
+              </li>
+              <li className='pr-10'>
+                <Link href='/about'>Artwork</Link>
+              </li>
+              <li>
+                <Link exact='true' activeClassName='isActive' to='/vente'>
+                  Pour les zicos
+                </Link>
+              </li>
+              {/* <li className='pr-10 '>
+                <Link to='/'>
+                  <a>
+                    <img
+                      src={tinyLogo}
+                      alt='logo_iench'
+                      className='ml-4 max-width-50'
+                    />
+                  </a>
+                </Link>
+              </li> */}
+            </ul>
+          </div>
+          <div className='spacer' />
+          <div>
+            <ul className='flex items-center p-0'>
+              {/*<li>
               <Link to='/login'>
                 <img src={userIcon} className='w-8 mr-2' alt='connexion_icon' />
               </Link>
@@ -119,7 +120,7 @@ export default class Header extends Component {
             <li className='pr-10'>
               <Link href='/login'>Connexion</Link>
             </li>
-            {/* {connectedUser ? (
+             {connectedUser ? (
               <li className={style.li_right}>
                 <NavLink exact activeClassName="isActive" to="/login">
                   {" "}
@@ -132,23 +133,35 @@ export default class Header extends Component {
                   Connexion
                 </NavLink>
               </li>
-            )} */}
+            )} 
             <li>
               <Link exact='true' to='/basket'>
                 <img src={basketIcon} className='w-8 mr-2' alt='panier_icon' />
               </Link>
-            </li>
-            <li className='pr-10'>
-              <Link href='/login'>Acheter</Link>
-            </li>
-          </ul>
-        </div>
-        {/* {this.props.articlesPanier.length > 0 && (
+            </li> */}
+              <li className='pr-10'>
+                <Link href='/login'>Commander</Link>
+              </li>
+            </ul>
+          </div>
+          {/* {this.props.articlesPanier.length > 0 && (
           <Link to="/panier">
             <div className="articlesQty">{totalQty}</div> 
           </Link>
         )} */}
-      </nav>
+        </nav>
+        <div className='bg-red h-14 w-14'>
+          <Link to='/'>
+            <a>
+              <img
+                src={tinyLogo}
+                alt='logo_iench'
+                className='ml-4 max-width-50'
+              />
+            </a>
+          </Link>
+        </div>
+      </>
     );
   }
 }

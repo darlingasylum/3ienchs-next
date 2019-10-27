@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const productsService = require('./products.service');
-// var passport = require('passport');
-// var requireAuth = passport.authenticate('jwt', { session: false });
+var passport = require('passport');
+var requireAuth = passport.authenticate('jwt', { session: false });
 
 // routes
-// router.post('/create', requireAuth, createProduct);
-router.post('/create', createProduct);
+router.post('/create', requireAuth, createProduct);
+// router.post('/create', createProduct);
 router.get('/getAll', getAllProducts);
 router.get('/getProduct', getProduct);
 router.patch('/update', updateProduct);
@@ -47,8 +47,6 @@ function updateProduct(req, res) {
 }
 
 function deleteProduct(req, res) {
-  console.log('depuis controller -->', req.body);
-
   productsService.deleteProduct(req.body, result => {
     result.success
       ? res.status(201).json(result)

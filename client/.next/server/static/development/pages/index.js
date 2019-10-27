@@ -462,58 +462,149 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     //     }
     //   }
     // }
-    return __jsx("nav", {
-      className: "items-center bg-black text-white flex justify-around pin-t h-14 fixed z-index-3 w-full ",
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("nav", {
+      className: "items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed z-index-3 w-full nickname",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78
+        lineNumber: 79
       },
       __self: this
     }, __jsx("div", {
       className: "display-none block-xs",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79
+        lineNumber: 80
       },
       __self: this
     }, __jsx(_BurgerMenu_Burger_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
       click: this.props.burgerClickHandler,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 81
       },
       __self: this
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82
+        lineNumber: 83
       },
       __self: this
     }, __jsx("ul", {
       className: "flex items-center p-0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83
+        lineNumber: 84
+      },
+      __self: this
+    }, __jsx("li", {
+      className: "hover-pink-iench pr-10",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 85
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 86
+      },
+      __self: this
+    }, "Les bi\xE8res")), __jsx("li", {
+      className: "pr-10",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 88
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/products",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89
+      },
+      __self: this
+    }, "Agenda")), __jsx("li", {
+      className: "pr-10",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 91
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/about",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 92
+      },
+      __self: this
+    }, "Artwork")), __jsx("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 94
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      exact: "true",
+      activeClassName: "isActive",
+      to: "/vente",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 95
+      },
+      __self: this
+    }, "Pour les zicos")))), __jsx("div", {
+      className: "spacer",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 112
+      },
+      __self: this
+    }), __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113
+      },
+      __self: this
+    }, __jsx("ul", {
+      className: "flex items-center p-0",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 114
       },
       __self: this
     }, __jsx("li", {
       className: "pr-10",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 84
+        lineNumber: 142
+      },
+      __self: this
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      href: "/login",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 143
+      },
+      __self: this
+    }, "Commander"))))), __jsx("div", {
+      className: "bg-red h-14 w-14",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 153
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
       to: "/",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 85
+        lineNumber: 154
       },
       __self: this
     }, __jsx("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 86
+        lineNumber: 155
       },
       __self: this
     }, __jsx("img", {
@@ -522,145 +613,10 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       className: "ml-4 max-width-50",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 87
+        lineNumber: 156
       },
       __self: this
-    })))), __jsx("li", {
-      className: "hover-pink-iench pr-10",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 95
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 96
-      },
-      __self: this
-    }, "Accueil")), __jsx("li", {
-      className: "pr-10",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 98
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/products",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 99
-      },
-      __self: this
-    }, "Nos bi\xE8res")), __jsx("li", {
-      className: "pr-10",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 101
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/about",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 102
-      },
-      __self: this
-    }, "\xC0 propos")))), __jsx("div", {
-      className: "spacer",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 111
-      },
-      __self: this
-    }), __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 112
-      },
-      __self: this
-    }, __jsx("ul", {
-      className: "flex items-center p-0",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 113
-      },
-      __self: this
-    }, __jsx("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 114
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      to: "/login",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 115
-      },
-      __self: this
-    }, __jsx("img", {
-      src: _assets_icons_user_white_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
-      className: "w-8 mr-2",
-      alt: "connexion_icon",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 116
-      },
-      __self: this
-    }))), __jsx("li", {
-      className: "pr-10",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 119
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/login",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 120
-      },
-      __self: this
-    }, "Connexion")), __jsx("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 136
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      exact: "true",
-      to: "/basket",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 137
-      },
-      __self: this
-    }, __jsx("img", {
-      src: _assets_icons_basket_white_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
-      className: "w-8 mr-2",
-      alt: "panier_icon",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 138
-      },
-      __self: this
-    }))), __jsx("li", {
-      className: "pr-10",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 141
-      },
-      __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      href: "/login",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 142
-      },
-      __self: this
-    }, "Acheter")))));
+    })))));
   }
 
 } // export default connect(mapStateToProps)(HeaderClass);
@@ -1593,7 +1549,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Home = props => {
-  console.log(props);
+  // console.log(props);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __source: {
       fileName: _jsxFileName,
@@ -1614,7 +1570,7 @@ const Home = props => {
     },
     __self: undefined
   }, __jsx("h1", {
-    className: "roadgeek block p-2 br-10 cursor-pointer text-dark hover:bg-pink-iench transition-1",
+    className: "nickname block p-2 br-10 cursor-pointer text-dark hover:bg-pink-iench transition-1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14

@@ -12,6 +12,7 @@ module.exports = {
 };
 
 function register(userParam, callback) {
+  // console.log('user param -->', userParam);
   if (
     !userParam.lastname ||
     !userParam.firstname ||
@@ -57,9 +58,9 @@ function authenticate({ email, password }, callback) {
     function(res) {
       var user = {
         user_id: res.user_id,
-        user_email: res.user_email,
+        user_email: res.email,
         is_active: res.is_active,
-        user_type: res.user_type
+        user_type: res.admin
       };
 
       // Check if password matches

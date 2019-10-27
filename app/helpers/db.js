@@ -59,6 +59,7 @@ db.findUser = function(user, successCallback, failureCallback) {
   var sqlQuery =
     "SELECT * FROM `3ienchs-next`.users WHERE `email` = '" + user.email + "';";
   connection.query(sqlQuery, function(err, rows, fields, res) {
+    // console.log(this.sql);
     if (err) {
       failureCallback(err);
       return;
@@ -109,7 +110,6 @@ db.createProduct = function(product, successCallback, failureCallback) {
     product.product_id
   ];
   connection.query(sqlQuery, payload, function(err, rows, res) {
-    console.log(this.sql);
     if (err) {
       failureCallback(err);
       return;

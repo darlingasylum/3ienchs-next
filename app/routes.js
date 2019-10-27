@@ -1,19 +1,19 @@
 'use strict';
 // Import dependencies
-// var passport = require('passport');
+var passport = require('passport');
 var express = require('express');
 // Set up middleware
-// var requireAuth = passport.authenticate('jwt', { session: false });
+var requireAuth = passport.authenticate('jwt', { session: false });
 
 // Export the routes for our app to use
 module.exports = function(app) {
   // API Route Section
 
   // Initialize passport for use
-  //   app.use(passport.initialize());
+  app.use(passport.initialize());
 
   // Bring in defined Passport Strategy
-  //   require('../config/passport')(passport);
+  require('./helpers/passport')(passport);
 
   // Create API group routes
   var apiRoutes = express.Router(); // créer un router
@@ -31,18 +31,17 @@ module.exports = function(app) {
   //     );
   //   });
 
-  //   const admin = require('./admin/admin.controller');
-  //   // dans request il y a le user, dans response c'est nous qui définissons la response
-  //   apiRoutes.get('/admin', requireAuth, function(request, response) {
-  //     // );
-
-  //     //if response.user.user_type=1
-  //     if (request.user.user_type == 1) {
-  //       admin.getAllUsers(request, response);
-  //     } else {
-  //       console.log('user PAS OK ==> ', request.user);
-  //     }
-  //   });
+  const admin = require('./admin/admin.controller');
+  // dans request il y a le user, dans response c'est nous qui définissons la response
+  apiRoutes.get('/admin', requireAuth, function(request, response) {
+    console.log(request);
+    if (request.user.admin == 1) {
+      admin.getAllUsers(request, response);
+    } else {
+      console.log('user PAS OK ==> ', request.user);
+      return { success: false, message: 'You cannot get there' };
+    }
+  });
 
   // Set url for API group routes
   app.use('/api', apiRoutes); // on préfixe par /api
