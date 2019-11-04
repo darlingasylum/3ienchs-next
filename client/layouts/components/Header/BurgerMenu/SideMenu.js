@@ -41,7 +41,11 @@ const SideMenu = props => {
             <a>Pour les zicos</a>
           </Link>
         </li>
-
+        <li className='li_left m-2'>
+          <Link href='/panier'>
+            <a>Connexion</a>
+          </Link>
+        </li>
         <li className='li_left m-2'>
           <Link href='/panier'>
             <a>Commander</a>

@@ -83,7 +83,7 @@ export default class Header extends Component {
           <div>
             <ul className='flex items-center p-0'>
               <li className=' display-none-md'>
-                <Link to='/'>
+                <Link href='/'>
                   <a>
                     <img
                       src={tinyLogo}
@@ -94,18 +94,16 @@ export default class Header extends Component {
                 </Link>
               </li>
               <li className='hover-pink-iench pr-10 pl-10 display-none-xs'>
-                <Link href='/'>Les bières</Link>
+                <Link href='/products'>Les bières</Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/products'>Agenda</Link>
+                <Link href='/agenda'>Agenda</Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/about'>Artwork</Link>
+                <Link href='/artwork'>Artwork</Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link exact='true' to='/vente'>
-                  Pour les zicos
-                </Link>
+                <Link href='/music'>Pour les zicos</Link>
               </li>
             </ul>
           </div>
@@ -133,14 +131,26 @@ export default class Header extends Component {
                   Connexion
                 </NavLink>
               </li>
-            )} 
-            <li>
-              <Link exact='true' to='/basket'>
-                <img src={basketIcon} className='w-8 mr-2' alt='panier_icon' />
-              </Link>
-            </li> */}
+            )} */}
+              {/* <li>
+                <Link to='/basket'>
+                  <img src={userIcon} className='w-6 mr-2' alt='panier_icon' />
+                </Link>
+              </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/login'>Commander</Link>
+                <Link href='/login'>Connexion</Link>
+              </li> */}
+              {/* <li>
+                <Link to='/basket'>
+                  <img
+                    src={basketIcon}
+                    className='w-6 mr-2'
+                    alt='panier_icon'
+                  />
+                </Link>
+              </li> */}
+              <li className='pr-10 display-none-xs'>
+                <Link href='/order'>Commander</Link>
               </li>
             </ul>
           </div>

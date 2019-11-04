@@ -1,5 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const Products = props => <div className="hero">Je suis la page products</div>;
+const Products = props => (
+  <div className='hero mt-30'>Je suis la page products</div>
+);
 
 export default Products;
