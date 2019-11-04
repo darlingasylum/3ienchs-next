@@ -16,27 +16,27 @@ const SideMenu = props => {
       }
     >
       <ul className='text-white'>
-        <li className='li_left m-2'>
+        <li className='li_left m-4'>
           <Link href='/' style={{ cursor: 'pointer' }}>
             <a>Home</a>
           </Link>
         </li>
-        <li className='li_left m-2'>
+        <li className='li_left m-4'>
           <Link href='/bieres'>
             <a>Les bières</a>
           </Link>
         </li>
-        <li className='li_left m-2'>
+        <li className='li_left m-4'>
           <Link href='/apropos'>
             <a>Agenda</a>
           </Link>
         </li>
-        <li className='li_left m-2'>
+        <li className='li_left m-4'>
           <Link href='/vente'>
             <a>Artwork</a>
           </Link>
         </li>
-        <li className='li_left m-2'>
+        <li className='li_left m-4'>
           <Link href='/vente'>
             <a>Pour les zicos</a>
           </Link>
