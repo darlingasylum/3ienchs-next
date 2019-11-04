@@ -76,27 +76,13 @@ export default class Header extends Component {
 
     return (
       <>
-        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed z-index-3 w-full nickname'>
+        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed w-full nickname'>
           <div className='display-none block-xs'>
             <Burger click={this.props.burgerClickHandler} />
           </div>
           <div>
             <ul className='flex items-center p-0'>
-              <li className='hover-pink-iench pr-10'>
-                <Link href='/'>Les bières</Link>
-              </li>
-              <li className='pr-10'>
-                <Link href='/products'>Agenda</Link>
-              </li>
-              <li className='pr-10'>
-                <Link href='/about'>Artwork</Link>
-              </li>
-              <li>
-                <Link exact='true' activeClassName='isActive' to='/vente'>
-                  Pour les zicos
-                </Link>
-              </li>
-              {/* <li className='pr-10 '>
+              <li className=' display-none-md'>
                 <Link to='/'>
                   <a>
                     <img
@@ -106,7 +92,21 @@ export default class Header extends Component {
                     />
                   </a>
                 </Link>
-              </li> */}
+              </li>
+              <li className='hover-pink-iench pr-10 pl-10 display-none-xs'>
+                <Link href='/'>Les bières</Link>
+              </li>
+              <li className='pr-10 display-none-xs'>
+                <Link href='/products'>Agenda</Link>
+              </li>
+              <li className='pr-10 display-none-xs'>
+                <Link href='/about'>Artwork</Link>
+              </li>
+              <li className='pr-10 display-none-xs'>
+                <Link exact='true' to='/vente'>
+                  Pour les zicos
+                </Link>
+              </li>
             </ul>
           </div>
           <div className='spacer' />
@@ -139,7 +139,7 @@ export default class Header extends Component {
                 <img src={basketIcon} className='w-8 mr-2' alt='panier_icon' />
               </Link>
             </li> */}
-              <li className='pr-10'>
+              <li className='pr-10 display-none-xs'>
                 <Link href='/login'>Commander</Link>
               </li>
             </ul>
@@ -150,7 +150,7 @@ export default class Header extends Component {
           </Link>
         )} */}
         </nav>
-        <div className='bg-red h-14 w-14'>
+        {/* <div className='bg-red h-14 w-14 z-index-5'>
           <Link to='/'>
             <a>
               <img
@@ -160,7 +160,7 @@ export default class Header extends Component {
               />
             </a>
           </Link>
-        </div>
+        </div> */}
       </>
     );
   }

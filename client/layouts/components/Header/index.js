@@ -13,11 +13,11 @@
 
 // export default Header;
 
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
 
-import Navbar from "./Navbar.js";
-import Backdrop from "./BurgerMenu/Backdrop.js";
-import SideMenu from "./BurgerMenu/SideMenu.js";
+import Navbar from './Navbar.js';
+import Backdrop from './BurgerMenu/Backdrop.js';
+import SideMenu from './BurgerMenu/SideMenu.js';
 
 //Composant incluant la barre de navigation et tout le mécanisme du menu burger
 
@@ -25,13 +25,14 @@ class Header extends Component {
   state = { sideMenuOpen: false };
 
   burgerToggleClickHandler = () => {
-    // console.log("coucou depuis header.js")
+    console.log('coucou depuis header.js');
     this.setState(previousState => {
       return { sideMenuOpen: !previousState.sideMenuOpen };
     });
   };
 
   backdropClickHandler = () => {
+    console.log('yo');
     this.setState({ sideMenuOpen: false });
   };
 
@@ -44,7 +45,7 @@ class Header extends Component {
     return (
       <Fragment>
         <Navbar
-          className="App-header"
+          className='App-header'
           burgerClickHandler={this.burgerToggleClickHandler}
         />
         <SideMenu show={this.state.sideMenuOpen} />

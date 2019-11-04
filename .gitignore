@@ -10,7 +10,10 @@ client/node_modules
 */coverage
 
 # next.js
-/.next/
+client/.next
+# /client/.next/server
+# /client/.next/static
+
 /out/
 
 # production

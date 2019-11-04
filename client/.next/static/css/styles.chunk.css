@@ -301,6 +301,18 @@ main.is-fullscreen .full-width-height-component {
     transform: translate3d(0, 0, 0);
   }
 }
+.translate-X-100 {
+  transform: translateX(-100%);
+}
+.transition-side-menu {
+  transition: transform 0.3s ease-out;
+}
+.transform-0 {
+  transform: translateX(0);
+}
+.bg-backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
 /* External css libraries */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -735,6 +747,9 @@ ul {
   }
 }
 @media screen and (max-width: 576px) {
+  .display-none-xs {
+    display: none;
+  }
   .display-xs {
     display: block;
   }
@@ -5351,6 +5366,9 @@ ul {
 }
 .max-height-40 {
   max-height: 40px;
+}
+.max-width-400 {
+  max-width: 400px;
 }
 @media screen and (max-width: 900px) {
   .max-height-0-md {

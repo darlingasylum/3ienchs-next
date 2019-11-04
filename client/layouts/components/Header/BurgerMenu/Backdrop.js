@@ -1,6 +1,21 @@
-import React from "react";
+import React from 'react';
 // import style from "./backdrop.module.css";
 
-const SideMenu = props => <div onClick={props.click}></div>;
+// .backdrop {
+//     background: rgba(0, 0, 0, 0.3);
+//     height: 100%;
+//     left: 0;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     z-index: 100;
+//   }
 
-export default SideMenu;
+const Backdrop = props => (
+  <div
+    onClick={props.click}
+    className='bg-backdrop h-full w-full pin-l pin-t fixed '
+  ></div>
+);
+
+export default Backdrop;

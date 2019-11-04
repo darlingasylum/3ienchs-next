@@ -47,19 +47,29 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "/Applications/MAMP/htdocs/3ienchs-next/3ienchs-next-v1/client/layouts/components/Header/BurgerMenu/Backdrop.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  // import style from "./backdrop.module.css";
+// .backdrop {
+//     background: rgba(0, 0, 0, 0.3);
+//     height: 100%;
+//     left: 0;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     z-index: 100;
+//   }
 
-var SideMenu = function SideMenu(props) {
+var Backdrop = function Backdrop(props) {
   return __jsx("div", {
     onClick: props.click,
+    className: "bg-backdrop h-full w-full pin-l pin-t fixed ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4
+      lineNumber: 15
     },
     __self: this
   });
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (SideMenu);
+/* harmony default export */ __webpack_exports__["default"] = (Backdrop);
 
 /***/ }),
 
@@ -100,40 +110,35 @@ function (_Component) {
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Burger, [{
-    key: "test",
-    value: function test() {
-      console.log("coucou");
-    }
-  }, {
     key: "render",
     value: function render() {
       return __jsx("button", {
         onClick: this.props.click,
-        className: "bg-transparent cursor-pointer flex flex-col justify-around w-8 h-6 p-0 border-0-md border-0-xs not-outlined",
+        className: "bg-transparent cursor-pointer flex flex-col justify-around w-8 h-6 p-0 pl-10 border-0-xs not-outlined",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 7
         },
         __self: this
       }, __jsx("div", {
         className: "bg-white h-2px w-7 br-30",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 11
         },
         __self: this
       }), __jsx("div", {
         className: "bg-white h-2px w-7 br-30",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 12
         },
         __self: this
       }), __jsx("div", {
         className: "bg-white h-2px w-7 br-30",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17
+          lineNumber: 13
         },
         __self: this
       }));
@@ -167,142 +172,145 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  // import style from "./sideMenu.module.css";
 
 var SideMenu = function SideMenu(props) {
+  console.log('show ?', props.show);
   return __jsx("nav", {
+    className: !props.show ? 'h-full fixed pin-t pin-l max-width-400 translate-X-100 transition-side-menu w-half z-index-3 ' : 'h-full fixed pin-t pin-l max-width-400 translate-X-100 transition-side-menu w-half z-index-3 transform-0 bg-black',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 11
     },
     __self: this
   }, __jsx("ul", {
+    className: "text-white",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 18
     },
     __self: this
   }, __jsx("li", {
-    className: "li_left",
+    className: "li_left m-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 19
     },
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/",
     style: {
-      cursor: "pointer"
+      cursor: 'pointer'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 20
     },
     __self: this
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 21
     },
     __self: this
-  }, "Accueil"))), __jsx("li", {
-    className: "li_left",
+  }, "Home"))), __jsx("li", {
+    className: "li_left m-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 24
     },
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/bieres",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 25
     },
     __self: this
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 26
     },
     __self: this
-  }, "Nos bi\xE8res"))), __jsx("li", {
-    className: "li_left",
+  }, "Les bi\xE8res"))), __jsx("li", {
+    className: "li_left m-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 29
     },
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/apropos",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 30
     },
     __self: this
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 31
     },
     __self: this
-  }, "\xC0 propos"))), __jsx("li", {
-    className: "li_left",
+  }, "Agenda"))), __jsx("li", {
+    className: "li_left m-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 34
     },
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/vente",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
-    },
-    __self: this
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    },
-    __self: this
-  }, "Points de vente"))), __jsx("li", {
-    className: "li_left",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 35
     },
     __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/login",
+  }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36
     },
     __self: this
-  }, __jsx("a", {
+  }, "Artwork"))), __jsx("li", {
+    className: "li_left m-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 39
     },
     __self: this
-  }, "Connexion"))), __jsx("li", {
-    className: "li_left",
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/vente",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 40
+    },
+    __self: this
+  }, __jsx("a", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }, "Pour les zicos"))), __jsx("li", {
+    className: "li_left m-2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
     },
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/panier",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 46
     },
     __self: this
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 47
     },
     __self: this
-  }, "Panier")))));
+  }, "Commander")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SideMenu);
@@ -419,7 +427,7 @@ function (_Component) {
       //   }
       // }
       return __jsx(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, __jsx("nav", {
-        className: "items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed z-index-3 w-full nickname",
+        className: "items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed w-full nickname",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 79
@@ -453,60 +461,89 @@ function (_Component) {
         },
         __self: this
       }, __jsx("li", {
-        className: "hover-pink-iench pr-10",
+        className: " display-none-md",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 85
         },
         __self: this
       }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        href: "/",
+        to: "/",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 86
         },
         __self: this
-      }, "Les bi\xE8res")), __jsx("li", {
-        className: "pr-10",
+      }, __jsx("a", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87
+        },
+        __self: this
+      }, __jsx("img", {
+        src: _assets_logos_3ienchs_white_logo_png__WEBPACK_IMPORTED_MODULE_9___default.a,
+        alt: "logo_iench",
+        className: "ml-4 max-width-50",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 88
+        },
+        __self: this
+      })))), __jsx("li", {
+        className: "hover-pink-iench pr-10 pl-10 display-none-xs",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 96
+        },
+        __self: this
+      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        href: "/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 97
+        },
+        __self: this
+      }, "Les bi\xE8res")), __jsx("li", {
+        className: "pr-10 display-none-xs",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 99
         },
         __self: this
       }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
         href: "/products",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 100
         },
         __self: this
       }, "Agenda")), __jsx("li", {
-        className: "pr-10",
+        className: "pr-10 display-none-xs",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 102
         },
         __self: this
       }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
         href: "/about",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 103
         },
         __self: this
       }, "Artwork")), __jsx("li", {
+        className: "pr-10 display-none-xs",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 105
         },
         __self: this
       }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
         exact: "true",
-        activeClassName: "isActive",
         to: "/vente",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 95
+          lineNumber: 106
         },
         __self: this
       }, "Pour les zicos")))), __jsx("div", {
@@ -530,7 +567,7 @@ function (_Component) {
         },
         __self: this
       }, __jsx("li", {
-        className: "pr-10",
+        className: "pr-10 display-none-xs",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 142
@@ -543,36 +580,7 @@ function (_Component) {
           lineNumber: 143
         },
         __self: this
-      }, "Commander"))))), __jsx("div", {
-        className: "bg-red h-14 w-14",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 153
-        },
-        __self: this
-      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        to: "/",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 154
-        },
-        __self: this
-      }, __jsx("a", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 155
-        },
-        __self: this
-      }, __jsx("img", {
-        src: _assets_logos_3ienchs_white_logo_png__WEBPACK_IMPORTED_MODULE_9___default.a,
-        alt: "logo_iench",
-        className: "ml-4 max-width-50",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 156
-        },
-        __self: this
-      })))));
+      }, "Commander"))))));
     }
   }]);
 
@@ -654,7 +662,8 @@ function (_Component) {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "burgerToggleClickHandler", function () {
-      // console.log("coucou depuis header.js")
+      console.log('coucou depuis header.js');
+
       _this.setState(function (previousState) {
         return {
           sideMenuOpen: !previousState.sideMenuOpen
@@ -663,6 +672,8 @@ function (_Component) {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "backdropClickHandler", function () {
+      console.log('yo');
+
       _this.setState({
         sideMenuOpen: false
       });
@@ -681,7 +692,7 @@ function (_Component) {
           click: this.backdropClickHandler,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 43
           },
           __self: this
         });
@@ -690,7 +701,7 @@ function (_Component) {
       return __jsx(react__WEBPACK_IMPORTED_MODULE_7__["Fragment"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 46
         },
         __self: this
       }, __jsx(_Navbar_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -698,14 +709,14 @@ function (_Component) {
         burgerClickHandler: this.burgerToggleClickHandler,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 47
         },
         __self: this
       }), __jsx(_BurgerMenu_SideMenu_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
         show: this.state.sideMenuOpen,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 51
         },
         __self: this
       }), backdrop);
@@ -11879,7 +11890,7 @@ var Home = function Home(props) {
     },
     __self: this
   }, __jsx("h1", {
-    className: "nickname block p-2 br-10 cursor-pointer text-dark hover:bg-pink-iench transition-1",
+    className: "nickname block p-2 br- cursor-pointer text-dark hover:bg-pink-iench transition-1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
@@ -11890,7 +11901,7 @@ var Home = function Home(props) {
       key: beer.product_id,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 22
       },
       __self: this
     }, beer.product_name, " ");
