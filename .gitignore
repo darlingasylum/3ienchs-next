@@ -11,8 +11,6 @@ client/node_modules
 
 # next.js
 client/.next
-# /client/.next/server
-# /client/.next/static
 
 /out/
 
