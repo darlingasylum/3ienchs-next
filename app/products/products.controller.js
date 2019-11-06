@@ -7,7 +7,8 @@ var requireAuth = passport.authenticate('jwt', { session: false });
 // routes
 router.post('/create', requireAuth, createProduct);
 // router.post('/create', createProduct);
-router.get('/getAll', getAllProducts);
+router.get('/getDogsProducts', getDogsProducts);
+router.get('/getFeatProducts', getFeatProducts);
 router.get('/getProduct', getProduct);
 router.patch('/update', updateProduct);
 router.delete('/delete', deleteProduct);
@@ -22,8 +23,16 @@ function createProduct(req, res) {
   });
 }
 
-function getAllProducts(req, res) {
-  productsService.getAllProducts(result => {
+function getDogsProducts(req, res) {
+  productsService.getDogsProducts(result => {
+    result.success
+      ? res.status(201).json(result)
+      : res.status(401).json(result);
+  });
+}
+
+function getFeatProducts(req, res) {
+  productsService.getFeatProducts(result => {
     result.success
       ? res.status(201).json(result)
       : res.status(401).json(result);

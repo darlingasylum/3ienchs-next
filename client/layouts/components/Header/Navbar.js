@@ -76,7 +76,7 @@ export default class Header extends Component {
 
     return (
       <>
-        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-15 fixed w-full nickname'>
+        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-10 fixed w-full nickname'>
           <div className='display-none block-xs'>
             <Burger click={this.props.burgerClickHandler} />
           </div>
@@ -94,16 +94,24 @@ export default class Header extends Component {
                 </Link>
               </li>
               <li className='hover-pink-iench pr-10 pl-10 display-none-xs'>
-                <Link href='/products'>Les bières</Link>
+                <Link href='/products'>
+                  <a>Les bières</a>
+                </Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/agenda'>Agenda</Link>
+                <Link href='/agenda'>
+                  <a>Agenda</a>
+                </Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/artwork'>Artwork</Link>
+                <Link href='/artwork'>
+                  <a>Artwork</a>
+                </Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/music'>Pour les zicos</Link>
+                <Link href='/music'>
+                  <a>Pour les zicos</a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -150,7 +158,9 @@ export default class Header extends Component {
                 </Link>
               </li> */}
               <li className='pr-10 display-none-xs'>
-                <Link href='/order'>Commander</Link>
+                <Link href='/order'>
+                  <a>Commander</a>
+                </Link>
               </li>
             </ul>
           </div>

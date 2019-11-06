@@ -3,7 +3,7 @@ import Head from 'next/head';
 import './../../../less/style.less';
 
 const Home = props => {
-  // console.log(props);
+  console.log('props home', props);
   return (
     <>
       <Head>
@@ -18,9 +18,9 @@ const Home = props => {
           Welcome to 3ienchs!
         </h1>
 
-        {props.products.map(beer => (
+        {/* {props.products.map(beer => (
           <li key={beer.product_id}>{beer.product_name} </li>
-        ))}
+        ))} */}
       </div>
     </>
   );

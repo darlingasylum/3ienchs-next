@@ -5,8 +5,6 @@ import Link from 'next/link';
 // import style from "./sideMenu.module.css";
 
 const SideMenu = props => {
-  console.log('show ?', props.show);
-
   return (
     <nav
       className={
@@ -17,7 +15,7 @@ const SideMenu = props => {
     >
       <ul className='text-white'>
         <li className='li_left m-4'>
-          <Link href='/' style={{ cursor: 'pointer' }}>
+          <Link href='/'>
             <a>Home</a>
           </Link>
         </li>

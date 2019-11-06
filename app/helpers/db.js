@@ -94,7 +94,7 @@ db.getAllUsers = function(successCallback, failureCallback) {
   });
 };
 
-// PRODUCT
+// PRODUCTS
 
 db.createProduct = function(product, successCallback, failureCallback) {
   const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_packable, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ? );`;
@@ -118,8 +118,19 @@ db.createProduct = function(product, successCallback, failureCallback) {
   });
 };
 
-db.getAllProducts = function(successCallback, failureCallback) {
-  const sqlQuery = `SELECT * FROM products`;
+db.getDogsProducts = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT * FROM products WHERE featuring = 0`;
+  connection.query(sqlQuery, function(err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
+db.getFeatProducts = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT * FROM products WHERE featuring = 1`;
   connection.query(sqlQuery, function(err, data, fields) {
     if (err) {
       failureCallback(err);

@@ -7,7 +7,8 @@ const db = require('../helpers/db');
 
 module.exports = {
   createProduct,
-  getAllProducts,
+  getDogsProducts,
+  getFeatProducts,
   getProduct,
   updateProduct,
   deleteProduct
@@ -32,7 +33,7 @@ function createProduct(body, callback) {
   );
 }
 
-// function getAllProducts(callback) {
+// function getDogsProducts(callback) {
 //   console.log('on est dans service');
 
 //   const sqlQuery = `SELECT * FROM products`;
@@ -55,8 +56,8 @@ function createProduct(body, callback) {
 //   });
 // }
 
-function getAllProducts(callback) {
-  db.getAllProducts(
+function getDogsProducts(callback) {
+  db.getDogsProducts(
     function(res) {
       return callback({
         success: true,
@@ -68,6 +69,24 @@ function getAllProducts(callback) {
       return callback({
         success: false,
         message: 'Cannot get list of products.'
+      });
+    }
+  );
+}
+
+function getFeatProducts(callback) {
+  db.getFeatProducts(
+    function(res) {
+      return callback({
+        success: true,
+        message: 'Successfully got list of featured products.',
+        products: res
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot get list of featured products.'
       });
     }
   );
