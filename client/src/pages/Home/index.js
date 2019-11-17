@@ -3,7 +3,6 @@ import Head from 'next/head';
 import './../../../less/style.less';
 
 const Home = props => {
-  console.log('props home', props);
   return (
     <>
       <Head>
