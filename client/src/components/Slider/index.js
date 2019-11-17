@@ -4,7 +4,7 @@ import SliderContent from './components/SliderContent';
 import arrowLeft from './../../../static/icons/arrow_left.png';
 import arrowRight from './../../../static/icons/arrow_right.png';
 
-const BeersSlider = ({ products, title }) => {
+const Slider = ({ products, title }) => {
   const [count, setCounter] = useState(0);
 
   const handleSlide = next => {
@@ -49,4 +49,4 @@ const BeersSlider = ({ products, title }) => {
     </div>
   );
 };
-export default BeersSlider;
+export default Slider;
