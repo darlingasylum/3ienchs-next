@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from './../../components/Slider';
-
-import bottles from './../../../static/icons/bottles.png';
+import Basket from './components/Basket';
 
 const Order = props => {
   return (
@@ -16,18 +15,7 @@ const Order = props => {
             Les mercredi et vendredi de 17h à 20h
           </h2>
         </div>
-        <div className=' w-25 pl-15 flex flex-col align-center'>
-          <img src={bottles} alt='logo_iench' className='max-width-50 w-25' />
-          <div className='nickname'>
-            <span>0</span>
-            <span>=</span>
-            <span>0</span>
-            <span>€</span>
-          </div>
-          <div className='nickname text-white bg-purple-dark br-8 pl-1 pr-1'>
-            Voir le panier
-          </div>
-        </div>
+        <Basket />
       </div>
       <Slider
         products={props.products.dogsProducts}

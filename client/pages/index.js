@@ -8,7 +8,7 @@ import './../less/style.less';
 const HomePage = props => {
   return (
     <Layout>
-      <Home products={props.products}></Home>
+      <Home products={props}></Home>
     </Layout>
   );
 };
@@ -16,9 +16,16 @@ const HomePage = props => {
 export default HomePage;
 
 HomePage.getInitialProps = async function() {
-  const res = await fetch('http://localhost:4000/api/products/getDogsProducts');
-  const data = await res.json();
+  const resDogsProducts = await fetch(
+    'http://localhost:4000/api/products/getDogsProducts'
+  );
+  const resFeatproducts = await fetch(
+    'http://localhost:4000/api/products/getFeatProducts'
+  );
+  const dogsProducts = await resDogsProducts.json();
+  const featProducts = await resFeatproducts.json();
   return {
-    products: data.products
+    dogsProducts: dogsProducts.products,
+    featProducts: featProducts.products
   };
 };
