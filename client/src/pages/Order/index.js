@@ -1,6 +1,6 @@
 import React from 'react';
-import BeersSlider from './components/BeersSlider';
-import FeatSlider from './components/FeatSlider';
+import BeersSlider from './../../components/BeersSlider';
+import FeatSlider from './../../components/FeatSlider';
 
 import bottles from './../../../static/icons/bottles.png';
 
@@ -30,7 +30,10 @@ const Order = props => {
           </div>
         </div>
       </div>
-      <BeersSlider products={props.products}></BeersSlider>
+      <BeersSlider
+        products={props.products.dogsProducts}
+        title='Nos bières'
+      ></BeersSlider>
       <FeatSlider products={props.products}></FeatSlider>
     </div>
   );
