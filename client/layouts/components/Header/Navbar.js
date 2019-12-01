@@ -82,14 +82,17 @@ export default class Header extends Component {
           </div>
           <div>
             <ul className='flex items-center p-0'>
-              <li className=' display-none-md'>
+              <li className=' display-none-md mt-3 ml-3'>
                 <Link href='/'>
                   <a>
-                    <img
-                      src={tinyLogo}
-                      alt='logo_iench'
-                      className='ml-4 max-width-50'
-                    />
+                    <div className='circle-size bg-black'>
+                      <span className='inline-block'></span>
+                      <img
+                        src={tinyLogo}
+                        alt='logo_iench'
+                        className='w-60 block my-auto pt-2'
+                      />
+                    </div>
                   </a>
                 </Link>
               </li>
