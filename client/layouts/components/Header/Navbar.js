@@ -90,29 +90,29 @@ export default class Header extends Component {
                       <img
                         src={tinyLogo}
                         alt='logo_iench'
-                        className='w-60 block my-auto pt-2'
+                        className='w-60-percent block my-auto pt-2'
                       />
                     </div>
                   </a>
                 </Link>
               </li>
               <li className='hover-pink-iench pr-10 pl-10 display-none-xs'>
-                <Link href='/products'>
+                <Link href='#bieres'>
                   <a>Les bières</a>
                 </Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/agenda'>
+                <Link href='#agenda'>
                   <a>Agenda</a>
                 </Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/artwork'>
+                <Link href='#artwork'>
                   <a>Artwork</a>
                 </Link>
               </li>
               <li className='pr-10 display-none-xs'>
-                <Link href='/music'>
+                <Link href='#music'>
                   <a>Pour les zicos</a>
                 </Link>
               </li>

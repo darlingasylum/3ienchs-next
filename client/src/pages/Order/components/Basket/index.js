@@ -4,8 +4,12 @@ import bottles from './../../../../../static/icons/bottles.png';
 
 const Basket = props => {
   return (
-    <div className=' w-25 pl-15 flex flex-col align-center'>
-      <img src={bottles} alt='logo_iench' className='max-width-50 w-25' />
+    <div className=' w-25-percent pl-15 flex flex-col align-center'>
+      <img
+        src={bottles}
+        alt='logo_iench'
+        className='max-width-50 w-25-percent'
+      />
       <div className='nickname'>
         <span>0</span>
         <span>=</span>

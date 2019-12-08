@@ -1,10 +1,12 @@
-import { combineReducers } from "redux";
-import reducer1 from "./reducer1";
+import { combineReducers } from 'redux';
+import reducer1 from './reducer1';
+import basket from './basket';
 
 // L'état de départ peut être un combiner de plusieurs reducers pour différencier plusieurs logique dans notre code
 // Pour l'instant nous n'utiliserons qu'un seul reducer (App)
 const rootReducer = combineReducers({
-  reducer1
+  reducer1,
+  basket
 });
 
 // On exporte notre rootReducer pour pouvoir l'importer quand nous allons initialiser notre app

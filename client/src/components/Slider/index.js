@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import SliderContent from './components/SliderContent';
 import arrowLeft from './../../../static/icons/arrow_left.png';
 import arrowRight from './../../../static/icons/arrow_right.png';
+import Button from './../Button';
+import AddButton from './../AddButton';
 
-const Slider = ({ products, title }) => {
+const Slider = ({ products, title, buttonsType, id }) => {
   const [count, setCounter] = useState(0);
 
   const handleSlide = next => {
@@ -21,7 +23,7 @@ const Slider = ({ products, title }) => {
   };
 
   return (
-    <div>
+    <div id={id}>
       <div className='bg-title my-auto h-30 mt-10 mb-10 pt-2 width-title'>
         <h2 className='nickname text-align-center text-white'> {title}</h2>
       </div>
@@ -32,7 +34,7 @@ const Slider = ({ products, title }) => {
           onClick={() => handleSlide('next')}
         ></img>
         <div
-          className='w-60 h-full r-30'
+          className='w-60-percent h-full r-30'
           style={{
             backgroundImage: `url(/static/images/${products[count].product_bg})`,
             backgroundSize: 'cover'
@@ -46,6 +48,20 @@ const Slider = ({ products, title }) => {
           onClick={() => handleSlide()}
         ></img>
       </div>
+      {buttonsType === 'buyingMode' && (
+        <div className='flex justify-center'>
+          <Button
+            isExternal={true}
+            to='https://www.findabottle.fr/brasserie/brasserie-3ienchs/'
+          >
+            livraison
+          </Button>
+          <Button to='/order'>à emporter</Button>
+        </div>
+      )}
+      {buttonsType === 'addToBasket' && (
+        <AddButton products={products} count={count}></AddButton>
+      )}
     </div>
   );
 };

@@ -1,8 +1,10 @@
 export const actionTypes = {
-  TICK: "TICK",
-  INCREMENT: "INCREMENT",
-  DECREMENT: "DECREMENT",
-  RESET: "RESET"
+  TICK: 'TICK',
+  INCREMENT: 'INCREMENT',
+  DECREMENT: 'DECREMENT',
+  RESET: 'RESET',
+  ADDTOBASKET: 'ADDTOBASKET',
+  REMOVEFROMBASKET: 'REMOVEFROMBASKET'
 };
 
 // ACTIONS
@@ -23,4 +25,18 @@ export const decrementCount = () => {
 
 export const resetCount = () => {
   return { type: actionTypes.RESET };
+};
+
+export const AddPanier = articlesToAdd => {
+  return {
+    type: actionTypes.ADDTOBASKET,
+    payload: articlesToAdd
+  };
+};
+
+export const DeleteFromPanier = articlesToDelete => {
+  return {
+    type: actionTypes.REMOVEFROMBASKET,
+    payload: articlesToDelete
+  };
 };
