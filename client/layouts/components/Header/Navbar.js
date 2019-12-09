@@ -83,7 +83,7 @@ export default class Header extends Component {
           <div>
             <ul className='flex items-center p-0'>
               <li className=' display-none-md mt-3 ml-3'>
-                <Link href='/'>
+                <Link href='/' useActive={false}>
                   <a>
                     <div className='circle-size bg-black'>
                       <span className='inline-block'></span>
@@ -120,7 +120,7 @@ export default class Header extends Component {
           </div>
           <div className='spacer' />
           <div>
-            <ul className='flex items-center p-0'>
+            <ul className='flex items-center p-0 h-10'>
               {/*<li>
               <Link to='/login'>
                 <img src={userIcon} className='w-8 mr-2' alt='connexion_icon' />
@@ -151,18 +151,21 @@ export default class Header extends Component {
               <li className='pr-10 display-none-xs'>
                 <Link href='/login'>Connexion</Link>
               </li> */}
-              {/* <li>
-                <Link to='/basket'>
-                  <img
-                    src={basketIcon}
-                    className='w-6 mr-2'
-                    alt='panier_icon'
-                  />
-                </Link>
-              </li> */}
-              <li className='pr-10 display-none-xs'>
-                <Link href='/order'>
+
+              <li className='display-none-xs h-10 align-middle lh-navbar'>
+                <Link href='/commander' useActive>
                   <a>Commander</a>
+                </Link>
+              </li>
+              <li className='pl-6 pr-6 mr-6 display-none-xs h-10'>
+                <Link href='/panier' useActive>
+                  <a className='h-10'>
+                    <img
+                      src={basketIcon}
+                      className='w-6 relative t-4px cursor-pointer'
+                      alt='panier_icon'
+                    />
+                  </a>
                 </Link>
               </li>
             </ul>

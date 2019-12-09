@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddPanier, DeleteFromPanier } from './../../../redux/actions';
 
-const countSelector = state => state.basket.articles;
+const basketSelector = state => state.basket.articles;
 
 const useCounter = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const useCounter = () => {
 };
 
 const AddButton = ({ products, count }) => {
-  const articles = useSelector(countSelector);
+  const articles = useSelector(basketSelector);
   const { add, remove } = useCounter();
 
   const currentBeerId = products[count].product_id;
