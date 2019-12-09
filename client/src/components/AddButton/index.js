@@ -9,8 +9,8 @@ const useCounter = () => {
   const add = id => {
     dispatch(AddPanier({ id: id }));
   };
-  const remove = () => {
-    dispatch(DeleteFromPanier());
+  const remove = id => {
+    dispatch(DeleteFromPanier({ id: id }));
   };
 
   return { add, remove };
@@ -41,21 +41,26 @@ const AddButton = ({ products, count }) => {
   };
 
   return (
-    <div className='h-18 w-60 nickname flex justify-center align-center m-8 bg-button my-auto'>
-      <button
-        onClick={() => add(currentBeerId)}
-        className='border-none cursor-pointer f10 bg-transparent not-outlined'
-      >
-        +
-      </button>
-      <div className='w-15 text-align-center f10'>{beerQuantity()}</div>
-      <button
-        onClick={() => remove(currentBeerId)}
-        className='border-none cursor-pointer f10 bg-transparent not-outlined'
-      >
-        {' '}
-        -{' '}
-      </button>
+    <div className='mt-8'>
+      <h2 className='nickname font-light f2 m-0 text-align-center'>
+        Ajouter au panier :
+      </h2>
+      <div className='h-18 w-60 nickname flex justify-center align-center mb-16 bg-button my-auto'>
+        <button
+          onClick={() => remove(currentBeerId)}
+          className='border-none cursor-pointer f10 bg-transparent not-outlined'
+        >
+          -
+        </button>
+        <div className='w-15 text-align-center f10'>{beerQuantity()}</div>
+
+        <button
+          onClick={() => add(currentBeerId)}
+          className='border-none cursor-pointer f10 bg-transparent not-outlined'
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 };

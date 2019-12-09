@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import SliderContent from './components/SliderContent';
 import arrowLeft from './../../../static/icons/arrow_left.png';
 import arrowRight from './../../../static/icons/arrow_right.png';
+import Prices from './components/Prices';
 import Button from './../Button';
 import AddButton from './../AddButton';
 
-const Slider = ({ products, title, buttonsType, id }) => {
+const Slider = ({ products, title, buttonsType, id, withPrices }) => {
   const [count, setCounter] = useState(0);
 
   const handleSlide = next => {
@@ -40,7 +41,12 @@ const Slider = ({ products, title, buttonsType, id }) => {
             backgroundSize: 'cover'
           }}
         >
-          <SliderContent products={products} count={count} />
+          {withPrices && <Prices />}
+          <SliderContent
+            products={products}
+            count={count}
+            withPrices={withPrices}
+          />
         </div>
         <img
           className='cursor-pointer max-height-80 ml-20'

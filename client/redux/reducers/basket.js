@@ -24,14 +24,7 @@ const exampleInitialState = {
 // REDUCERS
 const basket = (state = exampleInitialState, action) => {
   switch (action.type) {
-    // case actionTypes.TICK:
-    //   return Object.assign({}, state, {
-    //     lastUpdate: action.ts,
-    //     light: !!action.light
-    //   });
     case actionTypes.ADDTOBASKET:
-      console.log('depuis basket', action.payload);
-
       // check if beer is already in basket
       let beerIndex = state.articles
         .map(function(e) {
@@ -51,14 +44,30 @@ const basket = (state = exampleInitialState, action) => {
         ...state,
         articles
       };
+
     case actionTypes.REMOVEFROMBASKET:
-      return Object.assign({}, state, {
-        count: state.count - 1
-      });
-    case actionTypes.RESET:
-      return Object.assign({}, state, {
-        count: exampleInitialState.count
-      });
+      console.log('depuis basket', action.payload);
+
+      // check if beer is already in basket
+      beerIndex = state.articles
+        .map(function(e) {
+          return e.id;
+        })
+        .indexOf(action.payload.id);
+
+      articles = state.articles.slice();
+
+      if (beerIndex > -1) {
+        if (articles[beerIndex].quantity > 0) {
+          articles[beerIndex].quantity = articles[beerIndex].quantity - 1;
+        }
+      }
+
+      return {
+        ...state,
+        articles
+      };
+
     default:
       return state;
   }

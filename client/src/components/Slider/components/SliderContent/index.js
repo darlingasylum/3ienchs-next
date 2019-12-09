@@ -1,8 +1,14 @@
 import React from 'react';
 
-const SliderContent = ({ products, count }) => {
+const SliderContent = ({ products, count, withPrices }) => {
   return (
-    <div className='h-full flex '>
+    <div
+      className='h-full flex b-20'
+      style={{
+        position: withPrices ? 'relative' : 'static',
+        bottom: withPrices ? '5rem' : '0rem'
+      }}
+    >
       <div className='w-30-percent ml-8-percent flex flex-col items-start justify-center'>
         <h3
           className='nickname f0 m-0'

@@ -16,8 +16,8 @@
 import React, { Component, Fragment } from 'react';
 
 import Navbar from './Navbar.js';
-import Backdrop from './BurgerMenu/Backdrop.js';
-import SideMenu from './BurgerMenu/SideMenu.js';
+import Backdrop from './components/BurgerMenu/Backdrop';
+import SideMenu from './components/BurgerMenu/SideMenu.js';
 
 //Composant incluant la barre de navigation et tout le mécanisme du menu burger
 
