@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Link, NavLink } from "react-router-dom"
-import Link from './components/Link';
+import Link from '../../../src/components/Link';
 
 // import { connect } from "react-redux";
 
