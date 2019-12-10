@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { calculatePrice } from './../../../../../utils/calculatePrice';
+import { calculatePrice } from '@/utils/calculatePrice';
 import bottles from './../../../../../static/icons/bottles.png';
+import Link from '@/src/components/Link';
 
 const basketSelector = state => state.basket.articles;
 
@@ -32,9 +33,11 @@ const Basket = () => {
         <span>{calculatePrice(countArticles(basket), unitBeerPrice)}</span>
         <span>€</span>
       </div>
-      <div className='nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
-        Voir le panier
-      </div>
+      <Link href='/panier'>
+        <div className='nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
+          Voir le panier
+        </div>
+      </Link>
     </div>
   );
 };

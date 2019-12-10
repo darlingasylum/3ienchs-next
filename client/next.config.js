@@ -1,4 +1,6 @@
 const withLess = require('@zeit/next-less');
+const path = require('path');
+
 module.exports = withLess({
   webpack(config, options) {
     config.module.rules.push({
@@ -10,7 +12,7 @@ module.exports = withLess({
         }
       }
     });
-
+    config.resolve.alias['@'] = path.resolve(__dirname);
     return config;
   }
 });

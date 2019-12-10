@@ -8,7 +8,7 @@ const Layout = props => (
       <link rel='shortcut icon' href='./../static/logos/3ienchs_favicon.gif' />
       <script
         src='https://kit.fontawesome.com/c454abd8c1.js'
-        crossorigin='anonymous'
+        crossOrigin='anonymous'
       ></script>
     </Head>
     <Header />
