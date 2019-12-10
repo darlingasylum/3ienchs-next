@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { calculatePrice } from '@/utils/calculatePrice';
-import bottles from './../../../../../static/icons/bottles.png';
+import bottles from '@/static/icons/bottles.png';
 import Link from '@/src/components/Link';
 
 const basketSelector = state => state.basket.articles;
