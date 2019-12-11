@@ -9,6 +9,7 @@ router.post('/create', requireAuth, createProduct);
 // router.post('/create', createProduct);
 router.get('/getDogsProducts', getDogsProducts);
 router.get('/getFeatProducts', getFeatProducts);
+router.get('/getAllProducts', getAllProducts);
 router.get('/getProduct', getProduct);
 router.patch('/update', updateProduct);
 router.delete('/delete', deleteProduct);
@@ -33,6 +34,14 @@ function getDogsProducts(req, res) {
 
 function getFeatProducts(req, res) {
   productsService.getFeatProducts(result => {
+    result.success
+      ? res.status(201).json(result)
+      : res.status(401).json(result);
+  });
+}
+
+function getAllProducts(req, res) {
+  productsService.getAllProducts(result => {
     result.success
       ? res.status(201).json(result)
       : res.status(401).json(result);

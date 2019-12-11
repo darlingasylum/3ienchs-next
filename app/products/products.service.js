@@ -9,6 +9,7 @@ module.exports = {
   createProduct,
   getDogsProducts,
   getFeatProducts,
+  getAllProducts,
   getProduct,
   updateProduct,
   deleteProduct
@@ -87,6 +88,24 @@ function getFeatProducts(callback) {
       return callback({
         success: false,
         message: 'Cannot get list of featured products.'
+      });
+    }
+  );
+}
+
+function getAllProducts(callback) {
+  db.getAllProducts(
+    function(res) {
+      return callback({
+        success: true,
+        message: 'Successfully got list of all products.',
+        products: res
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot get list of all products.'
       });
     }
   );

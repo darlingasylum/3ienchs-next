@@ -140,6 +140,17 @@ db.getFeatProducts = function(successCallback, failureCallback) {
   });
 };
 
+db.getAllProducts = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT * FROM products`;
+  connection.query(sqlQuery, function(err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
 db.getProduct = function(product, successCallback, failureCallback) {
   const { id } = product.body;
   const sqlQuery = `SELECT * FROM products WHERE product_id=${id}`;
