@@ -8,23 +8,20 @@ import './../less/style.less';
 
 const Panier = props => (
   <Layout>
-    <BasketPage products={props}></BasketPage>
+    <BasketPage products={props.products}></BasketPage>
   </Layout>
 );
 
 export default Panier;
 
-// BasketPage.getInitialProps = async function() {
-//   const resDogsProducts = await fetch(
-//     'http://localhost:4000/api/products/getDogsProducts'
-//   );
-//   const resFeatproducts = await fetch(
-//     'http://localhost:4000/api/products/getFeatProducts'
-//   );
-//   const dogsProducts = await resDogsProducts.json();
-//   const featProducts = await resFeatproducts.json();
-//   return {
-//     dogsProducts: dogsProducts.products,
-//     featProducts: featProducts.products
-//   };
-// };
+Panier.getInitialProps = async function() {
+  const getProducts = await fetch(
+    'http://localhost:4000/api/products/getAllProducts'
+  );
+
+  const res = await getProducts.json();
+
+  return {
+    products: res.products
+  };
+};
