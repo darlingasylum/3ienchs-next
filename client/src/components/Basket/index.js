@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 import { calculatePrice } from '@/utils/calculatePrice';
 import bottles from '@/static/icons/bottles.png';
@@ -9,6 +10,7 @@ const basketSelector = state => state.basket.articles;
 
 const Basket = () => {
   let basket = useSelector(basketSelector);
+  const router = useRouter();
 
   const unitBeerPrice = 3;
 
@@ -33,11 +35,20 @@ const Basket = () => {
         <span>{calculatePrice(countArticles(basket), unitBeerPrice)}</span>
         <span>€</span>
       </div>
-      <Link href='/panier'>
-        <div className='nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
-          Voir le panier
-        </div>
-      </Link>
+      {router.pathname === '/commander' && (
+        <Link href='/panier'>
+          <div className='w-44 text-align-center nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
+            Voir le panier
+          </div>
+        </Link>
+      )}
+      {router.pathname === '/panier' && (
+        <Link href='/commander'>
+          <div className='w-44 text-align-center nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
+            Retour choix
+          </div>
+        </Link>
+      )}
     </div>
   );
 };
