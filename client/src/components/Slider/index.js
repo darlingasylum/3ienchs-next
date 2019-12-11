@@ -4,6 +4,7 @@ import SliderContent from './components/SliderContent';
 import arrowLeft from './../../../static/icons/arrow_left.png';
 import arrowRight from './../../../static/icons/arrow_right.png';
 import Prices from './components/Prices';
+import Title from './../Title';
 import Button from './../Button';
 import AddButton from './../AddButton';
 
@@ -25,9 +26,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
 
   return (
     <div id={id}>
-      <div className='bg-title my-auto h-30 mt-10 mb-10 pt-2 width-title'>
-        <h2 className='nickname text-align-center text-white'> {title}</h2>
-      </div>
+      <Title title={title}></Title>
       <div className='flex justify-center align-center h-40-vh'>
         <img
           className='cursor-pointer max-height-80 mr-20'
