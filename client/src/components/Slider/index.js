@@ -65,7 +65,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
         </div>
       )}
       {buttonsType === 'addToBasket' && (
-        <AddButton products={products} count={count}></AddButton>
+        <AddButton currentBeer={products[count]}></AddButton>
       )}
     </div>
   );

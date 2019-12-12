@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddPanier, DeleteFromPanier } from './../../../redux/actions';
-import AddRemove from './components/AddRemove';
+import { AddPanier, DeleteFromPanier } from './../../../../../redux/actions';
 
 const basketSelector = state => state.basket.articles;
 
@@ -17,7 +16,9 @@ const useCounter = () => {
   return { add, remove };
 };
 
-const AddButton = ({ currentBeer }) => {
+//le composant AddRemove est appelé SOIT par AddButton dans le slider
+// (qui lui passe en props la liste des products)
+const AddRemove = ({ currentBeer, withColoredText }) => {
   const articles = useSelector(basketSelector);
   const { add, remove } = useCounter();
 
@@ -41,18 +42,36 @@ const AddButton = ({ currentBeer }) => {
     } else return '0';
   };
 
-  // product = { id: id, name: name, etc };
-
   return (
-    <div className='mt-8'>
-      <h2 className='nickname font-light f2 m-0 text-align-center'>
-        Ajouter au panier :
-      </h2>
-      <div className='h-18 w-60 nickname flex justify-center align-center mb-16 bg-button my-auto'>
-        <AddRemove currentBeer={currentBeer}></AddRemove>
+    <>
+      <button
+        onClick={() => remove(currentBeer)}
+        className='border-none cursor-pointer f10 bg-transparent not-outlined'
+        style={{
+          color: withColoredText && `${currentBeer.text_color}`
+        }}
+      >
+        -
+      </button>
+      <div
+        className='w-15 text-align-center f10'
+        style={{
+          color: withColoredText && `${currentBeer.text_color}`
+        }}
+      >
+        {beerQuantity()}
       </div>
-    </div>
+      <button
+        onClick={() => add(currentBeer)}
+        className='border-none cursor-pointer f10 bg-transparent not-outlined'
+        style={{
+          color: withColoredText && `${currentBeer.text_color}`
+        }}
+      >
+        +
+      </button>
+    </>
   );
 };
 
-export default AddButton;
+export default AddRemove;

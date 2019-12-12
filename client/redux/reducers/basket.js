@@ -28,16 +28,20 @@ const basket = (state = exampleInitialState, action) => {
       // check if beer is already in basket
       let beerIndex = state.articles
         .map(function(e) {
-          return e.id;
+          return e.product_id;
         })
-        .indexOf(action.payload.id);
+        .indexOf(action.payload.product_id);
 
       let articles = state.articles.slice();
 
       if (beerIndex > -1) {
         articles[beerIndex].quantity = articles[beerIndex].quantity + 1;
       } else {
-        articles.push({ id: action.payload.id, quantity: 1 });
+        let completeProduct = {
+          ...action.payload,
+          quantity: 1
+        };
+        articles.push(completeProduct);
       }
 
       return {
@@ -46,14 +50,12 @@ const basket = (state = exampleInitialState, action) => {
       };
 
     case actionTypes.REMOVEFROMBASKET:
-      console.log('depuis basket', action.payload);
-
       // check if beer is already in basket
       beerIndex = state.articles
         .map(function(e) {
-          return e.id;
+          return e.product_id;
         })
-        .indexOf(action.payload.id);
+        .indexOf(action.payload.product_id);
 
       articles = state.articles.slice();
 

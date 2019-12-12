@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-import { calculatePrice } from '@/utils/calculatePrice';
+import { calculatePrice, countArticles } from '@/utils/calculatePrice';
 import bottles from '@/static/icons/bottles.png';
 import Link from '@/src/components/Link';
 
@@ -13,14 +13,6 @@ const Basket = () => {
   const router = useRouter();
 
   const unitBeerPrice = 3;
-
-  const countArticles = basket => {
-    let count = 0;
-    if (basket.length > 0) {
-      basket.map(product => (count = count + product.quantity));
-    }
-    return count;
-  };
 
   return (
     <div className='fixed r-10 t-15 background-greylight-transp p-6 br-40 flex flex-col align-center'>
