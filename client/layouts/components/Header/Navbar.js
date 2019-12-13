@@ -90,7 +90,7 @@ export default class Header extends Component {
                       <img
                         src={tinyLogo}
                         alt='logo_iench'
-                        className='w-60-percent block my-auto pt-2'
+                        className='w-60-percent block mx-auto pt-2'
                       />
                     </div>
                   </a>

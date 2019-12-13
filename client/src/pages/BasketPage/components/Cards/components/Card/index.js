@@ -16,7 +16,7 @@ const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
 
   return (
     <div
-      className='flex align-center w-70 h-25 mb-10 w-60-percent my-auto br-10 nickname'
+      className='flex align-center w-70 h-25 mb-10 w-60-percent mx-auto br-10 nickname'
       style={{
         backgroundImage: isTotal
           ? `url(/static/images/jonsnout_bg.png)`

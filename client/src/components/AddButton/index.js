@@ -48,7 +48,7 @@ const AddButton = ({ currentBeer }) => {
       <h2 className='nickname font-light f2 m-0 text-align-center'>
         Ajouter au panier :
       </h2>
-      <div className='h-18 w-60 nickname flex justify-center align-center mb-16 bg-button my-auto'>
+      <div className='h-18 w-60 nickname flex justify-center align-center mb-16 bg-button mx-auto'>
         <AddRemove currentBeer={currentBeer}></AddRemove>
       </div>
     </div>
