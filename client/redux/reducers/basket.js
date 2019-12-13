@@ -60,7 +60,9 @@ const basket = (state = exampleInitialState, action) => {
       articles = state.articles.slice();
 
       if (beerIndex > -1) {
-        if (articles[beerIndex].quantity > 0) {
+        if (articles[beerIndex].quantity === 1) {
+          articles.splice(beerIndex, 1);
+        } else {
           articles[beerIndex].quantity = articles[beerIndex].quantity - 1;
         }
       }
