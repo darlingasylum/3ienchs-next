@@ -61,7 +61,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
           >
             livraison
           </Button>
-          <Button to='/order'>à emporter</Button>
+          <Button to='/commander'>à emporter</Button>
         </div>
       )}
       {buttonsType === 'addToBasket' && (

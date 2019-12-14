@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = withLess({
   webpack(config, options) {
     config.module.rules.push({
-      test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+      test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|css)$/,
       use: {
         loader: 'url-loader',
         options: {

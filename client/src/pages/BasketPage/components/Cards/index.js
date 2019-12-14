@@ -11,13 +11,14 @@ const Cards = ({ products }) => {
   const cards = basket => {
     if (basket.length > 0) {
       return basket.map(product => (
-        <Card product={product} unitPrice={unitPrice}></Card>
+        <Card
+          product={product}
+          unitPrice={unitPrice}
+          key={product.product_id}
+        ></Card>
       ));
     }
   };
-  if (products.length === 0) {
-    return <div> Votre panier est vide</div>;
-  }
 
   return (
     <div>
