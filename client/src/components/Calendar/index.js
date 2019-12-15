@@ -6,13 +6,12 @@ import fr from 'date-fns/locale/fr';
 const basketSelector = state => state.basket.articles;
 registerLocale('fr', fr);
 
-const Calendar = props => {
+const Calendar = ({ getDate, pickupDate }) => {
   let products = useSelector(basketSelector);
-  const [startDate, setDate] = useState(new Date());
+  // const [startDate, setDate] = useState(new Date());
 
   const handleChange = date => {
-    console.log(date);
-    setDate(date);
+    getDate(date);
   };
 
   const enabledDates = date => {
@@ -26,7 +25,7 @@ const Calendar = props => {
         Les mercredi et vendredis, entre 17h et 20h
       </h3>
       <DatePicker
-        selected={startDate}
+        selected={pickupDate}
         onChange={handleChange}
         filterDate={enabledDates}
         dateFormat='dd/MM/yyyy'

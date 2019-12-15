@@ -12,8 +12,6 @@ const Basket = () => {
   let basket = useSelector(basketSelector);
   const router = useRouter();
 
-  const unitBeerPrice = 3;
-
   return (
     <div className='fixed r-10 t-15 background-greylight-transp p-6 br-40 flex flex-col align-center'>
       <img
@@ -24,7 +22,7 @@ const Basket = () => {
       <div className='nickname'>
         <span>{countArticles(basket)}</span>
         <span>=</span>
-        <span>{calculatePrice(countArticles(basket), unitBeerPrice)}</span>
+        <span>{calculatePrice(countArticles(basket))}</span>
         <span>€</span>
       </div>
       {router.pathname === '/commander' && (

@@ -205,4 +205,43 @@ db.deleteProduct = function(product, successCallback, failureCallback) {
   });
 };
 
+// ORDERS
+
+db.makeOrder = function(input, successCallback, failureCallback) {
+  // const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
+  const q =
+    'INSERT into orders (order_date, order_pickupdate, order_price, order_over) VALUES (now(), ?, ?, ?)';
+  const q2 =
+    'INSERT into order_details (details_orderid, details_productid, details_productqty) VALUES (?, ?, ?)';
+  const query1 = connection.query(
+    q,
+    [input.order_pickupdate, input.order_price, input.order_over],
+    function(err, resultsFromQ1, fields) {
+      if (err) {
+        return failureCallback(err, null);
+      } else {
+        console.log('resultats requete 1 --> ', resultsFromQ1);
+
+        const tmp = [];
+        input.basket.forEach((element, i) => {
+          connection.query(
+            q2,
+            [resultsFromQ1.insertId, element.product_id, element.quantity],
+            function(err, dataFromQ2, fields) {
+              console.log('requete 2 --> ', this.sql);
+              console.log('resultats requete 2 --> ', dataFromQ2);
+              if (err) return failureCallback(err, null);
+              tmp.push(dataFromQ2);
+              if (i === input.basket.length - 1) {
+                return successCallback(null, tmp);
+              }
+            }
+          );
+        });
+      }
+    }
+  );
+  console.log('requete 1 --> ', query1.sql);
+};
+
 module.exports = db;
