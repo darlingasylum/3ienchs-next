@@ -10,20 +10,22 @@ const Home = props => {
       <Head>
         <title>Brasserie 3ienchs</title>
       </Head>
-      <div className='hero w-full h-100-vh'>
-        <div className='cover-home h-100-vh'></div>
-        <Slider
-          id='bieres'
-          products={props.products.dogsProducts}
-          title='Nos bières'
-          buttonsType='buyingMode'
-        ></Slider>
-        <Slider
-          products={props.products.featProducts}
-          title='Featuring'
-          buttonsType='buyingMode'
-        ></Slider>
-      </div>
+      {props.products && (
+        <div className="hero w-full h-100-vh">
+          <div className="cover-home h-100-vh"></div>
+          <Slider
+            id="bieres"
+            products={props.products.dogsProducts}
+            title="Nos bières"
+            buttonsType="buyingMode"
+          ></Slider>
+          <Slider
+            products={props.products.featProducts}
+            title="Featuring"
+            buttonsType="buyingMode"
+          ></Slider>
+        </div>
+      )}
     </>
   );
 };

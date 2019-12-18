@@ -7,7 +7,7 @@ describe('Pages', () => {
   describe('Index', () => {
     it('should render without throwing an error', function() {
       const wrap = mount(<Home />);
-      expect(wrap).to.have.lengthOf(1);
+      expect(wrap.length).toBe(1);
     });
   });
 });
