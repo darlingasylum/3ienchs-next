@@ -6,9 +6,9 @@ var config = require('../helpers/config');
 const db = require('../helpers/db');
 
 module.exports = {
-  makeOrder
-  //   getDogsProducts,
-  //   getFeatProducts,
+  makeOrder,
+  checkOrderNumber,
+  getOrderNumber
   //   getAllProducts,
   //   getProduct,
   //   updateProduct,
@@ -18,11 +18,11 @@ module.exports = {
 function makeOrder(body, callback) {
   db.makeOrder(
     body,
-    function(res) {
+    function(orderId) {
       return callback({
         success: true,
         message: 'Successfully ordered.',
-        product: res
+        orderId: orderId
       });
     },
     function(err) {
@@ -34,46 +34,42 @@ function makeOrder(body, callback) {
   );
 }
 
-// function getDogsProducts(callback) {
-//   console.log('on est dans service');
+function checkOrderNumber(number, callback) {
+  db.checkOrderNumber(
+    number,
+    function() {
+      return callback({
+        success: true,
+        message: 'this number order exists'
+      });
+    },
+    function() {
+      return callback({
+        success: false,
+        message: "this number order doesn't exists"
+      });
+    }
+  );
+}
 
-//   const sqlQuery = `SELECT * FROM products`;
-
-//   connection.query(sqlQuery, function(err, data, fields) {
-//     console.log('onest dans connection query');
-//     if (err) {
-//       console.log('error');
-//       return callback({
-//         success: false,
-//         message: 'Cannot get list of products.'
-//       });
-//     }
-
-//     return callback({
-//       success: true,
-//       message: 'Successfully got list of products.',
-//       products: data
-//     });
-//   });
-// }
-
-// function getDogsProducts(callback) {
-//   db.getDogsProducts(
-//     function(res) {
-//       return callback({
-//         success: true,
-//         message: 'Successfully got list of products.',
-//         products: res
-//       });
-//     },
-//     function(err) {
-//       return callback({
-//         success: false,
-//         message: 'Cannot get list of products.'
-//       });
-//     }
-//   );
-// }
+function getOrderNumber(id, callback) {
+  db.getOrderNumber(
+    id,
+    function(result) {
+      return callback({
+        success: true,
+        message: 'Successfully got order number',
+        result: result
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot get order number.'
+      });
+    }
+  );
+}
 
 // function getFeatProducts(callback) {
 //   db.getFeatProducts(

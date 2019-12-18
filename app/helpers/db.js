@@ -210,12 +210,17 @@ db.deleteProduct = function(product, successCallback, failureCallback) {
 db.makeOrder = function(input, successCallback, failureCallback) {
   // const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
   const q =
-    'INSERT into orders (order_date, order_pickupdate, order_price, order_over) VALUES (now(), ?, ?, ?)';
+    'INSERT into orders (order_number, order_date, order_pickupdate, order_price, order_over) VALUES (?, now(), ?, ?, ?)';
   const q2 =
     'INSERT into order_details (details_orderid, details_productid, details_productqty) VALUES (?, ?, ?)';
   const query1 = connection.query(
     q,
-    [input.order_pickupdate, input.order_price, input.order_over],
+    [
+      input.order_number,
+      input.order_pickupdate,
+      input.order_price,
+      input.order_over
+    ],
     function(err, resultsFromQ1, fields) {
       if (err) {
         return failureCallback(err, null);
@@ -233,7 +238,7 @@ db.makeOrder = function(input, successCallback, failureCallback) {
               if (err) return failureCallback(err, null);
               tmp.push(dataFromQ2);
               if (i === input.basket.length - 1) {
-                return successCallback(null, tmp);
+                return successCallback(resultsFromQ1.insertId);
               }
             }
           );
@@ -242,6 +247,23 @@ db.makeOrder = function(input, successCallback, failureCallback) {
     }
   );
   console.log('requete 1 --> ', query1.sql);
+};
+
+db.checkOrderNumber = function(orderNumber, successCallback, failureCallback) {
+  const sql = `SELECT * FROM orders WHERE order_number = ?`;
+  const q = connection.query(sql, [orderNumber], function(err, result) {
+    if (result.length === 0) {
+      return failureCallback();
+    } else return successCallback();
+  });
+};
+
+db.getOrderNumber = function(orderId, successCallback, failureCallback) {
+  const sql = `SELECT * FROM orders WHERE order_id = ?`;
+  const q = connection.query(sql, [orderId], function(err, result) {
+    if (err) return failureCallback(err);
+    else return successCallback(result);
+  });
 };
 
 module.exports = db;

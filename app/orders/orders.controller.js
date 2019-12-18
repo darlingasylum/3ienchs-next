@@ -5,8 +5,8 @@ var passport = require('passport');
 
 // routes
 router.post('/makeOrder', makeOrder);
-// router.get('/getDogsProducts', getDogsProducts);
-// router.get('/getFeatProducts', getFeatProducts);
+router.post('/checkOrderNumber/:orderNumber', checkOrderNumber);
+router.get('/getOrderNumber/:id', getOrderNumber);
 // router.get('/getAllProducts', getAllProducts);
 // router.get('/getProduct', getProduct);
 // router.patch('/update', updateProduct);
@@ -23,13 +23,21 @@ function makeOrder(req, res) {
   });
 }
 
-// function getDogsProducts(req, res) {
-//   productsService.getDogsProducts(result => {
-//     result.success
-//       ? res.status(201).json(result)
-//       : res.status(401).json(result);
-//   });
-// }
+function checkOrderNumber(req, res) {
+  ordersService.checkOrderNumber(req.param.orderNumber, result => {
+    result.success
+      ? res.status(201).json(result)
+      : res.status(201).json(result);
+  });
+}
+
+function getOrderNumber(req, res) {
+  ordersService.getOrderNumber(req.params.id, result => {
+    result.success
+      ? res.status(201).json(result)
+      : res.status(201).json(result);
+  });
+}
 
 // function getFeatProducts(req, res) {
 //   productsService.getFeatProducts(result => {
