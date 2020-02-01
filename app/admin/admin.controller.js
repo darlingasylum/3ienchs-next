@@ -1,10 +1,10 @@
 const express = require('express');
-// const router = express.Router();
+const router = express.Router();
 const adminService = require('./admin.service');
 
-// router.get("/allusers", getAllUsers);
+router.get('/allusers', getAllUsers);
 
-module.exports = { getAllUsers };
+module.exports = router;
 
 function getAllUsers(req, res) {
   adminService.getAllUsers(result => {
