@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useRouter } from 'next/router';
+
+import jwt_decode from 'jwt-decode';
 
 import { APICall } from './../../../utils/APICall';
 
-const Admin = props => {
+const Admin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const router = useRouter();
+
+  const checkAuthorization = token => {
+    const isAdmin = jwt_decode(token).user_type;
+    if (isAdmin) {
+      router.push('/admindashboard');
+      return;
+    }
+    setErrorMessage(
+      "Vous ne possédez pas les autorisations nécessaires pour accéder à l'espace admin"
+    );
+  };
 
   const onSubmit = e => {
     e.preventDefault();
@@ -25,16 +41,17 @@ const Admin = props => {
     APICall(`http://localhost:4000/api/users/authenticate`, fetch_param)
       .then(response => {
         console.log('response -->', response);
-        return response;
+        return response.token;
       })
-      .catch(err => console.log(err));
+      .then(token => checkAuthorization(token))
+      .catch(err => setErrorMessage(err.message));
   };
 
   return (
     <div className='hero'>
       <div className='flex flex-col align-center justify-center '>
         <p className='mt-10'>Bienvenue sur l'espace admin!</p>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className='w-25-percent'>
           <div className='flex flex-col mb-5'>
             <TextField
               label='email'
@@ -51,6 +68,7 @@ const Admin = props => {
           <Button type='submit' fullWidth variant='contained' color='secondary'>
             Connexion
           </Button>
+          <p className='text-align-center'>{errorMessage}</p>
         </form>
       </div>
     </div>

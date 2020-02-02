@@ -74,7 +74,7 @@ function authenticate({ email, password }, callback) {
         } else {
           return callback({
             success: false,
-            message: 'Authentication failed. Passwords did not match.'
+            message: 'Mot de passe incorrect'
           });
         }
       });
@@ -82,7 +82,7 @@ function authenticate({ email, password }, callback) {
     function(err) {
       return callback({
         success: false,
-        message: 'Authentication failed. User not found.'
+        message: 'Adresse e-mail inconnue'
       });
     }
   );
