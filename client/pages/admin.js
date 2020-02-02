@@ -1,17 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-import Layout from '../layouts';
 import Admin from './../src/pages/Admin/index';
 import './../less/style.less';
 import fetch from 'isomorphic-unfetch';
 
 const AdminPage = props => {
-  return (
-    <Layout>
-      <Admin></Admin>
-    </Layout>
-  );
+  return <Admin></Admin>;
 };
 
 export default AdminPage;
