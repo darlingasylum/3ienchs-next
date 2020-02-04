@@ -1,10 +1,10 @@
 import React from 'react';
-import Admin from './../src/pages/Admin/index';
+import AdminConnection from '../src/pages/AdminConnection/index';
 import './../less/style.less';
 import fetch from 'isomorphic-unfetch';
 
 const AdminPage = props => {
-  return <Admin></Admin>;
+  return <AdminConnection></AdminConnection>;
 };
 
 export default AdminPage;

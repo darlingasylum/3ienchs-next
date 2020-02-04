@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 
 import jwt_decode from 'jwt-decode';
 
-import { APICall } from './../../../utils/APICall';
+import { APICall } from '../../../utils/APICall';
 
-const Admin = () => {
+const AdminConnection = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -75,4 +75,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default AdminConnection;

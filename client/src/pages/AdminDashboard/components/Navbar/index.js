@@ -3,8 +3,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import Navbar from './components/Navbar';
-import Template from './components/Template';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -19,18 +17,11 @@ function a11yProps(index) {
   };
 }
 
-export default function AdminDashboard() {
+export default function Navbar({ items }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const items = {
-    beers: {
-      getBeers: { item: 'mes bières', component: '' },
-      addBeer: { item: 'ajouter une bière', component: '' }
-    }
   };
 
   return (
@@ -41,20 +32,15 @@ export default function AdminDashboard() {
           onChange={handleChange}
           aria-label='simple tabs example'
         >
-          <Tab label='Bières' {...a11yProps(0)} />
-          <Tab label='Agenda' {...a11yProps(1)} />
-          <Tab label='Artistes' {...a11yProps(2)} />
+          <Tab label={items.getBeers.item} {...a11yProps(0)} />
+          <Tab label={items.addBeer.item} {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {/* <Navbar items={items.beers}></Navbar> */}
-        <Template></Template>
+        Bières
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Agenda{' '}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Artistes{' '}
+        Ajouter une bière
       </TabPanel>
     </div>
   );
