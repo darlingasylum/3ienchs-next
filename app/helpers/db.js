@@ -266,4 +266,64 @@ db.getOrderNumber = function(orderId, successCallback, failureCallback) {
   });
 };
 
+//EVENTS
+
+db.createEvent = function(event, successCallback, failureCallback) {
+  const sqlQuery = `INSERT INTO events (title, date, subtitle, description) VALUES (?, ?, ?, ?);`;
+  const payload = [event.title, event.date, event.subtitle, event.description];
+
+  connection.query(sqlQuery, payload, function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(rows);
+  });
+};
+
+db.getAllEvents = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT * FROM events`;
+  connection.query(sqlQuery, function(err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
+db.updateEvent = function(event, successCallback, failureCallback) {
+  const sqlQuery = `UPDATE events SET title = ?, date = ?, subtitle = ?, description = ? WHERE event_id = ?`;
+  const payload = [
+    event.title,
+    event.date,
+    event.subtitle,
+    event.description,
+    event.event_id
+  ];
+  connection.query(sqlQuery, payload, function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(rows);
+  });
+};
+
+db.deleteEvent = function(event, successCallback, failureCallback) {
+  const { event_id } = event;
+  const sqlQuery = `DELETE FROM events WHERE event_id IN (?)`;
+  connection.query(sqlQuery, [event_id], function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    if (rows.affectedRows > 0) {
+      successCallback(rows[0]);
+    } else {
+      failureCallback('Event not found.');
+    }
+  });
+};
+
 module.exports = db;
