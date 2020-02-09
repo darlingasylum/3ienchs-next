@@ -22,7 +22,7 @@ module.exports = function(app) {
   var ordersRoutes = require('./orders/orders.controller');
   var adminRoutes = require('./admin/admin.controller');
   var eventsRoutes = require('./events/events.controller');
-  // var artistsRoutes = require('./artists/artists.controller');
+  var artistsRoutes = require('./artists/artists.controller');
 
   //Protected authenticated route with JWT
   //   apiRoutes.get('/dashboard', requireAuth, function(request, response) {
@@ -54,5 +54,5 @@ module.exports = function(app) {
   app.use('/api/orders', ordersRoutes);
   app.use('/api/admin', adminRoutes);
   app.use('/api/events', eventsRoutes);
-  // app.use('/api/artists', artistsRoutes);
+  app.use('/api/artists', artistsRoutes);
 };

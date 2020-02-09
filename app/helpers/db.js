@@ -326,4 +326,82 @@ db.deleteEvent = function(event, successCallback, failureCallback) {
   });
 };
 
+//ARTISTS
+
+db.createArtist = function(artist, successCallback, failureCallback) {
+  const sqlQuery = `INSERT INTO artists (title, subtitle, description, images, musician) VALUES (?, ?, ?, ?, ?);`;
+  const payload = [
+    artist.title,
+    artist.subtitle,
+    artist.description,
+    artist.images,
+    artist.musician
+  ];
+
+  connection.query(sqlQuery, payload, function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(rows);
+  });
+};
+
+db.getArtworkArtists = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT * FROM artists WHERE musician = 0`;
+  connection.query(sqlQuery, function(err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
+db.getMusicArtists = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT * FROM artists WHERE musician = 1`;
+  connection.query(sqlQuery, function(err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
+db.updateArtist = function(artist, successCallback, failureCallback) {
+  const sqlQuery = `UPDATE artists SET title = ?, subtitle = ?, description = ?, images = ?, musician = ? WHERE artist_id = ?`;
+  const payload = [
+    artist.title,
+    artist.subtitle,
+    artist.description,
+    artist.images,
+    artist.musician,
+    artist.artist_id
+  ];
+  connection.query(sqlQuery, payload, function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(rows);
+  });
+};
+
+db.deleteArtist = function(artist, successCallback, failureCallback) {
+  const { artist_id } = artist;
+  const sqlQuery = `DELETE FROM artists WHERE artist_id IN (?)`;
+  connection.query(sqlQuery, [artist_id], function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    if (rows.affectedRows > 0) {
+      successCallback(rows[0]);
+    } else {
+      failureCallback('artist not found.');
+    }
+  });
+};
+
 module.exports = db;
