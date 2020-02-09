@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 04, 2020 at 10:58 AM
+-- Generation Time: Feb 08, 2020 at 07:47 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -13,6 +13,51 @@ SET time_zone = "+00:00";
 --
 -- Database: `3ienchs-next`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artists`
+--
+
+CREATE TABLE `artists` (
+  `artist_id` smallint(2) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `subtitle` varchar(40) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `images` varchar(10000) NOT NULL,
+  `musician` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `artists`
+--
+
+INSERT INTO `artists` (`artist_id`, `title`, `subtitle`, `description`, `images`, `musician`) VALUES
+(1, 'Léo Ewald', 'Lorem ipsum dolor sit amet', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore', 0),
+(3, 'Clément Paris', 'super artiste', 'pouet', 'pathes', 0),
+(4, 'Chateau Brutal', 'super artiste', 'pouet', 'pathes', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `event_id` smallint(2) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `date` date NOT NULL,
+  `subtitle` varchar(40) NOT NULL,
+  `description` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`event_id`, `title`, `date`, `subtitle`, `description`) VALUES
+(1, 'Saint-Maur food trucks festival', '2020-05-15', 'Super festival', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptat.');
 
 -- --------------------------------------------------------
 
@@ -71,7 +116,11 @@ INSERT INTO `orders` (`order_id`, `order_number`, `order_userid`, `order_date`, 
 (41, 727291, NULL, '2019-12-17', '2019-12-17', 15, 0),
 (42, 687848, NULL, '2019-12-18', '2019-12-25', 9, 0),
 (43, 288661, NULL, '2019-12-18', '2019-12-27', 23, 0),
-(44, 658498, NULL, '2019-12-18', '2019-12-27', 23, 0);
+(44, 658498, NULL, '2019-12-18', '2019-12-27', 23, 0),
+(45, 383772, NULL, '2020-01-05', '2020-01-24', 20, 0),
+(46, 276991, NULL, '2020-01-06', '2020-01-15', 18, 0),
+(47, 600114, NULL, '2020-01-06', '2020-01-15', 18, 0),
+(48, 323042, NULL, '2020-02-01', '2020-02-19', 33, 0);
 
 -- --------------------------------------------------------
 
@@ -150,7 +199,22 @@ INSERT INTO `order_details` (`details_id`, `details_orderid`, `details_productid
 (59, 43, 16, 1),
 (60, 44, 2, 5),
 (61, 44, 15, 3),
-(62, 44, 16, 1);
+(62, 44, 16, 1),
+(63, 45, 2, 2),
+(64, 45, 15, 4),
+(65, 45, 16, 2),
+(66, 46, 2, 4),
+(67, 46, 14, 1),
+(68, 46, 13, 1),
+(69, 46, 16, 1),
+(70, 47, 2, 4),
+(71, 47, 14, 1),
+(72, 47, 13, 1),
+(73, 47, 16, 1),
+(74, 48, 2, 3),
+(75, 48, 15, 2),
+(76, 48, 14, 2),
+(77, 48, 13, 6);
 
 -- --------------------------------------------------------
 
@@ -220,11 +284,24 @@ INSERT INTO `users` (`user_id`, `lastname`, `firstname`, `email`, `password`, `a
 (11, 'Hery', 'Elisa', 'test_0@hello.com', '$2a$10$Drbb2fLpMYZrR..mD/w6nO/uv/HXW1oKftwJ2unJTRBquEiVxKj3O', 1),
 (14, 'Heyyy', 'Elisa', 'test_15@hello.com', '$2a$10$BMUWFhr8cuvIVeP70yiVyOqGy9J7.xmoMw4Rvbxah2V7xq4gbJwuW', NULL),
 (15, 'Heyyy', 'Elisa', 'test_19@hello.com', '$2a$10$r5OH88OywnbWnkaB26r//OXgB6/J9/TM/JKu9Ea5oBgB4TDfg1DL2', NULL),
-(16, 'Heyyy', 'Elisa', 'test_17@hello.com', '$2a$10$r0K5Hx4vmQwH0Ym4ofVbxu2IVaK7e3uLM7VaPbNErzamaDavoEIAi', NULL);
+(16, 'Heyyy', 'Elisa', 'test_17@hello.com', '$2a$10$r0K5Hx4vmQwH0Ym4ofVbxu2IVaK7e3uLM7VaPbNErzamaDavoEIAi', NULL),
+(17, 'Heyyy', 'Elisa', 'elisa.hery@test.com', '$2a$10$taGhGnLO0Cz06WRgxP.TYu0kD6EYFUKLsv51.e7ozIyt1r3GrKeK.', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `artists`
+--
+ALTER TABLE `artists`
+  ADD PRIMARY KEY (`artist_id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`event_id`);
 
 --
 -- Indexes for table `orders`
@@ -259,16 +336,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `artists`
+--
+ALTER TABLE `artists`
+  MODIFY `artist_id` smallint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `event_id` smallint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -280,7 +369,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -298,7 +387,3 @@ ALTER TABLE `orders`
 ALTER TABLE `order_details`
   ADD CONSTRAINT `details_orderid` FOREIGN KEY (`details_orderid`) REFERENCES `orders` (`order_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `details_productid` FOREIGN KEY (`details_productid`) REFERENCES `products` (`product_id`) ON DELETE SET NULL ON UPDATE CASCADE;
-
-[ Back ]
-
-Open new phpMyAdmin window
