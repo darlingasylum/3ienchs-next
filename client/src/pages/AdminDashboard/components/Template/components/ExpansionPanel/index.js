@@ -10,7 +10,7 @@ import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 
-export default function DetailedExpansionPanel() {
+export default function DetailedExpansionPanel({ product }) {
   return (
     <div className='my-2'>
       <ExpansionPanel>
@@ -20,30 +20,26 @@ export default function DetailedExpansionPanel() {
           id='panel1c-header'
         >
           <div>
-            <Typography>Big Daddy</Typography>
+            <Typography>{product.product_name} / </Typography>
           </div>
-          {/* <div>
-            <Typography>Select trip destination</Typography>
-          </div> */}
+          <div>
+            <Typography> / {product.product_type}</Typography>
+          </div>
         </ExpansionPanelSummary>
-        {/* <ExpansionPanelDetails> */}
-        {/* <div />
+        <ExpansionPanelDetails>
+          <img
+            className='max-height-80 mr-10'
+            src={`/static/images/${product.product_img}`}
+          ></img>
           <div>
-            <Chip label='Barbados' onDelete={() => {}} />
-          </div>
-          <div>
-            <Typography variant='caption'>
-              Select your destination of choice
-              <br />
-              <a href='#secondary-heading-and-columns'>Learn more</a>
-            </Typography>
+            <Typography>{product.product_descr}</Typography>
           </div>
         </ExpansionPanelDetails>
-        <Divider /> */}
+        <Divider />
         <ExpansionPanelActions>
-          <Button size='small'>Cancel</Button>
+          <Button size='small'>Editer</Button>
           <Button size='small' color='primary'>
-            Save
+            Supprimer
           </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
