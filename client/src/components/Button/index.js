@@ -14,7 +14,11 @@ const Button = ({ children, isExternal = false, to, onClick }) => {
   if (!to) {
     return buttonContent;
   } else if (isExternal) {
-    return <a href={to}>{buttonContent}</a>;
+    return (
+      <a href={to} target='_blank'>
+        {buttonContent}
+      </a>
+    );
   }
 
   return (
