@@ -61,6 +61,7 @@ const AdminConnection = () => {
             <TextField
               label='password'
               margin='normal'
+              type='password'
               onChange={event => setPassword(event.target.value)}
             />
           </div>
