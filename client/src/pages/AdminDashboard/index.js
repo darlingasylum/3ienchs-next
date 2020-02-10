@@ -19,7 +19,7 @@ function a11yProps(index) {
   };
 }
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ products }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -48,7 +48,7 @@ export default function AdminDashboard() {
       </AppBar>
       <TabPanel value={value} index={0}>
         {/* <Navbar items={items.beers}></Navbar> */}
-        <Template></Template>
+        <Template content={products}></Template>
       </TabPanel>
       <TabPanel value={value} index={1}>
         Agenda{' '}
