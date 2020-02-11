@@ -12,7 +12,7 @@ router.get('/getFeatProducts', getFeatProducts);
 router.get('/getAllProducts', getAllProducts);
 router.get('/getProduct', getProduct);
 router.patch('/update', updateProduct);
-router.delete('/delete', deleteProduct);
+router.delete('/delete/:id', deleteProduct);
 
 module.exports = router;
 
@@ -65,7 +65,7 @@ function updateProduct(req, res) {
 }
 
 function deleteProduct(req, res) {
-  productsService.deleteProduct(req.body, result => {
+  productsService.deleteProduct(req.params.id, result => {
     result.success
       ? res.status(201).json(result)
       : res.status(401).json(result);
