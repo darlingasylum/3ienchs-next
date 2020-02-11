@@ -97,7 +97,7 @@ db.getAllUsers = function(successCallback, failureCallback) {
 // PRODUCTS
 
 db.createProduct = function(product, successCallback, failureCallback) {
-  const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_packable, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ? );`;
+  const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?);`;
   const payload = [
     product.product_name,
     product.product_type,
@@ -105,9 +105,7 @@ db.createProduct = function(product, successCallback, failureCallback) {
     product.product_proof,
     product.product_descr,
     product.product_img,
-    product.product_packable,
-    product.product_stock,
-    product.product_id
+    product.product_stock
   ];
   connection.query(sqlQuery, payload, function(err, rows, res) {
     if (err) {
@@ -189,8 +187,7 @@ db.updateProduct = function(product, successCallback, failureCallback) {
   });
 };
 
-db.deleteProduct = function(product, successCallback, failureCallback) {
-  const { id } = product;
+db.deleteProduct = function(id, successCallback, failureCallback) {
   const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
   connection.query(sqlQuery, [id], function(err, rows, res) {
     if (err) {
