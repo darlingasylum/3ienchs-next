@@ -74,6 +74,7 @@ const BasketPage = props => {
       .then(orderId => {
         getOrder(orderId);
       })
+      .then(window.scrollTo(0, document.body.scrollHeight))
       .catch(err => console.log(err));
   };
 
@@ -86,7 +87,7 @@ const BasketPage = props => {
       <div className='hero mt-10 w-full'>
         <Basket></Basket>
         <Title title='Votre panier'></Title>
-        <div> Votre panier est vide</div>
+        <div className='text-align-center'> Votre panier est vide !</div>
       </div>
     );
   }
