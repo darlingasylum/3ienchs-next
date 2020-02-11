@@ -34,7 +34,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
           onClick={() => handleSlide('next')}
         ></img>
         <div
-          className='w-60-percent h-full r-30'
+          className='w-60-percent h-full'
           style={{
             backgroundImage: `url(/static/images/${products[count].product_bg})`,
             backgroundSize: 'cover'

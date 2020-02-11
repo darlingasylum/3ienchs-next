@@ -5,8 +5,7 @@ const SliderContent = ({ products, count, withPrices }) => {
     <div
       className='h-full flex b-20'
       style={{
-        position: withPrices ? 'relative' : 'static',
-        bottom: withPrices ? '5rem' : '0rem'
+        position: withPrices ? 'relative' : 'static'
       }}
     >
       <div className='w-30-percent ml-8-percent flex flex-col items-start justify-center'>
