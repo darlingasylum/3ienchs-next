@@ -5,7 +5,6 @@ import Slider from './../../components/Slider';
 import './../../../less/style.less';
 
 const Home = props => {
-  console.log('products', props.products);
   return (
     <>
       <Head>
