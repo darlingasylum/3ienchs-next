@@ -36,7 +36,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
           ></img>
         )}
         <div
-          className='w-60-percent h-full'
+          className='slider-width h-full'
           style={{
             backgroundImage: `url(/static/images/${products[count].product_bg})`,
             backgroundSize: 'cover'
@@ -57,6 +57,21 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
           ></img>
         )}
       </div>
+      {products.length > 1 && (
+        <div className='flex justify-center'>
+          <img
+            className='cursor-pointer max-height-80 mr-20  display-none-above-md'
+            src={arrowLeft}
+            onClick={() => handleSlide('next')}
+          ></img>
+          <img
+            className='cursor-pointer max-height-80 ml-20  display-none-above-md'
+            src={arrowRight}
+            onClick={() => handleSlide()}
+          ></img>
+        </div>
+      )}
+
       {buttonsType === 'buyingMode' && (
         <div className='flex justify-center'>
           <Button
