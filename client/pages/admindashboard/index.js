@@ -1,6 +1,7 @@
 import React from 'react';
-import AdminDashboard from './../src/pages/AdminDashboard/index';
-import './../less/style.less';
+import AdminDashboard from './../../src/pages/AdminDashboard/index';
+import './../../less/style.less';
+
 import fetch from 'isomorphic-unfetch';
 
 const AdminDashboardPage = ({ products }) => {

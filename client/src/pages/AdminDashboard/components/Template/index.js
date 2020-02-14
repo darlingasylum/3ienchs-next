@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import ExpansionPanel from './components/ExpansionPanel';
+import Link from 'next/link';
+
 import { APICall } from '../../../../../utils/APICall';
 
 export default function Template({ content }) {
@@ -30,9 +32,11 @@ export default function Template({ content }) {
 
   return (
     <div>
-      <Button variant='contained' color='secondary'>
-        Ajouter une bière
-      </Button>
+      <Link href='/admindashboard/ajouterproduit'>
+        <Button variant='contained' color='secondary'>
+          Ajouter une bière
+        </Button>
+      </Link>
       <div className='my-8'>{list(products)}</div>
     </div>
   );
