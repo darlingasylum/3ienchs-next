@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 
 import jwt_decode from 'jwt-decode';
 
@@ -16,6 +17,7 @@ const AdminConnection = () => {
   const checkAuthorization = token => {
     const isAdmin = jwt_decode(token).user_type;
     if (isAdmin) {
+      Cookies.set('token', token);
       router.push('/admindashboard');
       return;
     }
