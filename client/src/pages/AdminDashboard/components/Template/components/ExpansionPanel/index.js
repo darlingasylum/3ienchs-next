@@ -6,12 +6,16 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+
 import AlertDialog from './../AlertDialog';
+import SliderContent from './../../../../../../components/Slider/components/SliderContent';
 
 import { APICall } from '../../../../../../../utils/APICall';
 
 export default function DetailedExpansionPanel({ product, getProducts }) {
   const [open, setOpen] = useState(false);
+
+  const isFeaturing = product.featuring ? 'oui' : 'non';
 
   const handleDelete = id => {
     const fetch_param = {
@@ -53,22 +57,20 @@ export default function DetailedExpansionPanel({ product, getProducts }) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div
-            className='w-60-percent h-full'
+            className='slider-width h-full'
             style={{
               backgroundImage: `url(/static/images/${product.product_bg})`,
               backgroundSize: 'cover'
             }}
           >
-            <img
-              className='h-60 ml-10'
-              src={`/static/images/${product.product_img}`}
-            ></img>
+            <SliderContent product={product}></SliderContent>
           </div>
-          <div className='flex flex-col'>
-            <Typography>{product.product_type}</Typography>
-            <Typography>{product.product_descr}</Typography>
-            <Typography>{product.product_proof} degrés</Typography>
-            <Typography>{product.product_price} €</Typography>
+          <div className='flex flex-col p-5'>
+            <Typography variant='h6'>Autres informations :</Typography>
+
+            <Typography>Prix : {product.product_price} €</Typography>
+            <Typography>Featuring ? {isFeaturing}</Typography>
+            <Typography>Stock : {product.product_stock} </Typography>
           </div>
           <div></div>
         </ExpansionPanelDetails>
