@@ -20,28 +20,23 @@ const SideMenu = props => {
           </Link>
         </li>
         <li className='li_left m-4'>
-          <Link href='/bieres'>
+          <Link href='/#bieres'>
             <a>Les bières</a>
           </Link>
         </li>
         <li className='li_left m-4'>
-          <Link href='/apropos'>
+          <Link href='/#agenda'>
             <a>Agenda</a>
           </Link>
         </li>
         <li className='li_left m-4'>
-          <Link href='/vente'>
+          <Link href='/#artwork'>
             <a>Artwork</a>
           </Link>
         </li>
         <li className='li_left m-4'>
-          <Link href='/vente'>
+          <Link href='/#music'>
             <a>Pour les zicos</a>
-          </Link>
-        </li>
-        <li className='li_left m-4'>
-          <Link href='/panier'>
-            <a>Connexion</a>
           </Link>
         </li>
         <li className='li_left m-4'>
