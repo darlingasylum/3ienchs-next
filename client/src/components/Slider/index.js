@@ -27,10 +27,10 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
   return (
     <div id={id}>
       <Title title={title}></Title>
-      <div className='flex justify-center align-center h-40-vh'>
+      <div className='flex justify-center align-center min-h-50-vh-md'>
         {products.length > 1 && (
           <img
-            className='cursor-pointer max-height-80 mr-20'
+            className='cursor-pointer max-height-80 mr-20 display-none-md'
             src={arrowLeft}
             onClick={() => handleSlide('next')}
           ></img>
@@ -51,7 +51,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
         </div>
         {products.length > 1 && (
           <img
-            className='cursor-pointer max-height-80 ml-20'
+            className='cursor-pointer max-height-80 ml-20 display-none-md'
             src={arrowRight}
             onClick={() => handleSlide()}
           ></img>

@@ -86,11 +86,13 @@
   height: 100vh;
 }
 
-.h-40-vh {
-  height: 60vh;
+.min-h-50-vh-md {
+  @media screen and (min-width: @breakpoint-md) {
+    min-height: 50vh;
+  }
 }
 
-// min height & width
+// max width
 .max-width-75-percent {
   max-width: 75%;
 }
@@ -99,6 +101,7 @@
   max-width: 100%;
 }
 
+// max height
 .max-height-100-percent {
   max-height: 100%;
 }
@@ -107,16 +110,31 @@
   max-height: 80px;
 }
 
-.min-height-100-vh {
-  min-height: 100vh;
+.max-height-66vh {
+  max-height: 66vh;
 }
 
+// min width
 .min-width-250 {
   min-width: 250px;
 }
 
-.max-height-66vh {
-  max-height: 66vh;
+.min-width-100-px {
+  min-width: 100px;
+}
+.min-width-20-md {
+  // @media screen and (min-width: @breakpoint-md) {
+  min-width: 20%;
+  // }
+}
+
+// min height
+.min-height-100-vh {
+  min-height: 100vh;
+}
+
+.min-height-150-px {
+  min-height: 150px;
 }
 
 //icon navBar
