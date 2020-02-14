@@ -44,7 +44,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
         >
           {withPrices && <Prices />}
           <SliderContent
-            products={products}
+            product={products[count]}
             count={count}
             withPrices={withPrices}
           />
