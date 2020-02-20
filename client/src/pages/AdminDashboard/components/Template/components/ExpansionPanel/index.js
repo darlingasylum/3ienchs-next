@@ -12,7 +12,11 @@ import SliderContent from './../../../../../../components/Slider/components/Slid
 
 import { APICall } from '../../../../../../../utils/APICall';
 
-export default function DetailedExpansionPanel({ product, getProducts }) {
+export default function DetailedExpansionPanel({
+  product,
+  getProducts,
+  handleEdit
+}) {
   const [open, setOpen] = useState(false);
 
   const isFeaturing = product.featuring ? 'oui' : 'non';
@@ -76,7 +80,12 @@ export default function DetailedExpansionPanel({ product, getProducts }) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size='small'>Editer</Button>
+          <Button
+            size='small'
+            onClick={e => handleEdit(e, 2, product.product_id)}
+          >
+            Editer
+          </Button>
           <Button size='small' color='primary' onClick={() => setOpen(true)}>
             Supprimer
           </Button>

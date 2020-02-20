@@ -3,8 +3,8 @@ import React from 'react';
 // import './../less/style.less';
 // import fetch from 'isomorphic-unfetch';
 
-const addProduct = ({ products }) => {
+const createProduct = ({ products }) => {
   return <div>WIPPPPP</div>;
 };
 
-export default addProduct;
+export default createProduct;

@@ -47,7 +47,6 @@ export default function AdminDashboard({ products }) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {/* <Navbar items={items.beers}></Navbar> */}
         <Template content={products}></Template>
       </TabPanel>
       <TabPanel value={value} index={1}>
