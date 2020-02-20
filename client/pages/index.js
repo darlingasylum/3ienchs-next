@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../layouts';
+import Layout from './../layouts/classicLayout/index';
 import Home from './../src/pages/Home/index';
 import fetch from 'isomorphic-unfetch';
 

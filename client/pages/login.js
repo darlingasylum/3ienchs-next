@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../layouts';
+import Layout from '../layouts/classicLayout';
 import Login from '../src/pages/Login/index';
 import './../less/style.less';
 

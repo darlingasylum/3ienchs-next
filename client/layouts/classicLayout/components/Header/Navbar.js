@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 // import { Link, NavLink } from "react-router-dom"
-import Link from '../../../src/components/Link';
+import Link from '../../../../src/components/Link';
 
 // import { connect } from "react-redux";
 
 import Burger from './components/BurgerMenu/Burger.js';
-import './../../../less/style.less';
+import './../../../../less/style.less';
 
-import tinyLogo from './../../../assets/logos/3ienchs_white_logo.png';
-import userIcon from './../../../assets/icons/user_white.svg';
-import basketIcon from './../../../assets/icons/basket_white.svg';
+import tinyLogo from './../../../../assets/logos/3ienchs_white_logo.png';
+import userIcon from './../../../../assets/icons/user_white.svg';
+import basketIcon from './../../../../assets/icons/basket_white.svg';
 // import style from "./navbar.module.css";
 
 // const mapStateToProps = state => {

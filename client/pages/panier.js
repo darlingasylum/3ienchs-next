@@ -1,7 +1,7 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../layouts';
+import Layout from '../layouts/classicLayout';
 import BasketPage from '../src/pages/BasketPage/index';
 
 import './../less/style.less';

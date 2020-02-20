@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../layouts';
+import Layout from '../layouts/classicLayout';
 import Agenda from '../src/pages/Agenda/index';
 import './../less/style.less';
 

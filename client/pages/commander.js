@@ -1,7 +1,7 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../layouts';
+import Layout from '../layouts/classicLayout';
 import Order from '../src/pages/Order/index';
 
 import './../less/style.less';
