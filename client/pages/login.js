@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layouts/classicLayout';
+import ClassicLayout from '../layouts/ClassicLayout';
 import Login from '../src/pages/Login/index';
 import './../less/style.less';
 
 const LoginPage = props => (
-  <Layout>
+  <ClassicLayout>
     <Login></Login>
-  </Layout>
+  </ClassicLayout>
 );
 
 export default LoginPage;

@@ -1,15 +1,15 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../layouts/classicLayout';
+import ClassicLayout from '../layouts/ClassicLayout';
 import BasketPage from '../src/pages/BasketPage/index';
 
 import './../less/style.less';
 
 const Panier = props => (
-  <Layout>
+  <ClassicLayout>
     <BasketPage products={props.products}></BasketPage>
-  </Layout>
+  </ClassicLayout>
 );
 
 export default Panier;
