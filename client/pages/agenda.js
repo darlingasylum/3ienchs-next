@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layouts/classicLayout';
+import ClassicLayout from '../layouts/ClassicLayout';
 import Agenda from '../src/pages/Agenda/index';
 import './../less/style.less';
 
 const AgendaPage = props => (
-  <Layout>
+  <ClassicLayout>
     <Agenda></Agenda>
-  </Layout>
+  </ClassicLayout>
 );
 
 export default AgendaPage;

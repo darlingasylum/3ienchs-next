@@ -1,15 +1,15 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
 
-import Layout from '../layouts/classicLayout';
+import ClassicLayout from '../layouts/ClassicLayout';
 import Order from '../src/pages/Order/index';
 
 import './../less/style.less';
 
 const OrderPage = props => (
-  <Layout>
+  <ClassicLayout>
     <Order products={props}></Order>
-  </Layout>
+  </ClassicLayout>
 );
 
 export default OrderPage;

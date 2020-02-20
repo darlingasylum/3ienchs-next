@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Layout from './../layouts/classicLayout/index';
+import ClassicLayout from '../layouts/ClassicLayout/index';
 import Home from './../src/pages/Home/index';
 import fetch from 'isomorphic-unfetch';
 
 import './../less/style.less';
 const HomePage = props => {
   return (
-    <Layout>
+    <ClassicLayout>
       <Home products={props}></Home>
-    </Layout>
+    </ClassicLayout>
   );
 };
 

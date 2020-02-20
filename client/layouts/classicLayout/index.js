@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Head from 'next/head';
 
-const Layout = props => (
+const ClassicLayout = props => (
   <div>
     <Head>
       <title>Brasserie 3ienchs</title>
@@ -16,4 +16,4 @@ const Layout = props => (
   </div>
 );
 
-export default Layout;
+export default ClassicLayout;

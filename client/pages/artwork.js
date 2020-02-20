@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layouts/classicLayout';
+import ClassicLayout from '../layouts/ClassicLayout';
 import Artwork from '../src/pages/Artwork/index';
 import './../less/style.less';
 
 const ArtworkPage = props => (
-  <Layout>
+  <ClassicLayout>
     <Artwork></Artwork>
-  </Layout>
+  </ClassicLayout>
 );
 
 export default ArtworkPage;
