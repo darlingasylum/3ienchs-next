@@ -111,9 +111,9 @@ function getAllProducts(callback) {
   );
 }
 
-function getProduct(body, callback) {
+function getProduct(id, callback) {
   db.getProduct(
-    body,
+    id,
     function(res) {
       return callback({
         success: true,

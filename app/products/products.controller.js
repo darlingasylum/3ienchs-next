@@ -10,7 +10,7 @@ router.post('/create', requireAuth, createProduct);
 router.get('/getDogsProducts', getDogsProducts);
 router.get('/getFeatProducts', getFeatProducts);
 router.get('/getAllProducts', getAllProducts);
-router.get('/getProduct', getProduct);
+router.get('/getProduct/:id', getProduct);
 router.patch('/update', updateProduct);
 router.delete('/delete/:id', deleteProduct);
 
@@ -49,7 +49,7 @@ function getAllProducts(req, res) {
 }
 
 function getProduct(req, res) {
-  productsService.getProduct(req.body, result => {
+  productsService.getProduct(req.params.id, result => {
     result.success
       ? res.status(201).json(result)
       : res.status(401).json(result);

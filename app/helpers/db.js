@@ -149,8 +149,7 @@ db.getAllProducts = function(successCallback, failureCallback) {
   });
 };
 
-db.getProduct = function(product, successCallback, failureCallback) {
-  const { id } = product.body;
+db.getProduct = function(id, successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM products WHERE product_id=${id}`;
   connection.query(sqlQuery, function(err, rows, res) {
     if (err) {
