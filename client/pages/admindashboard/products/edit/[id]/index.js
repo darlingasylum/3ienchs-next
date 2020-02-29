@@ -10,18 +10,14 @@ import { useRouter } from 'next/router';
 
 import './../../../../../less/style.less';
 
-const EditPage = ({ products }) => {
-  const router = useRouter();
-
-  const { id } = router.query;
-
+const EditPage = ({ product }) => {
   try {
     const token = Cookies.get('token');
     const isAdmin = jwt_decode(token).user_type;
     if (isAdmin) {
       return (
         <BackOfficeLayout>
-          <EditProduct></EditProduct>
+          <EditProduct product={product}></EditProduct>
         </BackOfficeLayout>
       );
     } else
@@ -44,13 +40,13 @@ const EditPage = ({ products }) => {
 
 export default EditPage;
 
-// EditPage.getInitialProps = async function() {
-//   const product = await fetch(
-//     'http://localhost:4000/api/products/getAllProducts'
-//   );
+EditPage.getInitialProps = async function({ query }) {
+  const product = await fetch(
+    `http://localhost:4000/api/products/getProduct/${query.id}`
+  );
 
-//   const data = await products.json();
-//   return {
-//     products: data.products
-//   };
-// };
+  const data = await product.json();
+  return {
+    product: data.product
+  };
+};
