@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -6,20 +8,31 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import Link from 'next/link';
 
-import AlertDialog from './../AlertDialog';
-import SliderContent from './../../../../../../components/Slider/components/SliderContent';
+import AlertDialog from '../AlertDialog';
+import SliderContent from '../../../../components/Slider/components/SliderContent';
 
-import { APICall } from '../../../../../../../utils/APICall';
+import { APICall } from '../../../../../utils/APICall';
 
-export default function DetailedExpansionPanel({
-  product,
-  getProducts,
-  handleEdit
-}) {
+export default function ExpansionPanelProducts({ product, getItems }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
-  const isFeaturing = product.featuring ? 'oui' : 'non';
+  const {
+    featuring,
+    product_name,
+    product_id,
+    product_bg,
+    product_price,
+    product_stock
+  } = product;
+  const isFeaturing = featuring ? 'oui' : 'non';
+
+  const handleClick = (event, id) => {
+    router.push(`/admindashboard/products/edit/${id}`);
+    console.log('coucou id -->', id);
+  };
 
   const handleDelete = id => {
     const fetch_param = {
@@ -31,7 +44,7 @@ export default function DetailedExpansionPanel({
       .then(response => {
         console.log('response -->', response);
         setOpen(false);
-        getProducts();
+        getItems();
         return response;
       })
       .catch(err => console.log(err.message));
@@ -46,9 +59,9 @@ export default function DetailedExpansionPanel({
       <AlertDialog
         open={open}
         handleClose={handleClose}
-        productName={product.product_name}
+        productName={product_name}
         handleDelete={handleDelete}
-        productId={product.product_id}
+        productId={product_id}
       ></AlertDialog>
       <ExpansionPanel>
         <ExpansionPanelSummary
@@ -56,14 +69,14 @@ export default function DetailedExpansionPanel({
           id='panel1c-header'
         >
           <div>
-            <Typography>{product.product_name} </Typography>
+            <Typography>{product_name} </Typography>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div
             className='slider-width h-full'
             style={{
-              backgroundImage: `url(/static/images/${product.product_bg})`,
+              backgroundImage: `url(/static/images/${product_bg})`,
               backgroundSize: 'cover'
             }}
           >
@@ -72,20 +85,20 @@ export default function DetailedExpansionPanel({
           <div className='flex flex-col p-5'>
             <Typography variant='h6'>Autres informations :</Typography>
 
-            <Typography>Prix : {product.product_price} €</Typography>
+            <Typography>Prix : {product_price} €</Typography>
             <Typography>Featuring ? {isFeaturing}</Typography>
-            <Typography>Stock : {product.product_stock} </Typography>
+            <Typography>Stock : {product_stock} </Typography>
           </div>
           <div></div>
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button
-            size='small'
-            onClick={e => handleEdit(e, 2, product.product_id)}
-          >
+          {/* <Link href={`/admindashboard/products/edit/${product_id}`}> */}
+          <Button size='small' onClick={e => handleClick(e, product_id)}>
             Editer
           </Button>
+          {/* </Link> */}
+
           <Button size='small' color='primary' onClick={() => setOpen(true)}>
             Supprimer
           </Button>

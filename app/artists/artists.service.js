@@ -17,7 +17,7 @@ function createArtist(body, callback) {
       return callback({
         success: true,
         message: 'Successfully created new artists.',
-        event: res
+        artist: res
       });
     },
     function(err) {
@@ -35,7 +35,7 @@ function getArtworkArtists(callback) {
       return callback({
         success: true,
         message: 'Successfully got list of all artists.',
-        events: res
+        artists: res
       });
     },
     function(err) {
@@ -53,7 +53,7 @@ function getMusicArtists(callback) {
       return callback({
         success: true,
         message: 'Successfully got list of all artists.',
-        events: res
+        artists: res
       });
     },
     function(err) {
@@ -72,7 +72,7 @@ function updateArtist(body, callback) {
       return callback({
         success: true,
         message: 'Successfully updated artist',
-        event: res
+        artist: res
       });
     },
     function(err) {
@@ -91,7 +91,7 @@ function deleteArtist(body, callback) {
       return callback({
         success: true,
         message: 'Successfully deleted artist',
-        event: res
+        artist: res
       });
     },
     function(err) {

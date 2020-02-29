@@ -1,60 +1,66 @@
 import React, { useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Navbar from './components/Navbar';
-import Template from './components/Template';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+import ExpansionPanel from './components/ExpansionPanelAgenda';
+import ExpansionPanelProducts from './components/ExpansionPanelProducts';
+// import CreateProduct from './components/CreateProduct';
+// import EditProduct from './components/EditProduct';
+// import Link from 'next/link';
 
-  return value === index && <Box p={3}>{children}</Box>;
-}
+import { APICall } from '../../../utils/APICall';
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
+// function TabPanel(props) {
+//   const { children, value, index, ...other } = props;
+
+//   return value === index && <Box p={3}>{children}</Box>;
+// }
+
+export default function AdminDashboard({ data, content }) {
+  const [items, setItems] = useState(data);
+  // const [value, setValue] = useState(0);
+  // const [beerIndex, setBeerIndex] = useState(0);
+
+  const getItems = () => {
+    APICall(content.APIurl)
+      .then(response => {
+        console.log('response all products -->', response);
+        return response;
+      })
+      .then(response => setItems(response.products))
+      .catch(err => console.log(err.message));
   };
-}
 
-export default function AdminDashboard({ products }) {
-  const [value, setValue] = React.useState(0);
+  const list = items => {
+    console.log('items', items);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    const components = {
+      ExpansionPanelProducts: ExpansionPanelProducts
+    };
 
-  const items = {
-    beers: {
-      getBeers: { item: 'mes bières', component: '' },
-      addBeer: { item: 'ajouter une bière', component: '' }
+    const ExpansionPanel = components[content.type];
+    if (items.length > 0) {
+      return items.map(product => (
+        <ExpansionPanel
+          product={product}
+          key={product.product_id}
+          getItems={getItems}
+          content={content}
+        ></ExpansionPanel>
+      ));
     }
   };
 
   return (
-    <div>
-      <AppBar position='static'>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label='simple tabs example'
-        >
-          <Tab label='Bières' {...a11yProps(0)} />
-          <Tab label='Agenda' {...a11yProps(1)} />
-          <Tab label='Artistes' {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <TabPanel value={value} index={0}>
-        <Template content={products}></Template>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Agenda{' '}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Artistes{' '}
-      </TabPanel>
+    <div className='mt-10'>
+      <Button
+        variant='contained'
+        color='secondary'
+        onClick={e => handleChange(e, 1)}
+      >
+        {content.addButton}
+      </Button>
+      <div className='my-8'>{list(items)}</div>
     </div>
   );
 }
