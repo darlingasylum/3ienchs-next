@@ -6,6 +6,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 
+import SliderContent from './../../../../../components/Slider/components/SliderContent';
+
 import { withStyles } from '@material-ui/core/styles';
 
 const EditForm = ({ product, handleSubmit }) => {
@@ -171,6 +173,15 @@ const EditForm = ({ product, handleSubmit }) => {
                   onBlur={handleBlur}
                   value={values.stock}
                 />
+              </div>
+              <div
+                className='h-full my-6 mx-2'
+                style={{
+                  backgroundImage: `url(/static/images/${product_bg})`,
+                  backgroundSize: 'cover'
+                }}
+              >
+                <SliderContent product={product}></SliderContent>
               </div>
               <StyledButton type='submit' variant='contained' color='secondary'>
                 Modifier
