@@ -97,16 +97,22 @@ db.getAllUsers = function(successCallback, failureCallback) {
 // PRODUCTS
 
 db.createProduct = function(product, successCallback, failureCallback) {
-  const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?);`;
+  const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_bg, title_color, text_color, featuring, partner, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
   const payload = [
-    product.product_name,
-    product.product_type,
-    product.product_price,
-    product.product_proof,
-    product.product_descr,
-    product.product_img,
-    product.product_stock
+    product.name,
+    product.type,
+    product.price,
+    product.proof,
+    product.description,
+    product.image,
+    product.background,
+    product.titleColor,
+    product.textColor,
+    product.featuring,
+    product.partner,
+    product.stock
   ];
+
   connection.query(sqlQuery, payload, function(err, rows, res) {
     if (err) {
       failureCallback(err);

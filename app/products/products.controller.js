@@ -5,8 +5,8 @@ var passport = require('passport');
 var requireAuth = passport.authenticate('jwt', { session: false });
 
 // routes
-router.post('/create', requireAuth, createProduct);
-// router.post('/create', createProduct);
+// router.post('/create', requireAuth, createProduct);
+router.post('/create', createProduct);
 router.get('/getDogsProducts', getDogsProducts);
 router.get('/getFeatProducts', getFeatProducts);
 router.get('/getAllProducts', getAllProducts);
