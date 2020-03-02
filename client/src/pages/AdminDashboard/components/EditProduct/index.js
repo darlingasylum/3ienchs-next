@@ -16,7 +16,6 @@ const EditProduct = ({ product }) => {
       body: JSON.stringify(body)
     };
 
-    console.log('body! -->', body);
     APICall(`http://localhost:4000/api/products/update`, fetch_param)
       .then(response => {
         return response;

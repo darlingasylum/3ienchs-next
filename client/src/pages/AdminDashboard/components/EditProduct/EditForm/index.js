@@ -30,23 +30,6 @@ const EditForm = ({ product, handleSubmit }) => {
     product_stock
   } = product;
 
-  const handleLogoChange = file => {
-    // if (rejectedFile) {
-    //   if (rejectedFile.size > LOGO_MAX_SIZE) setFieldError('logo_id', logo.INVALID_SIZE)
-    //   if (!LOGO_ACCEPT.includes(rejectedFile.type)) setFieldError('logo_id', logo.INVALID_FORMAT)
-    //   return
-    // }
-    console.log('file -->', file);
-    // setFieldValue('logo_right', false);
-    // try {
-    //   const { logo_id, logo } = await dispatch(servicesPro.uploadOwnOnlineStoreLogo(acceptedFile))
-    //   setFieldValue('logo_id', logo_id)
-    //   setFieldValue('logo', logo)
-    // } catch (error) {
-    //   // Nothing for now
-    // }
-  };
-
   return (
     <div>
       <Formik
@@ -205,7 +188,7 @@ const EditForm = ({ product, handleSubmit }) => {
                       id='image'
                       name='image'
                       type='image'
-                      onChange={handleChange}
+                      onChange={file => setFieldValue('image', file[0].path)}
                       value={values.image}
                       wording='une nouvelle image'
                     />
@@ -215,7 +198,9 @@ const EditForm = ({ product, handleSubmit }) => {
                       id='background'
                       name='background'
                       type='background'
-                      onChange={handleChange}
+                      onChange={file =>
+                        setFieldValue('background', file[0].path)
+                      }
                       value={values.background}
                       wording='un nouveau background'
                     />

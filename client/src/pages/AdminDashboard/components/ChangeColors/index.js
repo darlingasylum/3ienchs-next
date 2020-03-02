@@ -15,10 +15,8 @@ export default function ChangeColors({ value, wording, onChange }) {
         ></div>
         <TextField
           id={`${wording}Color`}
-          //   label='Prix (€)'
           variant='outlined'
           onChange={onChange}
-          // onBlur={handleBlur}
           value={value}
         />
       </div>
