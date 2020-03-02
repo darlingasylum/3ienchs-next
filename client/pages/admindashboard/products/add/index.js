@@ -3,15 +3,20 @@ import jwt_decode from 'jwt-decode';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
-import AddProduct from '../../../src/pages/AdminDashboard/components/AddProduct';
-import './../../../less/style.less';
+import BackOfficeLayout from '../../../../layouts/BackOfficeLayout';
+import AddProduct from '../../../../src/pages/AdminDashboard/components/AddProduct';
+import './../../../../less/style.less';
 
 const addProductPage = ({ products }) => {
   try {
     const token = Cookies.get('token');
     const isAdmin = jwt_decode(token).user_type;
     if (isAdmin) {
-      return <AddProduct></AddProduct>;
+      return (
+        <BackOfficeLayout>
+          <AddProduct></AddProduct>
+        </BackOfficeLayout>
+      );
     } else
       return (
         <div>

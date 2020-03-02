@@ -1,5 +1,5 @@
 import React from 'react';
-import EditForm from './EditForm/index';
+import ProductForm from '../ProductForm/index';
 import { useRouter } from 'next/router';
 
 import { APICall } from '../../../../../utils/APICall';
@@ -29,14 +29,24 @@ const EditProduct = ({ product }) => {
       .catch(err => console.log(err.message));
   };
 
-  const booleanFeaturingValue = product.featuring === 0 ? false : true;
+  let updatedProduct;
+  if (product) {
+    const booleanFeaturingValue = product.featuring === 0 ? false : true;
 
-  const updatedProduct = { ...product, featuring: booleanFeaturingValue };
+    updatedProduct = { ...product, featuring: booleanFeaturingValue };
+  }
+
+  const title = product
+    ? `Modifier la ${updatedProduct.product_name}`
+    : 'Créer une nouvelle bière';
 
   return (
     <div className='w-half-md m-20'>
-      <h2 className='mt-10'>Modifier la {updatedProduct.product_name} :</h2>
-      <EditForm product={updatedProduct} handleSubmit={handleSubmit}></EditForm>
+      <h2 className='mt-10'>{`Modifier la ${updatedProduct.product_name}`}</h2>
+      <ProductForm
+        product={updatedProduct}
+        handleSubmit={handleSubmit}
+      ></ProductForm>
     </div>
   );
 };

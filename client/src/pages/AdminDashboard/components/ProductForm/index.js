@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-
+import { pathOr } from 'ramda';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -8,44 +8,29 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import InputImage from './../../InputImage';
-import ChangeColors from './../../ChangeColors';
-import SliderContent from './../../../../../components/Slider/components/SliderContent';
+import InputImage from '../InputImage';
+import ChangeColors from '../ChangeColors';
+import SliderContent from '../../../../components/Slider/components/SliderContent';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const EditForm = ({ product, handleSubmit }) => {
-  const {
-    product_name,
-    product_type,
-    product_price,
-    product_proof,
-    product_descr,
-    product_img,
-    product_bg,
-    title_color,
-    text_color,
-    featuring,
-    partner,
-    product_stock
-  } = product;
-
+const ProductForm = ({ product, handleSubmit }) => {
   return (
     <div>
       <Formik
         initialValues={{
-          name: product_name,
-          type: product_type,
-          price: product_price,
-          proof: product_proof,
-          description: product_descr,
-          image: product_img,
-          background: product_bg,
-          titleColor: title_color,
-          textColor: text_color,
-          featuring: featuring,
-          partner: partner,
-          stock: product_stock
+          name: pathOr('', ['product_name'], product),
+          type: pathOr('', ['product_type'], product),
+          price: pathOr('3', ['product_price'], product),
+          proof: pathOr('', ['product_proof'], product),
+          description: pathOr('', ['product_descr'], product),
+          image: pathOr('', ['product_img'], product),
+          background: pathOr('', ['product_bg'], product),
+          titleColor: pathOr('', ['title_color'], product),
+          textColor: pathOr('', ['text_color'], product),
+          featuring: pathOr(false, ['featuring'], product),
+          partner: pathOr('', ['partner'], product),
+          stock: pathOr(0, ['product_stock'], product)
         }}
         // validate={values => {
         //   const errors = {};
@@ -130,6 +115,7 @@ const EditForm = ({ product, handleSubmit }) => {
                   id='description'
                   name='description'
                   type='description'
+                  label='Description'
                   variant='outlined'
                   margin='normal'
                   multiline
@@ -230,21 +216,22 @@ const EditForm = ({ product, handleSubmit }) => {
                   ></ChangeColors>
                 </div>
               </div>
-              <div className=' my-6 mx-2'>
-                <Typography variant='h6'>Aperçu :</Typography>
-                <div
-                  className='h-full'
-                  style={{
-                    backgroundImage: `url(/static/images/${product_bg})`,
-                    backgroundSize: 'cover'
-                  }}
-                >
-                  {' '}
-                  <SliderContent product={product}></SliderContent>
-                </div>{' '}
-              </div>
+              {product && (
+                <div className=' my-6 mx-2'>
+                  <Typography variant='h6'>Aperçu :</Typography>
+                  <div
+                    className='h-full'
+                    style={{
+                      backgroundImage: `url(/static/images/${product.product_bg})`,
+                      backgroundSize: 'cover'
+                    }}
+                  >
+                    <SliderContent product={product}></SliderContent>
+                  </div>
+                </div>
+              )}
               <StyledButton type='submit' variant='contained' color='secondary'>
-                Modifier
+                {product ? 'Modifier' : 'Créer'}
               </StyledButton>
             </div>
           </form>
@@ -254,7 +241,7 @@ const EditForm = ({ product, handleSubmit }) => {
   );
 };
 
-export default EditForm;
+export default ProductForm;
 
 const StyledTextField = withStyles({
   root: {
