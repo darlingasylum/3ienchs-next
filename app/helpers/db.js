@@ -165,25 +165,24 @@ db.getProduct = function(id, successCallback, failureCallback) {
 };
 
 db.updateProduct = function(product, successCallback, failureCallback) {
-  const sqlQuery = `UPDATE products SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, bg_color = ?,  title_color = ?,  text_color = ?,  featuring = ?,  partner = ?,product_stock = ? WHERE product_id = ?`;
+  const sqlQuery = `UPDATE products SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, title_color = ?,  text_color = ?,  featuring = ?,  partner = ?, product_stock = ? WHERE product_id = ?`;
   const payload = [
-    product.product_name,
-    product.product_type,
-    product.product_price,
-    product.product_proof,
-    product.product_descr,
-    product.product_img,
-    product.product_bg,
-    product.bg_color,
-    product.title_color,
-    product.text_color,
+    product.name,
+    product.type,
+    product.price,
+    product.proof,
+    product.description,
+    product.image,
+    product.background,
+    product.titleColor,
+    product.textColor,
     product.featuring,
     product.partner,
-    product.product_stock,
-    product.product_id
+    product.stock,
+    product.id
   ];
 
-  connection.query(sqlQuery, payload, function(err, rows, res) {
+  const query = connection.query(sqlQuery, payload, function(err, rows, res) {
     if (err) {
       failureCallback(err);
       return;

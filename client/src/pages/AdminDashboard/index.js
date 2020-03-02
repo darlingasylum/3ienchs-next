@@ -32,8 +32,6 @@ export default function AdminDashboard({ data, content }) {
   };
 
   const list = items => {
-    console.log('items', items);
-
     const components = {
       ExpansionPanelProducts: ExpansionPanelProducts
     };

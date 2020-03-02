@@ -1,24 +1,33 @@
 import React from 'react';
 import EditForm from './EditForm/index';
+import { useRouter } from 'next/router';
+
 import { APICall } from '../../../../../utils/APICall';
 
 const EditProduct = ({ product }) => {
+  const router = useRouter();
+
   const handleSubmit = values => {
-    alert(JSON.stringify(values, null, 2));
+    const body = { ...values, id: product.product_id };
 
-    // TODO;
-    // const fetch_param = {
-    //   method: 'POST',
-    //   headers: { 'content-type': 'application/json' },
-    //   body: JSON.stringify(values)
-    // };
+    const fetch_param = {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body)
+    };
 
-    // APICall(`http://localhost:4000/api/products/update`, fetch_param)
-    //   .then(response => {
-    //     console.log('response -->', response);
-    //     return response;
-    //   })
-    //   .catch(err => console.log(err.message));
+    console.log('body! -->', body);
+    APICall(`http://localhost:4000/api/products/update`, fetch_param)
+      .then(response => {
+        return response;
+      })
+      .then(() =>
+        alert(
+          `Bravo, la ${product.product_name} a été correctement mise à jour !`
+        )
+      )
+      .then(router.push('/admindashboard/products'))
+      .catch(err => console.log(err.message));
   };
 
   const booleanFeaturingValue = product.featuring === 0 ? false : true;

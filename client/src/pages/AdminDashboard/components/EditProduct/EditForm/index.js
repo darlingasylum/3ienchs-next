@@ -5,7 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
+import InputImage from './../../InputImage';
+import ChangeColors from './../../ChangeColors';
 import SliderContent from './../../../../../components/Slider/components/SliderContent';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -23,9 +27,25 @@ const EditForm = ({ product, handleSubmit }) => {
     text_color,
     featuring,
     partner,
-    product_stock,
-    product_id
+    product_stock
   } = product;
+
+  const handleLogoChange = file => {
+    // if (rejectedFile) {
+    //   if (rejectedFile.size > LOGO_MAX_SIZE) setFieldError('logo_id', logo.INVALID_SIZE)
+    //   if (!LOGO_ACCEPT.includes(rejectedFile.type)) setFieldError('logo_id', logo.INVALID_FORMAT)
+    //   return
+    // }
+    console.log('file -->', file);
+    // setFieldValue('logo_right', false);
+    // try {
+    //   const { logo_id, logo } = await dispatch(servicesPro.uploadOwnOnlineStoreLogo(acceptedFile))
+    //   setFieldValue('logo_id', logo_id)
+    //   setFieldValue('logo', logo)
+    // } catch (error) {
+    //   // Nothing for now
+    // }
+  };
 
   return (
     <div>
@@ -64,6 +84,7 @@ const EditForm = ({ product, handleSubmit }) => {
           handleChange,
           handleBlur,
           handleSubmit,
+          setFieldValue,
           isSubmitting
           /* and other goodies */
         }) => (
@@ -126,7 +147,6 @@ const EditForm = ({ product, handleSubmit }) => {
                   id='description'
                   name='description'
                   type='description'
-                  label='Degré'
                   variant='outlined'
                   margin='normal'
                   multiline
@@ -174,14 +194,69 @@ const EditForm = ({ product, handleSubmit }) => {
                   value={values.stock}
                 />
               </div>
-              <div
-                className='h-full my-6 mx-2'
-                style={{
-                  backgroundImage: `url(/static/images/${product_bg})`,
-                  backgroundSize: 'cover'
-                }}
-              >
-                <SliderContent product={product}></SliderContent>
+
+              <div className='mt-6'>
+                <StyledTypography variant='h6'>
+                  Modifier les images
+                </StyledTypography>
+                <div className='flex justify-between flex-col-md'>
+                  <StyledPaper>
+                    <InputImage
+                      id='image'
+                      name='image'
+                      type='image'
+                      onChange={handleChange}
+                      value={values.image}
+                      wording='une nouvelle image'
+                    />
+                  </StyledPaper>
+                  <StyledPaper>
+                    <InputImage
+                      id='background'
+                      name='background'
+                      type='background'
+                      onChange={handleChange}
+                      value={values.background}
+                      wording='un nouveau background'
+                    />
+                  </StyledPaper>
+                </div>
+              </div>
+
+              <div className='mt-6 mx-2'>
+                <Typography variant='h6'>Modifier les couleurs</Typography>
+                <div className='flex justify-between flex-col-md'>
+                  <ChangeColors
+                    id='titleColor'
+                    name='titleColor'
+                    type='titleColor'
+                    wording='title'
+                    value={values.titleColor}
+                    onChange={handleChange}
+                  ></ChangeColors>
+
+                  <ChangeColors
+                    id='textColor'
+                    name='textColor'
+                    type='textColor'
+                    wording='text'
+                    value={values.textColor}
+                    onChange={handleChange}
+                  ></ChangeColors>
+                </div>
+              </div>
+              <div className=' my-6 mx-2'>
+                <Typography variant='h6'>Aperçu :</Typography>
+                <div
+                  className='h-full'
+                  style={{
+                    backgroundImage: `url(/static/images/${product_bg})`,
+                    backgroundSize: 'cover'
+                  }}
+                >
+                  {' '}
+                  <SliderContent product={product}></SliderContent>
+                </div>{' '}
               </div>
               <StyledButton type='submit' variant='contained' color='secondary'>
                 Modifier
@@ -208,6 +283,19 @@ const StyledCheckbox = withStyles({
     marginLeft: '0.5rem'
   }
 })(Checkbox);
+
+const StyledTypography = withStyles({
+  root: {
+    marginLeft: '0.5rem'
+  }
+})(Typography);
+
+const StyledPaper = withStyles({
+  root: {
+    flex: 1,
+    margin: '0.5rem'
+  }
+})(Paper);
 
 const StyledButton = withStyles({
   root: {
