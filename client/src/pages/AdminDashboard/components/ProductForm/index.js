@@ -19,18 +19,18 @@ const ProductForm = ({ product, handleSubmit }) => {
     <div>
       <Formik
         initialValues={{
-          name: pathOr('', ['product_name'], product),
-          type: pathOr('', ['product_type'], product),
-          price: pathOr('3', ['product_price'], product),
-          proof: pathOr('', ['product_proof'], product),
-          description: pathOr('', ['product_descr'], product),
-          image: pathOr('', ['product_img'], product),
-          background: pathOr('', ['product_bg'], product),
-          titleColor: pathOr('', ['title_color'], product),
-          textColor: pathOr('', ['text_color'], product),
+          product_name: pathOr('', ['product_name'], product),
+          product_type: pathOr('', ['product_type'], product),
+          product_price: pathOr('3', ['product_price'], product),
+          product_proof: pathOr('', ['product_proof'], product),
+          product_descr: pathOr('', ['product_descr'], product),
+          product_img: pathOr('', ['product_img'], product),
+          product_bg: pathOr('', ['product_bg'], product),
+          title_color: pathOr('', ['title_color'], product),
+          text_color: pathOr('', ['text_color'], product),
           featuring: pathOr(false, ['featuring'], product),
           partner: pathOr('', ['partner'], product),
-          stock: pathOr(0, ['product_stock'], product)
+          product_stock: pathOr(0, ['product_stock'], product)
         }}
         // validate={values => {
         //   const errors = {};
@@ -60,60 +60,60 @@ const ProductForm = ({ product, handleSubmit }) => {
             <div className='flex flex-col'>
               <div className='flex justify-between flex-col-md'>
                 <StyledTextField
-                  id='name'
-                  name='name'
+                  id='product_name'
+                  name='product_name'
                   type='name'
                   label='Nom'
                   variant='outlined'
                   margin='normal'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.name}
+                  value={values.product_name}
                 />
                 {/* {errors.email && touched.email && errors.email} */}
                 <StyledTextField
-                  id='type'
-                  name='type'
+                  id='product_type'
+                  name='product_type'
                   type='type'
                   label='Type'
                   variant='outlined'
                   margin='normal'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.type}
+                  value={values.product_type}
                 />
                 {/* {errors.password && touched.password && errors.password} */}
               </div>
 
               <div className='flex justify-between flex-col-md'>
                 <StyledTextField
-                  id='price'
-                  name='price'
+                  id='product_price'
+                  name='product_price'
                   type='price'
                   label='Prix (€)'
                   variant='outlined'
                   margin='normal'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.price}
+                  value={values.product_price}
                 />
                 <StyledTextField
-                  id='proof'
-                  name='proof'
+                  id='product_proof'
+                  name='product_proof'
                   type='proof'
                   label='Degré'
                   variant='outlined'
                   margin='normal'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.proof}
+                  value={values.product_proof}
                 />
               </div>
 
               <div className='flex justify-between flex-col-md'>
                 <StyledTextField
-                  id='description'
-                  name='description'
+                  id='product_descr'
+                  name='product_descr'
                   type='description'
                   label='Description'
                   variant='outlined'
@@ -121,7 +121,7 @@ const ProductForm = ({ product, handleSubmit }) => {
                   multiline
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.description}
+                  value={values.product_descr}
                 />
               </div>
 
@@ -152,15 +152,15 @@ const ProductForm = ({ product, handleSubmit }) => {
               </div>
               <div className='flex justify-between flex-col-md'>
                 <StyledTextField
-                  id='stock'
-                  name='stock'
+                  id='product_stock'
+                  name='product_stock'
                   type='stock'
                   label='Stock'
                   variant='outlined'
                   margin='normal'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.stock}
+                  value={values.product_stock}
                 />
               </div>
 
@@ -171,23 +171,25 @@ const ProductForm = ({ product, handleSubmit }) => {
                 <div className='flex justify-between flex-col-md'>
                   <StyledPaper>
                     <InputImage
-                      id='image'
-                      name='image'
+                      id='product_img'
+                      name='product_img'
                       type='image'
-                      onChange={file => setFieldValue('image', file[0].path)}
-                      value={values.image}
+                      onChange={file =>
+                        setFieldValue('product_img', file[0].path)
+                      }
+                      value={values.product_img}
                       wording='une nouvelle image'
                     />
                   </StyledPaper>
                   <StyledPaper>
                     <InputImage
-                      id='background'
-                      name='background'
+                      id='product_bg'
+                      name='product_bg'
                       type='background'
                       onChange={file =>
-                        setFieldValue('background', file[0].path)
+                        setFieldValue('product_bg', file[0].path)
                       }
-                      value={values.background}
+                      value={values.product_bg}
                       wording='un nouveau background'
                     />
                   </StyledPaper>
@@ -198,38 +200,42 @@ const ProductForm = ({ product, handleSubmit }) => {
                 <Typography variant='h6'>Modifier les couleurs</Typography>
                 <div className='flex justify-between flex-col-md'>
                   <ChangeColors
-                    id='titleColor'
-                    name='titleColor'
-                    type='titleColor'
+                    id='title_color'
+                    name='title_color'
+                    type='title_color'
                     wording='title'
-                    value={values.titleColor}
+                    value={values.title_color}
                     onChange={handleChange}
                   ></ChangeColors>
 
                   <ChangeColors
-                    id='textColor'
-                    name='textColor'
-                    type='textColor'
+                    id='text_color'
+                    name='text_color'
+                    type='text_color'
                     wording='text'
-                    value={values.textColor}
+                    value={values.text_color}
                     onChange={handleChange}
                   ></ChangeColors>
                 </div>
               </div>
-              {product && (
-                <div className=' my-6 mx-2'>
-                  <Typography variant='h6'>Aperçu :</Typography>
-                  <div
-                    className='h-full'
-                    style={{
-                      backgroundImage: `url(/static/images/${product.product_bg})`,
-                      backgroundSize: 'cover'
-                    }}
-                  >
-                    <SliderContent product={product}></SliderContent>
-                  </div>
+
+              <div className=' my-6 mx-2'>
+                <Typography variant='h6'>Aperçu :</Typography>
+                <div
+                  className='h-full'
+                  style={{
+                    backgroundImage: values.product_bg
+                      ? `url(/static/images/${values.product_bg})`
+                      : 'none',
+                    backgroundColor: values.product_bg ? 'none' : '#dddbe6',
+                    borderRadius: values.product_bg ? 'none' : '10px',
+                    backgroundSize: 'cover'
+                  }}
+                >
+                  <SliderContent product={values}></SliderContent>
                 </div>
-              )}
+              </div>
+
               <StyledButton type='submit' variant='contained' color='secondary'>
                 {product ? 'Modifier' : 'Créer'}
               </StyledButton>

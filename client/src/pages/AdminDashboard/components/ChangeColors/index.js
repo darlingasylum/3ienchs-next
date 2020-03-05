@@ -14,7 +14,7 @@ export default function ChangeColors({ value, wording, onChange }) {
           }}
         ></div>
         <TextField
-          id={`${wording}Color`}
+          id={`${wording}_color`}
           variant='outlined'
           onChange={onChange}
           value={value}

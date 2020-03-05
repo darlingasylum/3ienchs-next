@@ -9,7 +9,7 @@ const EditProduct = ({ product }) => {
 
   const handleSubmit = values => {
     const body = { ...values, id: product.product_id };
-
+    console.log('body depuis front -->', body);
     const fetch_param = {
       method: 'PATCH',
       headers: { 'content-type': 'application/json' },
@@ -21,9 +21,7 @@ const EditProduct = ({ product }) => {
         return response;
       })
       .then(() =>
-        alert(
-          `Bravo, la ${product.product_name} a été correctement mise à jour !`
-        )
+        alert(`Bravo, la ${body.product_name} a été correctement mise à jour !`)
       )
       .then(router.push('/admindashboard/products'))
       .catch(err => console.log(err.message));

@@ -25,14 +25,16 @@ const SliderContent = ({ product, withPrices }) => {
         >
           {product.product_type}
         </h4>
-        <h5
-          className='nickname m-0 display-none-md'
-          style={{
-            color: `${product.text_color}`
-          }}
-        >
-          {product.product_proof}%
-        </h5>
+        {product.product_proof && (
+          <h5
+            className='nickname m-0 display-none-md'
+            style={{
+              color: `${product.text_color}`
+            }}
+          >
+            {product.product_proof}%
+          </h5>
+        )}
       </div>
       <div className='text-align-center-md pl-5'>
         <p
@@ -44,12 +46,14 @@ const SliderContent = ({ product, withPrices }) => {
           {product.product_descr}
         </p>
       </div>
-      <div className='min-height-150-px slider-beer-size relative'>
-        <img
-          className='absolute bottom-9 l-0'
-          src={`/static/images/${product.product_img}`}
-        ></img>
-      </div>
+      {product.product_img && (
+        <div className='min-height-150-px slider-beer-size relative'>
+          <img
+            className='absolute bottom-9 l-0'
+            src={`/static/images/${product.product_img}`}
+          ></img>
+        </div>
+      )}
     </div>
   );
 };

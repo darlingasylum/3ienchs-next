@@ -99,21 +99,20 @@ db.getAllUsers = function(successCallback, failureCallback) {
 db.createProduct = function(product, successCallback, failureCallback) {
   const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_bg, title_color, text_color, featuring, partner, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
   const payload = [
-    product.name,
-    product.type,
-    product.price,
-    product.proof,
-    product.description,
-    product.image,
-    product.background,
-    product.titleColor,
-    product.textColor,
+    product.product_name,
+    product.product_type,
+    product.product_price,
+    product.product_proof,
+    product.product_descr,
+    product.product_img,
+    product.product_bg,
+    product.title_color,
+    product.text_color,
     product.featuring,
     product.partner,
-    product.stock
+    product.product_stock
   ];
-
-  connection.query(sqlQuery, payload, function(err, rows, res) {
+  const query = connection.query(sqlQuery, payload, function(err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -173,18 +172,18 @@ db.getProduct = function(id, successCallback, failureCallback) {
 db.updateProduct = function(product, successCallback, failureCallback) {
   const sqlQuery = `UPDATE products SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, title_color = ?,  text_color = ?,  featuring = ?,  partner = ?, product_stock = ? WHERE product_id = ?`;
   const payload = [
-    product.name,
-    product.type,
-    product.price,
-    product.proof,
-    product.description,
-    product.image,
-    product.background,
-    product.titleColor,
-    product.textColor,
+    product.product_name,
+    product.product_type,
+    product.product_price,
+    product.product_proof,
+    product.product_descr,
+    product.product_img,
+    product.product_bg,
+    product.title_color,
+    product.text_color,
     product.featuring,
     product.partner,
-    product.stock,
+    product.product_stock,
     product.id
   ];
 
@@ -232,16 +231,12 @@ db.makeOrder = function(input, successCallback, failureCallback) {
       if (err) {
         return failureCallback(err, null);
       } else {
-        console.log('resultats requete 1 --> ', resultsFromQ1);
-
         const tmp = [];
         input.basket.forEach((element, i) => {
           connection.query(
             q2,
             [resultsFromQ1.insertId, element.product_id, element.quantity],
             function(err, dataFromQ2, fields) {
-              console.log('requete 2 --> ', this.sql);
-              console.log('resultats requete 2 --> ', dataFromQ2);
               if (err) return failureCallback(err, null);
               tmp.push(dataFromQ2);
               if (i === input.basket.length - 1) {
@@ -253,7 +248,6 @@ db.makeOrder = function(input, successCallback, failureCallback) {
       }
     }
   );
-  console.log('requete 1 --> ', query1.sql);
 };
 
 db.checkOrderNumber = function(orderNumber, successCallback, failureCallback) {

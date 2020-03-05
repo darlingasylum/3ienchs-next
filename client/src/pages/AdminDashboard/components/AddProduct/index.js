@@ -18,7 +18,7 @@ const createProduct = () => {
       .then(response => {
         return response;
       })
-      .then(() => alert(`Bravo, vous avez bien créé la ${values.name}`))
+      .then(() => alert(`Bravo, vous avez bien créé la ${values.product_name}`))
       .then(router.push('/admindashboard/products'))
       .catch(err => console.log(err.message));
   };
