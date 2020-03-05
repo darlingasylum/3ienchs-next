@@ -9,7 +9,6 @@ const EditProduct = ({ product }) => {
 
   const handleSubmit = values => {
     const body = { ...values, id: product.product_id };
-    console.log('body depuis front -->', body);
     const fetch_param = {
       method: 'PATCH',
       headers: { 'content-type': 'application/json' },
