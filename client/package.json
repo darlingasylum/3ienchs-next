@@ -29,7 +29,8 @@
     "react-dropzone": "^10.2.1",
     "react-redux": "^7.1.1",
     "redux": "^4.0.4",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "yup": "^0.28.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.3",
