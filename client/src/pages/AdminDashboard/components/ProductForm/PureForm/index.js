@@ -170,6 +170,11 @@ export default function PureForm({
                 value={values.product_img}
                 wording='une nouvelle image'
               />
+              {errors.product_img && (
+                <Typography variant='caption' color='error'>
+                  {errors.product_img}
+                </Typography>
+              )}
             </StyledPaper>
             <StyledPaper>
               <InputImage
@@ -179,6 +184,11 @@ export default function PureForm({
                 value={values.product_bg}
                 wording='un nouveau background'
               />
+              {errors.product_bg && (
+                <Typography variant='caption' color='error'>
+                  {errors.product_bg}
+                </Typography>
+              )}
             </StyledPaper>
           </div>
         </div>
@@ -231,6 +241,8 @@ export default function PureForm({
         <StyledButton type='submit' variant='contained' color='secondary'>
           {product ? 'Modifier' : 'Créer'}
         </StyledButton>
+        {/* SEEE IF WAY TO CHECK PRODUCT WITH KEYS TO DISPLAY GLOBAL ERROR - OR CHECK LBC */}
+        {/* {errors && <Typography variant='h6'>Certains</Typography>} */}
       </div>
     </form>
   );
@@ -257,6 +269,9 @@ const StyledTypography = withStyles({
 
 const StyledPaper = withStyles({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     flex: 1,
     margin: '0.5rem'
   }
