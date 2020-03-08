@@ -1,13 +1,13 @@
 import React from 'react';
-import BackOfficeLayout from './../../layouts/BackOfficeLayout/index';
 
 import jwt_decode from 'jwt-decode';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
-import './../../less/style.less';
+import BackOfficeLayout from './../../layouts/BackOfficeLayout/index';
+import AdminDashboard from './../../src/pages/AdminDashboard';
 
-import fetch from 'isomorphic-unfetch';
+import './../../less/style.less';
 
 const AdminDashboardPage = () => {
   try {
@@ -16,15 +16,17 @@ const AdminDashboardPage = () => {
     if (isAdmin) {
       return (
         <BackOfficeLayout>
-          <div className='mt-20'>Bienvenue sur le back office!</div>
-          <div className='mt-2'>Que souhaitez-vous faire ? </div>
+          <AdminDashboard></AdminDashboard>
         </BackOfficeLayout>
       );
     } else
       return (
         <div>
           Vous n'avez pas les autorisations nécessaires pour accéder à cette
-          page. Veuillez vous connecter <Link href='/admin'> ici</Link>
+          page. Veuillez vous connecter
+          <Link href='/admin'>
+            <a>ici</a>
+          </Link>
         </div>
       );
   } catch (error) {
@@ -32,7 +34,10 @@ const AdminDashboardPage = () => {
     return (
       <div>
         Vous n'avez pas les autorisations nécessaires pour accéder à cette page.
-        Veuillez vous connecter <Link href='/admin'> ici</Link>
+        Veuillez vous connecter
+        <Link href='/admin'>
+          <a>ici</a>
+        </Link>
       </div>
     );
   }
