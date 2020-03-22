@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SliderContent = ({ product, withPrices }) => {
+  console.log('product -->', product);
   return (
     <div
       className='w-full h-full flex flex-col-md justify-center items-center px-10 py-10 beer-div '
@@ -17,6 +18,25 @@ const SliderContent = ({ product, withPrices }) => {
         >
           {product.product_name}
         </h3>
+
+        {product.featuring === 1 && (
+          <h4
+            className='nickname mb-8'
+            style={{
+              color: `${product.text_color}`
+            }}
+          >
+            <span
+              style={{
+                color: `${product.title_color}`
+              }}
+            >
+              feat {''}
+            </span>
+            {product.partner}
+          </h4>
+        )}
+
         <h4
           className='nickname m-0'
           style={{
