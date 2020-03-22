@@ -24,6 +24,8 @@ export default function PureForm({
   setFieldValue
   /* and other goodies */
 }) {
+  const haveBackground = values.product_bg.length > 0;
+
   return (
     <form onSubmit={handleSubmit}>
       <div className='flex flex-col'>
@@ -230,11 +232,11 @@ export default function PureForm({
           <div
             className='h-full'
             style={{
-              backgroundImage: values.product_bg
+              backgroundImage: haveBackground
                 ? `url(/static/images/${values.product_bg})`
                 : 'none',
-              backgroundColor: values.product_bg ? 'none' : '#dddbe6',
-              borderRadius: values.product_bg ? 'none' : '10px',
+              backgroundColor: haveBackground ? '#fafafa' : '#dddbe6',
+              borderRadius: haveBackground ? 'none' : '10px',
               backgroundSize: 'cover'
             }}
           >
