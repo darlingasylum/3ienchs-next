@@ -160,19 +160,21 @@ export default function PureForm({
         </div>
 
         <div className='mt-6'>
-          <StyledTypography variant='h6'>Modifier les images</StyledTypography>
+          <StyledTypography variant='h6'>
+            {product ? 'Modifier' : 'Choisir'} les images
+          </StyledTypography>
           <div className='flex justify-between flex-col-md'>
             <StyledPaper>
               <InputImage
                 id='product_img'
                 name='product_img'
                 onChange={file => setFieldValue('product_img', file[0].path)}
-                value={values.product_img}
-                wording='une nouvelle image'
+                value={values.product_img || 'no-image.jpg'}
+                wording='photo de la bière'
               />
               {errors.product_img && (
                 <Typography variant='caption' color='error'>
-                  {errors.product_img}
+                  {errors.product_img && touched.product_img}
                 </Typography>
               )}
             </StyledPaper>
@@ -181,12 +183,12 @@ export default function PureForm({
                 id='product_bg'
                 name='product_bg'
                 onChange={file => setFieldValue('product_bg', file[0].path)}
-                value={values.product_bg}
-                wording='un nouveau background'
+                value={values.product_bg || 'no-image.jpg'}
+                wording='background'
               />
               {errors.product_bg && (
                 <Typography variant='caption' color='error'>
-                  {errors.product_bg}
+                  {errors.product_bg && touched.product_bg}
                 </Typography>
               )}
             </StyledPaper>
@@ -194,7 +196,9 @@ export default function PureForm({
         </div>
 
         <div className='mt-6 mx-2'>
-          <Typography variant='h6'>Modifier les couleurs</Typography>
+          <Typography variant='h6'>
+            {product ? 'Modifier' : 'Choisir'} les couleurs
+          </Typography>
           <div className='flex justify-between flex-col-md min-height-150-px'>
             <ChangeColors
               id='title_color'
