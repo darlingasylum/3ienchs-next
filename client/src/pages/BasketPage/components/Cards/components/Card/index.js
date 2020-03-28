@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddRemove from '../../../../../../components/AddButton/components/AddRemove';
+import HandleQuantity from '../../../../../../components/AddButton/components/HandleQuantity';
 
 const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
   let priceArticles;
@@ -42,7 +42,10 @@ const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
 
       <div className='w-half flex justify-center'>
         {!isTotal && (
-          <AddRemove currentBeer={product} withColoredText></AddRemove>
+          <HandleQuantity
+            currentBeer={product}
+            withColoredText
+          ></HandleQuantity>
         )}
       </div>
       <div className='w-25-percent flex justify-center'>

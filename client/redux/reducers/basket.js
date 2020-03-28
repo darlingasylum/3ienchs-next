@@ -1,6 +1,6 @@
 import { actionTypes } from './../actions';
 
-const exampleInitialState = {
+const initialState = {
   articles: [
     // {
     //   quantity: 3,
@@ -9,20 +9,8 @@ const exampleInitialState = {
   ]
 };
 
-// function App(state = {}, action) {
-//   switch (action.type) {
-//     case "INITIALIZE":
-//       return {
-//         appName: action.label,
-//         initialize: true
-//       };
-//     default:
-//       return state;
-//   }
-// }
-
 // REDUCERS
-const basket = (state = exampleInitialState, action) => {
+const basket = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADDTOBASKET:
       // check if beer is already in basket
@@ -71,6 +59,9 @@ const basket = (state = exampleInitialState, action) => {
         ...state,
         articles
       };
+
+    case actionTypes.RESET:
+      return initialState;
 
     default:
       return state;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddPanier, DeleteFromPanier } from './../../../../../redux/actions';
+import { AddPanier, DeleteFromPanier } from '../../../../../redux/actions';
 
 const basketSelector = state => state.basket.articles;
 
@@ -16,9 +16,8 @@ const useCounter = () => {
   return { add, remove };
 };
 
-//le composant AddRemove est appelé SOIT par AddButton dans le slider
-// (qui lui passe en props la liste des products)
-const AddRemove = ({ currentBeer, withColoredText }) => {
+//Handle Quantity is called either by AddButton (in Slider) either by Card (in BasketPage)
+const HandleQuantity = ({ currentBeer, withColoredText }) => {
   const articles = useSelector(basketSelector);
   const { add, remove } = useCounter();
 
@@ -74,4 +73,4 @@ const AddRemove = ({ currentBeer, withColoredText }) => {
   );
 };
 
-export default AddRemove;
+export default HandleQuantity;

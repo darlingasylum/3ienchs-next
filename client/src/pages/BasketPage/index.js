@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { APICall } from './../../../utils/APICall';
 
@@ -9,11 +9,22 @@ import Cards from './components/Cards';
 import Calendar from './../../components/Calendar';
 import Button from './../../components/Button';
 import { calculatePrice, countArticles } from './../../../utils/calculatePrice';
+import { ResetBasket } from '../../../redux/actions';
 
 const basketSelector = state => state.basket.articles;
 
-const BasketPage = props => {
+const useRedux = () => {
+  const dispatch = useDispatch();
+  const reset = () => {
+    dispatch(ResetBasket());
+  };
+  return { reset };
+};
+
+const BasketPage = () => {
   let basket = useSelector(basketSelector);
+  const { reset } = useRedux();
+
   const [pickupDate, setDate] = useState(new Date());
   const [order, setOrder] = useState({});
 
@@ -47,6 +58,7 @@ const BasketPage = props => {
       .then(res => {
         setOrder(res.result[0]);
       })
+      .then(() => reset())
       .catch(err => console.log(err));
   };
 
@@ -82,7 +94,7 @@ const BasketPage = props => {
     setDate(date);
   };
 
-  if (basket.length === 0) {
+  if (basket && basket.length === 0 && !order.order_number) {
     return (
       <div className='hero mt-10 w-full'>
         <Basket></Basket>
@@ -94,16 +106,22 @@ const BasketPage = props => {
 
   return (
     <div className='hero mt-10 w-full'>
-      <Basket></Basket>
-      <Title title='Votre panier'></Title>
-      <Cards products={basket}></Cards>
-      <Calendar pickupDate={pickupDate} getDate={getDate} />
-      <Button onClick={handleValidate} className='f2'>
-        Valider la commande
-      </Button>
+      {!order.order_number && (
+        <div>
+          <Basket></Basket>
+          <Title title='Votre panier'></Title>
+          <Cards products={basket}></Cards>
+          <Calendar pickupDate={pickupDate} getDate={getDate} />
+          <Button onClick={handleValidate} className='f2'>
+            Valider la commande
+          </Button>
+        </div>
+      )}
       {order.order_number && (
-        <div className='nickname mx-auto w-30-percent text-align-center'>
-          <p className='m-0'>Merci !</p>
+        <div className='nickname mx-auto mt-30 w-30-percent text-align-center'>
+          <p className='m-0'>
+            Merci, votre commande a bien été prise en compte !
+          </p>
           <p className='mt-2'>
             Votre numéro de commande : {order.order_number}
           </p>
