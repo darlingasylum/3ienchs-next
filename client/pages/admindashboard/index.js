@@ -23,7 +23,7 @@ const AdminDashboardPage = () => {
       return (
         <div>
           Vous n'avez pas les autorisations nécessaires pour accéder à cette
-          page. Veuillez vous connecter
+          page. Veuillez vous connecter {''}
           <Link href='/admin'>
             <a>ici</a>
           </Link>
@@ -34,7 +34,7 @@ const AdminDashboardPage = () => {
     return (
       <div>
         Vous n'avez pas les autorisations nécessaires pour accéder à cette page.
-        Veuillez vous connecter
+        Veuillez vous connecter {''}
         <Link href='/admin'>
           <a>ici</a>
         </Link>

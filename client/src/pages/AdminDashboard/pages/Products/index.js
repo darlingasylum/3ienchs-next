@@ -7,7 +7,7 @@ import ExpansionPanelProducts from './../../components/ExpansionPanelProducts';
 
 import { APICall } from '../../../../../utils/APICall';
 
-export default function AdminDashboard({ data, content }) {
+export default function ProductsDashboard({ data, content }) {
   const [items, setItems] = useState(data);
 
   const getItems = () => {
