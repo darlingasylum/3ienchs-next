@@ -267,6 +267,59 @@ db.getOrderNumber = function(orderId, successCallback, failureCallback) {
   });
 };
 
+db.getAllOrders = function(successCallback, failureCallback) {
+  const sqlQuery = `SELECT order_id AS id, order_number AS number, order_date AS date, order_pickupdate AS pickupdate, order_price AS price, order_over AS over, details_productqty AS product_qty, product_id, product_name FROM order_details JOIN orders ON order_details.details_orderid = orders.order_id JOIN products ON details_productid = products.product_id ORDER BY details_orderid;`;
+  connection.query(sqlQuery, function(err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
+db.updateOrder = function(order, successCallback, failureCallback) {
+  // TO DO
+  // const sqlQuery = `UPDATE orders SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, title_color = ?,  text_color = ?,  featuring = ?,  partner = ?, product_stock = ? WHERE product_id = ?`;
+  // const payload = [
+  //   product.product_name,
+  //   product.product_type,
+  //   product.product_price,
+  //   product.product_proof,
+  //   product.product_descr,
+  //   product.product_img,
+  //   product.product_bg,
+  //   product.title_color,
+  //   product.text_color,
+  //   product.featuring,
+  //   product.partner,
+  //   product.product_stock,
+  //   product.id
+  // ];
+  // const query = connection.query(sqlQuery, payload, function(err, rows, res) {
+  //   if (err) {
+  //     failureCallback(err);
+  //     return;
+  //   }
+  //   successCallback(rows);
+  // });
+};
+
+db.deleteOrder = function(id, successCallback, failureCallback) {
+  const sqlQuery = `DELETE FROM orders WHERE order_id IN (?)`;
+  connection.query(sqlQuery, [id], function(err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    if (rows.affectedRows > 0) {
+      successCallback(rows[0]);
+    } else {
+      failureCallback('order not found.');
+    }
+  });
+};
+
 //EVENTS
 
 db.createEvent = function(event, successCallback, failureCallback) {

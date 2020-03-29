@@ -8,11 +8,10 @@ const db = require('../helpers/db');
 module.exports = {
   makeOrder,
   checkOrderNumber,
-  getOrderNumber
-  //   getAllProducts,
-  //   getProduct,
-  //   updateProduct,
-  //   deleteProduct
+  getOrderNumber,
+  getAllOrders,
+  updateOrder,
+  deleteOrder
 };
 
 function makeOrder(body, callback) {
@@ -71,41 +70,23 @@ function getOrderNumber(id, callback) {
   );
 }
 
-// function getFeatProducts(callback) {
-//   db.getFeatProducts(
-//     function(res) {
-//       return callback({
-//         success: true,
-//         message: 'Successfully got list of featured products.',
-//         products: res
-//       });
-//     },
-//     function(err) {
-//       return callback({
-//         success: false,
-//         message: 'Cannot get list of featured products.'
-//       });
-//     }
-//   );
-// }
-
-// function getAllProducts(callback) {
-//   db.getAllProducts(
-//     function(res) {
-//       return callback({
-//         success: true,
-//         message: 'Successfully got list of all products.',
-//         products: res
-//       });
-//     },
-//     function(err) {
-//       return callback({
-//         success: false,
-//         message: 'Cannot get list of all products.'
-//       });
-//     }
-//   );
-// }
+function getAllOrders(callback) {
+  db.getAllOrders(
+    function(res) {
+      return callback({
+        success: true,
+        message: 'Successfully got list of all orders.',
+        orders: res
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot get list of all orders.'
+      });
+    }
+  );
+}
 
 // function getProduct(body, callback) {
 //   db.getProduct(
@@ -126,40 +107,40 @@ function getOrderNumber(id, callback) {
 //   );
 // }
 
-// function updateProduct(body, callback) {
-//   db.updateProduct(
-//     body,
-//     function(res) {
-//       return callback({
-//         success: true,
-//         message: 'Successfully updated product',
-//         product: res
-//       });
-//     },
-//     function(err) {
-//       return callback({
-//         success: false,
-//         message: 'Cannot update product.'
-//       });
-//     }
-//   );
-// }
+function updateOrder(id, callback) {
+  db.updateOrder(
+    body,
+    function(res) {
+      return callback({
+        success: true,
+        message: 'Successfully updated product',
+        order: res
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot update product.'
+      });
+    }
+  );
+}
 
-// function deleteProduct(body, callback) {
-//   db.deleteProduct(
-//     body,
-//     function(res) {
-//       return callback({
-//         success: true,
-//         message: 'Successfully deleted product',
-//         product: res
-//       });
-//     },
-//     function(err) {
-//       return callback({
-//         success: false,
-//         message: 'Cannot delete product.'
-//       });
-//     }
-//   );
-// }
+function deleteOrder(id, callback) {
+  db.deleteOrder(
+    id,
+    function(res) {
+      return callback({
+        success: true,
+        message: 'Successfully deleted order',
+        order: res
+      });
+    },
+    function(err) {
+      return callback({
+        success: false,
+        message: 'Cannot delete order.'
+      });
+    }
+  );
+}
