@@ -32,6 +32,11 @@ export default class Header extends Component {
                 </Link>
               </li>
               <li className='pr-10 display-none-xs h-10 align-middle lh-navbar'>
+                <Link href='/admindashboard/orders' useActive>
+                  <a>Commandes</a>
+                </Link>
+              </li>
+              <li className='pr-10 display-none-xs h-10 align-middle lh-navbar'>
                 <Link href='/admindashboard/agenda' useActive>
                   <a>Agenda</a>
                 </Link>
