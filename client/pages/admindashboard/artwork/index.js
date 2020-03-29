@@ -46,7 +46,6 @@ Artwork.getInitialProps = async function() {
   );
 
   const data = await artists.json();
-  console.log();
   return {
     artists: data.artists
   };

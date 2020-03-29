@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SliderContent = ({ product, withPrices }) => {
-  console.log('product -->', product);
   return (
     <div
       className='w-full h-full flex flex-col-md justify-center items-center px-10 py-10 beer-div '

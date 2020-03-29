@@ -25,14 +25,12 @@ class Header extends Component {
   state = { sideMenuOpen: false };
 
   burgerToggleClickHandler = () => {
-    console.log('coucou depuis header.js');
     this.setState(previousState => {
       return { sideMenuOpen: !previousState.sideMenuOpen };
     });
   };
 
   backdropClickHandler = () => {
-    console.log('yo');
     this.setState({ sideMenuOpen: false });
   };
 

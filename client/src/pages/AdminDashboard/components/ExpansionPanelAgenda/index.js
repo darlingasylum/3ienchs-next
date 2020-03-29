@@ -25,7 +25,6 @@ export default function ExpansionPanelEvent({ product, getItems }) {
 
     APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
       .then(response => {
-        console.log('response -->', response);
         setOpen(false);
         getItems();
         return response;

@@ -13,7 +13,7 @@ import { ResetBasket } from '../../../redux/actions';
 
 const basketSelector = state => state.basket.articles;
 
-const useRedux = () => {
+const useStore = () => {
   const dispatch = useDispatch();
   const reset = () => {
     dispatch(ResetBasket());
@@ -23,7 +23,7 @@ const useRedux = () => {
 
 const BasketPage = () => {
   let basket = useSelector(basketSelector);
-  const { reset } = useRedux();
+  const { reset } = useStore();
 
   const [pickupDate, setDate] = useState(new Date());
   const [order, setOrder] = useState({});
@@ -62,7 +62,6 @@ const BasketPage = () => {
       .catch(err => console.log(err));
   };
 
-  //
   const handleValidate = () => {
     const orderNumber = checkOrderNumber();
 

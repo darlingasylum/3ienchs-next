@@ -31,7 +31,6 @@ export default function ExpansionPanelProducts({ product, getItems }) {
 
   const handleClick = (event, id) => {
     router.push(`/admindashboard/products/edit/${id}`);
-    console.log('coucou id -->', id);
   };
 
   const handleDelete = id => {
@@ -42,7 +41,6 @@ export default function ExpansionPanelProducts({ product, getItems }) {
 
     APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
       .then(response => {
-        console.log('response -->', response);
         setOpen(false);
         getItems();
         return response;

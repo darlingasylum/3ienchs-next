@@ -1,16 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddPanier, DeleteFromPanier } from '../../../../../redux/actions';
+import { AddToBasket, DeleteFromBasket } from '../../../../../redux/actions';
 
 const basketSelector = state => state.basket.articles;
 
-const useCounter = () => {
+const useStore = () => {
   const dispatch = useDispatch();
   const add = product => {
-    dispatch(AddPanier(product));
+    dispatch(AddToBasket(product));
   };
   const remove = product => {
-    dispatch(DeleteFromPanier(product));
+    dispatch(DeleteFromBasket(product));
   };
 
   return { add, remove };
@@ -19,7 +19,7 @@ const useCounter = () => {
 //Handle Quantity is called either by AddButton (in Slider) either by Card (in BasketPage)
 const HandleQuantity = ({ currentBeer, withColoredText }) => {
   const articles = useSelector(basketSelector);
-  const { add, remove } = useCounter();
+  const { add, remove } = useStore();
 
   const beerQuantity = () => {
     let isBasketEmpty = articles.length === 0 ? true : false;

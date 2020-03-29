@@ -13,7 +13,6 @@ export default function AdminDashboard({ data, content }) {
   const getItems = () => {
     APICall(content.APIurl)
       .then(response => {
-        console.log('response all products -->', response);
         return response;
       })
       .then(response => setItems(response.products))

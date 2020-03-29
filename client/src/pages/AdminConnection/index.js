@@ -42,7 +42,6 @@ const AdminConnection = () => {
 
     APICall(`http://localhost:4000/api/users/authenticate`, fetch_param)
       .then(response => {
-        console.log('response -->', response);
         return response.token;
       })
       .then(token => checkAuthorization(token))

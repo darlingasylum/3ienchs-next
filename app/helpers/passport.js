@@ -13,7 +13,7 @@ module.exports = function(passport) {
 
   passport.use(
     new JwtStrategy(opts, function(jwt_payload, callback) {
-      console.log('jwt payload -->', jwt_payload);
+      //console.log('jwt payload -->', jwt_payload);
       db.findUser(
         { email: jwt_payload.user_email },
         function(res) {

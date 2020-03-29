@@ -4,14 +4,14 @@ export const actionTypes = {
   RESET: 'RESET'
 };
 
-export const AddPanier = articlesToAdd => {
+export const AddToBasket = articlesToAdd => {
   return {
     type: actionTypes.ADDTOBASKET,
     payload: articlesToAdd
   };
 };
 
-export const DeleteFromPanier = articlesToDelete => {
+export const DeleteFromBasket = articlesToDelete => {
   return {
     type: actionTypes.REMOVEFROMBASKET,
     payload: articlesToDelete
