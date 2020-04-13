@@ -2,7 +2,6 @@ import React from 'react';
 import jwt_decode from 'jwt-decode';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import AdminDashboard from './../../../src/pages/AdminDashboard/index';
 
 import BackOfficeLayout from '../../../layouts/BackOfficeLayout';
 import './../../../less/style.less';
@@ -11,7 +10,7 @@ const Agenda = ({ events }) => {
   const content = {
     type: 'ExpansionPanelAgenda',
     addButton: 'ajouter un nouvel event',
-    APIurl: 'http://localhost:4000/api/products/getAllProducts'
+    APIurl: 'http://localhost:4000/api/products/getAllProducts',
   };
   //   try {
   //     const token = Cookies.get('token');
@@ -22,9 +21,7 @@ const Agenda = ({ events }) => {
 
   return (
     <BackOfficeLayout>
-      <AdminDashboard data={events} content={content}>
-        <div className='mt-10'>Coucou je suis AGENDA</div>
-      </AdminDashboard>
+      <div className='mt-10'>Coucou je suis Agenda</div>
     </BackOfficeLayout>
   );
   //     } else
@@ -47,11 +44,11 @@ const Agenda = ({ events }) => {
 
 export default Agenda;
 
-Agenda.getInitialProps = async function() {
+Agenda.getInitialProps = async function () {
   const events = await fetch('http://localhost:4000/api/events/getAll');
 
   const data = await events.json();
   return {
-    events: data.events
+    events: data.events,
   };
 };

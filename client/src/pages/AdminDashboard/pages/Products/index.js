@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 
-import ExpansionPanel from './../../components/ExpansionPanelAgenda';
 import ExpansionPanelProducts from './../../components/ExpansionPanelProducts';
 
 import { APICall } from '../../../../../utils/APICall';
@@ -12,21 +11,21 @@ export default function ProductsDashboard({ data, content }) {
 
   const getItems = () => {
     APICall(content.APIurl)
-      .then(response => {
+      .then((response) => {
         return response;
       })
-      .then(response => setItems(response.products))
-      .catch(err => console.log(err.message));
+      .then((response) => setItems(response.products))
+      .catch((err) => console.log(err.message));
   };
 
-  const list = items => {
+  const list = (items) => {
     const components = {
-      ExpansionPanelProducts: ExpansionPanelProducts
+      ExpansionPanelProducts: ExpansionPanelProducts,
     };
 
     const ExpansionPanel = components[content.type];
     if (items.length > 0) {
-      return items.map(product => (
+      return items.map((product) => (
         <ExpansionPanel
           product={product}
           key={product.product_id}
@@ -38,7 +37,7 @@ export default function ProductsDashboard({ data, content }) {
   };
 
   return (
-    <div className='mt-10'>
+    <div className='mt-18 ml-8 mr-8'>
       <Link href='/admindashboard/products/add'>
         <Button variant='contained' color='secondary'>
           {content.addButton}

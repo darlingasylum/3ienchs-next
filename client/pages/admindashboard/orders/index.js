@@ -4,22 +4,23 @@ import Cookies from 'js-cookie';
 import Link from 'next/link';
 import Orders from './../../../src/pages/AdminDashboard/pages/Orders';
 
+import { formatOrders } from './../../../utils/formatOrders';
 import BackOfficeLayout from '../../../layouts/BackOfficeLayout';
 import './../../../less/style.less';
 
 const OrdersPage = ({ orders }) => {
-  //   const content = {
-  //     type: 'ExpansionPanelProducts',
-  //     addButton: 'ajouter une nouvelle bière',
-  //     APIurl: 'http://localhost:4000/api/products/getAllProducts'
-  //   };
+  const content = {
+    type: 'ExpansionPanelOrders',
+    APIurl: 'http://localhost:4000/api/orders/getAll',
+  };
+
   try {
     const token = Cookies.get('token');
     const isAdmin = jwt_decode(token).user_type;
     if (isAdmin) {
       return (
         <BackOfficeLayout>
-          <Orders></Orders>
+          <Orders orders={orders} content={content}></Orders>
         </BackOfficeLayout>
       );
     } else
@@ -47,13 +48,10 @@ const OrdersPage = ({ orders }) => {
 
 export default OrdersPage;
 
-// OrdersPage.getInitialProps = async function() {
-//   const products = await fetch(
-//     'http://localhost:4000/api/products/getAllProducts'
-//   );
-
-//   const data = await products.json();
-//   return {
-//     products: data.products
-//   };
-// };
+OrdersPage.getInitialProps = async function () {
+  const orders = await fetch('http://localhost:4000/api/orders/getAll');
+  const data = await orders.json();
+  return {
+    orders: formatOrders(data.orders),
+  };
+};

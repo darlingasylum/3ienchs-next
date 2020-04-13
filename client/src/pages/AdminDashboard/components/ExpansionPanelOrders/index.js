@@ -15,23 +15,31 @@ import SliderContent from '../../../../components/Slider/components/SliderConten
 
 import { APICall } from '../../../../../utils/APICall';
 
-export default function ExpansionPanelProducts({ product, getItems }) {
-  const [open, setOpen] = useState(false);
+export default function ExpansionPanelOrders({ order, getItems }) {
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openOver, setOpenOver] = useState(false);
   const router = useRouter();
 
-  const {
-    featuring,
-    product_name,
-    product_id,
-    product_bg,
-    product_price,
-    product_stock,
-  } = product;
-  const isFeaturing = featuring ? 'oui' : 'non';
+  const { id, number, date, pickupdate, price, details, email } = order;
 
   const handleClick = (event, id) => {
     router.push(`/admindashboard/products/edit/${id}`);
   };
+
+  // const handleOver = (id) => {
+  //   const fetch_param = {
+  //     method: 'PUT',
+  //     headers: { 'content-type': 'application/json' },
+  //   };
+
+  //   APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
+  //     .then((response) => {
+  //       setOpenDelete(false);
+  //       getItems();
+  //       return response;
+  //     })
+  //     .catch((err) => console.log(err.message));
+  // };
 
   const handleDelete = (id) => {
     const fetch_param = {
@@ -39,33 +47,32 @@ export default function ExpansionPanelProducts({ product, getItems }) {
       headers: { 'content-type': 'application/json' },
     };
 
-    APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
+    APICall(`http://localhost:4000/api/orders/delete/${id}`, fetch_param)
       .then((response) => {
-        setOpen(false);
+        setOpenDelete(false);
         getItems();
         return response;
       })
       .catch((err) => console.log(err.message));
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
   };
 
   return (
     <div className='my-2'>
       <AlertDialog
-        open={open}
-        handleClose={handleClose}
-        productName={product_name}
+        open={openDelete}
+        handleClose={handleCloseDelete}
         handleDelete={handleDelete}
-        productId={product_id}
+        id={id}
         wording={{
           alert:
-            "Attention ! Vous êtes sur le point de supprimer l'un de vos produits de la base de données",
-          question: 'êtes vous certain de vouloir supprimer cette bière ?',
+            'Attention ! Vous êtes sur le point de supprimer une commande de la base de données',
+          question: 'êtes vous certain de vouloir supprimer cette commande ?',
           answerYes: 'Oui',
-          answerNo: 'Non je veux garder cette bière',
+          answerNo: 'Non',
         }}
       ></AlertDialog>
       <ExpansionPanel>
@@ -74,38 +81,33 @@ export default function ExpansionPanelProducts({ product, getItems }) {
           id='panel1c-header'
         >
           <div>
-            <Typography>{product_name} </Typography>
+            <Typography>
+              Commande n° {number} , passée le {date},
+            </Typography>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <div
-            className='slider-width h-full'
-            style={{
-              backgroundImage: `url(/static/images/${product_bg})`,
-              backgroundSize: 'cover',
-            }}
-          >
-            <SliderContent product={product}></SliderContent>
-          </div>
           <div className='flex flex-col p-5'>
-            <Typography variant='h6'>Autres informations :</Typography>
+            <Typography variant='h6'></Typography>
 
-            <Typography>Prix : {product_price} €</Typography>
-            <Typography>Featuring ? {isFeaturing}</Typography>
-            <Typography>Stock : {product_stock} </Typography>
+            <Typography>Date de passage : {pickupdate} </Typography>
+            <Typography>Prix total : {price}€</Typography>
+            <Typography>Details : </Typography>
+            {email && <Typography>Contact : </Typography>}
           </div>
-          <div></div>
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          {/* <Link href={`/admindashboard/products/edit/${product_id}`}> */}
-          <Button size='small' onClick={(e) => handleClick(e, product_id)}>
-            Editer
+          <Button size='small' onClick={(e) => handleClick(e, id)}>
+            Commande terminée
           </Button>
-          {/* </Link> */}
 
-          <Button size='small' color='primary' onClick={() => setOpen(true)}>
-            Supprimer
+          <Button
+            size='small'
+            color='primary'
+            onClick={() => setOpenDelete(true)}
+          >
+            Supprimer la commande
           </Button>
         </ExpansionPanelActions>
       </ExpansionPanel>

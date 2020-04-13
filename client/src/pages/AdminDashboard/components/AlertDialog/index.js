@@ -11,8 +11,8 @@ export default function AlertDialog({
   open,
   handleClose,
   handleDelete,
-  productName,
-  productId
+  id,
+  wording,
 }) {
   return (
     <div>
@@ -22,22 +22,18 @@ export default function AlertDialog({
         aria-labelledby='alert-dialog-title'
         aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id='alert-dialog-title'>
-          {
-            "Attention ! Vous êtes sur le point de supprimer l'un de vos produits de la base de données"
-          }
-        </DialogTitle>
+        <DialogTitle id='alert-dialog-title'>{wording.alert}</DialogTitle>
         <DialogContent>
           <DialogContentText id='alert-dialog-description'>
-            Voulez-vous vraiment supprimer la {productName} ?
+            {wording.question}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleDelete(productId)} color='secondary'>
-            Oui
+          <Button onClick={() => handleDelete(id)} color='secondary'>
+            {wording.answerYes}
           </Button>
           <Button onClick={handleClose} color='primary' autoFocus>
-            Non je veux garder cette bière
+            {wording.answerNo}
           </Button>
         </DialogActions>
       </Dialog>
