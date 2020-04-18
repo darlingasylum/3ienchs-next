@@ -10,24 +10,25 @@ module.exports = {
   checkOrderNumber,
   getOrderNumber,
   getAllOrders,
+  updateStatus,
   updateOrder,
-  deleteOrder
+  deleteOrder,
 };
 
 function makeOrder(body, callback) {
   db.makeOrder(
     body,
-    function(orderId) {
+    function (orderId) {
       return callback({
         success: true,
         message: 'Successfully ordered.',
-        orderId: orderId
+        orderId: orderId,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'The order failed.'
+        message: 'The order failed.',
       });
     }
   );
@@ -36,16 +37,16 @@ function makeOrder(body, callback) {
 function checkOrderNumber(number, callback) {
   db.checkOrderNumber(
     number,
-    function() {
+    function () {
       return callback({
         success: true,
-        message: 'this number order exists'
+        message: 'this number order exists',
       });
     },
-    function() {
+    function () {
       return callback({
         success: false,
-        message: "this number order doesn't exists"
+        message: "this number order doesn't exists",
       });
     }
   );
@@ -54,17 +55,17 @@ function checkOrderNumber(number, callback) {
 function getOrderNumber(id, callback) {
   db.getOrderNumber(
     id,
-    function(result) {
+    function (result) {
       return callback({
         success: true,
         message: 'Successfully got order number',
-        result: result
+        result: result,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot get order number.'
+        message: 'Cannot get order number.',
       });
     }
   );
@@ -72,17 +73,36 @@ function getOrderNumber(id, callback) {
 
 function getAllOrders(callback) {
   db.getAllOrders(
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully got list of all orders.',
-        orders: res
+        orders: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot get list of all orders.'
+        message: 'Cannot get list of all orders.',
+      });
+    }
+  );
+}
+
+function updateStatus(id, callback) {
+  db.updateStatus(
+    id,
+    function (res) {
+      return callback({
+        success: true,
+        message: 'Successfully updated order statut to over.',
+        orders: res,
+      });
+    },
+    function (err) {
+      return callback({
+        success: false,
+        message: 'Cannot update order status to over.',
       });
     }
   );
@@ -110,17 +130,17 @@ function getAllOrders(callback) {
 function updateOrder(id, callback) {
   db.updateOrder(
     body,
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully updated product',
-        order: res
+        order: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot update product.'
+        message: 'Cannot update product.',
       });
     }
   );
@@ -129,17 +149,17 @@ function updateOrder(id, callback) {
 function deleteOrder(id, callback) {
   db.deleteOrder(
     id,
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully deleted order',
-        order: res
+        order: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot delete order.'
+        message: 'Cannot delete order.',
       });
     }
   );

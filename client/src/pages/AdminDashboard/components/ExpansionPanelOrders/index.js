@@ -21,19 +21,15 @@ export default function ExpansionPanelOrders({ order, getItems }) {
 
   const { id, number, date, pickupdate, price, details, email } = order;
 
-  const handleClick = (event, id) => {
-    router.push(`/admindashboard/products/edit/${id}`);
-  };
-
   const handleOver = (id) => {
     const fetch_param = {
       method: 'PATCH',
       headers: { 'content-type': 'application/json' },
     };
 
-    APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
+    APICall(`http://localhost:4000/api/orders/updateStatus/${id}`, fetch_param)
       .then((response) => {
-        setOpenDelete(false);
+        setOpenOver(false);
         getItems();
         return response;
       })

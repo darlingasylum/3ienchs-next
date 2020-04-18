@@ -278,31 +278,16 @@ db.getAllOrders = function (successCallback, failureCallback) {
   });
 };
 
-db.updateOrder = function (order, successCallback, failureCallback) {
-  // TO DO
-  // const sqlQuery = `UPDATE orders SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, title_color = ?,  text_color = ?,  featuring = ?,  partner = ?, product_stock = ? WHERE product_id = ?`;
-  // const payload = [
-  //   product.product_name,
-  //   product.product_type,
-  //   product.product_price,
-  //   product.product_proof,
-  //   product.product_descr,
-  //   product.product_img,
-  //   product.product_bg,
-  //   product.title_color,
-  //   product.text_color,
-  //   product.featuring,
-  //   product.partner,
-  //   product.product_stock,
-  //   product.id
-  // ];
-  // const query = connection.query(sqlQuery, payload, function(err, rows, res) {
-  //   if (err) {
-  //     failureCallback(err);
-  //     return;
-  //   }
-  //   successCallback(rows);
-  // });
+db.updateStatus = function (id, successCallback, failureCallback) {
+  const sqlQuery = `UPDATE orders SET order_over = 1 WHERE order_id = ?;`;
+  const payload = [id];
+  const query = connection.query(sqlQuery, payload, function (err, rows, res) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(rows);
+  });
 };
 
 db.deleteOrder = function (id, successCallback, failureCallback) {

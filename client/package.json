@@ -22,7 +22,7 @@
     "jwt-decode": "^2.2.0",
     "less": "^3.10.3",
     "moment": "^2.24.0",
-    "next": "9.0.5",
+    "next": "^9.3.5",
     "ramda": "^0.27.0",
     "react": "16.9.0",
     "react-datepicker": "^2.10.1",
