@@ -8,10 +8,9 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import Link from 'next/link';
+import Moment from 'react-moment';
 
 import AlertDialog from '../AlertDialog';
-import SliderContent from '../../../../components/Slider/components/SliderContent';
 
 import { APICall } from '../../../../../utils/APICall';
 
@@ -26,20 +25,20 @@ export default function ExpansionPanelOrders({ order, getItems }) {
     router.push(`/admindashboard/products/edit/${id}`);
   };
 
-  // const handleOver = (id) => {
-  //   const fetch_param = {
-  //     method: 'PUT',
-  //     headers: { 'content-type': 'application/json' },
-  //   };
+  const handleOver = (id) => {
+    const fetch_param = {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+    };
 
-  //   APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
-  //     .then((response) => {
-  //       setOpenDelete(false);
-  //       getItems();
-  //       return response;
-  //     })
-  //     .catch((err) => console.log(err.message));
-  // };
+    APICall(`http://localhost:4000/api/products/delete/${id}`, fetch_param)
+      .then((response) => {
+        setOpenDelete(false);
+        getItems();
+        return response;
+      })
+      .catch((err) => console.log(err.message));
+  };
 
   const handleDelete = (id) => {
     const fetch_param = {
@@ -60,8 +59,24 @@ export default function ExpansionPanelOrders({ order, getItems }) {
     setOpenDelete(false);
   };
 
+  const handleCloseOver = () => {
+    setOpenOver(false);
+  };
+
   return (
     <div className='my-2'>
+      <AlertDialog
+        open={openOver}
+        handleClose={handleCloseOver}
+        handleDelete={handleOver}
+        id={id}
+        wording={{
+          alert: 'Vous êtes sur le point de passer une commande en "terminée"',
+          question: 'La commande bien été délivrée',
+          answerYes: 'Oui',
+          answerNo: 'Non',
+        }}
+      ></AlertDialog>
       <AlertDialog
         open={openDelete}
         handleClose={handleCloseDelete}
@@ -82,7 +97,11 @@ export default function ExpansionPanelOrders({ order, getItems }) {
         >
           <div>
             <Typography>
-              Commande n° {number} , passée le {date},
+              Commande n° {number} , date de passage :{' '}
+              <b>
+                {' '}
+                <Moment format='DD/MM/YYYY'>{pickupdate}</Moment>
+              </b>
             </Typography>
           </div>
         </ExpansionPanelSummary>
@@ -90,15 +109,17 @@ export default function ExpansionPanelOrders({ order, getItems }) {
           <div className='flex flex-col p-5'>
             <Typography variant='h6'></Typography>
 
-            <Typography>Date de passage : {pickupdate} </Typography>
+            <Typography>
+              Date de la commande : <Moment format='DD/MM/YYYY'>{date}</Moment>
+            </Typography>
             <Typography>Prix total : {price}€</Typography>
-            <Typography>Details : </Typography>
+            <Typography>Details :</Typography>
             {email && <Typography>Contact : </Typography>}
           </div>
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button size='small' onClick={(e) => handleClick(e, id)}>
+          <Button size='small' onClick={(e) => setOpenOver(true)}>
             Commande terminée
           </Button>
 

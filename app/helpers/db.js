@@ -9,11 +9,11 @@ const connection = mysql.createConnection({
   user: config.database_user,
   password: config.database_password,
   database: config.database_name,
-  socketPath: config.socketPath
+  socketPath: config.socketPath,
 });
 
 //Connecting to database
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) {
     console.error('error connecting: ' + err.stack);
     return;
@@ -24,11 +24,11 @@ connection.connect(function(err) {
 
 //USER
 
-db.createUser = function(user, successCallback, failureCallback) {
+db.createUser = function (user, successCallback, failureCallback) {
   var passwordHash;
   crypt.createHash(
     user.password,
-    function(res) {
+    function (res) {
       passwordHash = res;
       connection.query(
         "INSERT INTO `3ienchs-next`.`users` (`lastname`, `firstname`, `email`, `password`) VALUES ('" +
@@ -40,7 +40,7 @@ db.createUser = function(user, successCallback, failureCallback) {
           "', '" +
           passwordHash +
           "');",
-        function(err, rows, fields, res) {
+        function (err, rows, fields, res) {
           if (err) {
             failureCallback(err);
             return;
@@ -49,16 +49,16 @@ db.createUser = function(user, successCallback, failureCallback) {
         }
       );
     },
-    function(err) {
+    function (err) {
       failureCallback();
     }
   );
 };
 
-db.findUser = function(user, successCallback, failureCallback) {
+db.findUser = function (user, successCallback, failureCallback) {
   var sqlQuery =
     "SELECT * FROM `3ienchs-next`.users WHERE `email` = '" + user.email + "';";
-  connection.query(sqlQuery, function(err, rows, fields, res) {
+  connection.query(sqlQuery, function (err, rows, fields, res) {
     // console.log(this.sql);
     if (err) {
       failureCallback(err);
@@ -72,9 +72,9 @@ db.findUser = function(user, successCallback, failureCallback) {
   });
 };
 
-db.changeUserType = function(type, id, successCallback, failureCallback) {
+db.changeUserType = function (type, id, successCallback, failureCallback) {
   const sqlQuery = `UPDATE users SET user_type = ${type} WHERE user_id = ${id}`;
-  connection.query(sqlQuery, function(err, rows, res) {
+  connection.query(sqlQuery, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -83,9 +83,9 @@ db.changeUserType = function(type, id, successCallback, failureCallback) {
   });
 };
 
-db.getAllUsers = function(successCallback, failureCallback) {
+db.getAllUsers = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM users`;
-  connection.query(sqlQuery, function(err, rows, res) {
+  connection.query(sqlQuery, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -96,7 +96,7 @@ db.getAllUsers = function(successCallback, failureCallback) {
 
 // PRODUCTS
 
-db.createProduct = function(product, successCallback, failureCallback) {
+db.createProduct = function (product, successCallback, failureCallback) {
   const sqlQuery = `INSERT INTO products (product_name, product_type, product_price, product_proof, product_descr, product_img, product_bg, title_color, text_color, featuring, partner, product_stock) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
   const payload = [
     product.product_name,
@@ -110,9 +110,9 @@ db.createProduct = function(product, successCallback, failureCallback) {
     product.text_color,
     product.featuring,
     product.partner,
-    product.product_stock
+    product.product_stock,
   ];
-  const query = connection.query(sqlQuery, payload, function(err, rows, res) {
+  const query = connection.query(sqlQuery, payload, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -121,9 +121,9 @@ db.createProduct = function(product, successCallback, failureCallback) {
   });
 };
 
-db.getDogsProducts = function(successCallback, failureCallback) {
+db.getDogsProducts = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM products WHERE featuring = 0`;
-  connection.query(sqlQuery, function(err, data, fields) {
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -132,9 +132,9 @@ db.getDogsProducts = function(successCallback, failureCallback) {
   });
 };
 
-db.getFeatProducts = function(successCallback, failureCallback) {
+db.getFeatProducts = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM products WHERE featuring = 1`;
-  connection.query(sqlQuery, function(err, data, fields) {
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -143,9 +143,9 @@ db.getFeatProducts = function(successCallback, failureCallback) {
   });
 };
 
-db.getAllProducts = function(successCallback, failureCallback) {
+db.getAllProducts = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM products`;
-  connection.query(sqlQuery, function(err, data, fields) {
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -154,9 +154,9 @@ db.getAllProducts = function(successCallback, failureCallback) {
   });
 };
 
-db.getProduct = function(id, successCallback, failureCallback) {
+db.getProduct = function (id, successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM products WHERE product_id=${id}`;
-  connection.query(sqlQuery, function(err, rows, res) {
+  connection.query(sqlQuery, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -169,7 +169,7 @@ db.getProduct = function(id, successCallback, failureCallback) {
   });
 };
 
-db.updateProduct = function(product, successCallback, failureCallback) {
+db.updateProduct = function (product, successCallback, failureCallback) {
   const sqlQuery = `UPDATE products SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, title_color = ?,  text_color = ?,  featuring = ?,  partner = ?, product_stock = ? WHERE product_id = ?`;
   const payload = [
     product.product_name,
@@ -184,10 +184,10 @@ db.updateProduct = function(product, successCallback, failureCallback) {
     product.featuring,
     product.partner,
     product.product_stock,
-    product.id
+    product.id,
   ];
 
-  const query = connection.query(sqlQuery, payload, function(err, rows, res) {
+  const query = connection.query(sqlQuery, payload, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -196,9 +196,9 @@ db.updateProduct = function(product, successCallback, failureCallback) {
   });
 };
 
-db.deleteProduct = function(id, successCallback, failureCallback) {
+db.deleteProduct = function (id, successCallback, failureCallback) {
   const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
-  connection.query(sqlQuery, [id], function(err, rows, res) {
+  connection.query(sqlQuery, [id], function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -213,7 +213,7 @@ db.deleteProduct = function(id, successCallback, failureCallback) {
 
 // ORDERS
 
-db.makeOrder = function(input, successCallback, failureCallback) {
+db.makeOrder = function (input, successCallback, failureCallback) {
   // const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
   const q =
     'INSERT into orders (order_number, order_date, order_pickupdate, order_price, order_over) VALUES (?, now(), ?, ?, ?)';
@@ -225,9 +225,9 @@ db.makeOrder = function(input, successCallback, failureCallback) {
       input.order_number,
       input.order_pickupdate,
       input.order_price,
-      input.order_over
+      input.order_over,
     ],
-    function(err, resultsFromQ1, fields) {
+    function (err, resultsFromQ1, fields) {
       if (err) {
         return failureCallback(err, null);
       } else {
@@ -236,7 +236,7 @@ db.makeOrder = function(input, successCallback, failureCallback) {
           connection.query(
             q2,
             [resultsFromQ1.insertId, element.product_id, element.quantity],
-            function(err, dataFromQ2, fields) {
+            function (err, dataFromQ2, fields) {
               if (err) return failureCallback(err, null);
               tmp.push(dataFromQ2);
               if (i === input.basket.length - 1) {
@@ -250,26 +250,26 @@ db.makeOrder = function(input, successCallback, failureCallback) {
   );
 };
 
-db.checkOrderNumber = function(orderNumber, successCallback, failureCallback) {
+db.checkOrderNumber = function (orderNumber, successCallback, failureCallback) {
   const sql = `SELECT * FROM orders WHERE order_number = ?`;
-  const q = connection.query(sql, [orderNumber], function(err, result) {
+  const q = connection.query(sql, [orderNumber], function (err, result) {
     if (result.length === 0) {
       return failureCallback();
     } else return successCallback();
   });
 };
 
-db.getOrderNumber = function(orderId, successCallback, failureCallback) {
+db.getOrderNumber = function (orderId, successCallback, failureCallback) {
   const sql = `SELECT * FROM orders WHERE order_id = ?`;
-  const q = connection.query(sql, [orderId], function(err, result) {
+  const q = connection.query(sql, [orderId], function (err, result) {
     if (err) return failureCallback(err);
     else return successCallback(result);
   });
 };
 
-db.getAllOrders = function(successCallback, failureCallback) {
-  const sqlQuery = `SELECT order_id AS id, order_number AS number, order_date AS date, order_pickupdate AS pickupdate, order_price AS price, order_over AS over, details_productqty AS product_qty, product_id, product_name FROM order_details JOIN orders ON order_details.details_orderid = orders.order_id JOIN products ON details_productid = products.product_id ORDER BY details_orderid;`;
-  connection.query(sqlQuery, function(err, data, fields) {
+db.getAllOrders = function (successCallback, failureCallback) {
+  const sqlQuery = `SELECT order_id AS id, order_number AS number, order_date AS date, order_pickupdate AS pickupdate, order_price AS price, order_over AS over, details_productqty AS product_qty, product_id, product_name FROM order_details JOIN orders ON order_details.details_orderid = orders.order_id JOIN products ON details_productid = products.product_id ORDER BY pickupdate;`;
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -278,7 +278,7 @@ db.getAllOrders = function(successCallback, failureCallback) {
   });
 };
 
-db.updateOrder = function(order, successCallback, failureCallback) {
+db.updateOrder = function (order, successCallback, failureCallback) {
   // TO DO
   // const sqlQuery = `UPDATE orders SET product_name = ?, product_type = ?, product_price = ?, product_proof = ?, product_descr = ?, product_img = ?, product_bg = ?, title_color = ?,  text_color = ?,  featuring = ?,  partner = ?, product_stock = ? WHERE product_id = ?`;
   // const payload = [
@@ -305,9 +305,9 @@ db.updateOrder = function(order, successCallback, failureCallback) {
   // });
 };
 
-db.deleteOrder = function(id, successCallback, failureCallback) {
+db.deleteOrder = function (id, successCallback, failureCallback) {
   const sqlQuery = `DELETE FROM orders WHERE order_id IN (?)`;
-  connection.query(sqlQuery, [id], function(err, rows, res) {
+  connection.query(sqlQuery, [id], function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -322,11 +322,11 @@ db.deleteOrder = function(id, successCallback, failureCallback) {
 
 //EVENTS
 
-db.createEvent = function(event, successCallback, failureCallback) {
+db.createEvent = function (event, successCallback, failureCallback) {
   const sqlQuery = `INSERT INTO events (title, date, subtitle, description) VALUES (?, ?, ?, ?);`;
   const payload = [event.title, event.date, event.subtitle, event.description];
 
-  connection.query(sqlQuery, payload, function(err, rows, res) {
+  connection.query(sqlQuery, payload, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -335,9 +335,9 @@ db.createEvent = function(event, successCallback, failureCallback) {
   });
 };
 
-db.getAllEvents = function(successCallback, failureCallback) {
+db.getAllEvents = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM events`;
-  connection.query(sqlQuery, function(err, data, fields) {
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -346,16 +346,16 @@ db.getAllEvents = function(successCallback, failureCallback) {
   });
 };
 
-db.updateEvent = function(event, successCallback, failureCallback) {
+db.updateEvent = function (event, successCallback, failureCallback) {
   const sqlQuery = `UPDATE events SET title = ?, date = ?, subtitle = ?, description = ? WHERE event_id = ?`;
   const payload = [
     event.title,
     event.date,
     event.subtitle,
     event.description,
-    event.event_id
+    event.event_id,
   ];
-  connection.query(sqlQuery, payload, function(err, rows, res) {
+  connection.query(sqlQuery, payload, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -364,10 +364,10 @@ db.updateEvent = function(event, successCallback, failureCallback) {
   });
 };
 
-db.deleteEvent = function(event, successCallback, failureCallback) {
+db.deleteEvent = function (event, successCallback, failureCallback) {
   const { event_id } = event;
   const sqlQuery = `DELETE FROM events WHERE event_id IN (?)`;
-  connection.query(sqlQuery, [event_id], function(err, rows, res) {
+  connection.query(sqlQuery, [event_id], function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -382,17 +382,17 @@ db.deleteEvent = function(event, successCallback, failureCallback) {
 
 //ARTISTS
 
-db.createArtist = function(artist, successCallback, failureCallback) {
+db.createArtist = function (artist, successCallback, failureCallback) {
   const sqlQuery = `INSERT INTO artists (title, subtitle, description, images, musician) VALUES (?, ?, ?, ?, ?);`;
   const payload = [
     artist.title,
     artist.subtitle,
     artist.description,
     artist.images,
-    artist.musician
+    artist.musician,
   ];
 
-  connection.query(sqlQuery, payload, function(err, rows, res) {
+  connection.query(sqlQuery, payload, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -401,9 +401,9 @@ db.createArtist = function(artist, successCallback, failureCallback) {
   });
 };
 
-db.getArtworkArtists = function(successCallback, failureCallback) {
+db.getArtworkArtists = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM artists WHERE musician = 0`;
-  connection.query(sqlQuery, function(err, data, fields) {
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -412,9 +412,9 @@ db.getArtworkArtists = function(successCallback, failureCallback) {
   });
 };
 
-db.getMusicArtists = function(successCallback, failureCallback) {
+db.getMusicArtists = function (successCallback, failureCallback) {
   const sqlQuery = `SELECT * FROM artists WHERE musician = 1`;
-  connection.query(sqlQuery, function(err, data, fields) {
+  connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);
       return;
@@ -423,7 +423,7 @@ db.getMusicArtists = function(successCallback, failureCallback) {
   });
 };
 
-db.updateArtist = function(artist, successCallback, failureCallback) {
+db.updateArtist = function (artist, successCallback, failureCallback) {
   const sqlQuery = `UPDATE artists SET title = ?, subtitle = ?, description = ?, images = ?, musician = ? WHERE artist_id = ?`;
   const payload = [
     artist.title,
@@ -431,9 +431,9 @@ db.updateArtist = function(artist, successCallback, failureCallback) {
     artist.description,
     artist.images,
     artist.musician,
-    artist.artist_id
+    artist.artist_id,
   ];
-  connection.query(sqlQuery, payload, function(err, rows, res) {
+  connection.query(sqlQuery, payload, function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
@@ -442,10 +442,10 @@ db.updateArtist = function(artist, successCallback, failureCallback) {
   });
 };
 
-db.deleteArtist = function(artist, successCallback, failureCallback) {
+db.deleteArtist = function (artist, successCallback, failureCallback) {
   const { artist_id } = artist;
   const sqlQuery = `DELETE FROM artists WHERE artist_id IN (?)`;
-  connection.query(sqlQuery, [artist_id], function(err, rows, res) {
+  connection.query(sqlQuery, [artist_id], function (err, rows, res) {
     if (err) {
       failureCallback(err);
       return;
