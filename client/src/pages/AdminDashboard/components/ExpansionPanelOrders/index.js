@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Moment from 'react-moment';
 
+import Details from './components/Details';
 import AlertDialog from '../AlertDialog';
 
 import { APICall } from '../../../../../utils/APICall';
@@ -17,7 +18,6 @@ import { APICall } from '../../../../../utils/APICall';
 export default function ExpansionPanelOrders({ order, getItems }) {
   const [openDelete, setOpenDelete] = useState(false);
   const [openOver, setOpenOver] = useState(false);
-  const router = useRouter();
 
   const { id, number, date, pickupdate, price, details, email } = order;
 
@@ -110,6 +110,7 @@ export default function ExpansionPanelOrders({ order, getItems }) {
             </Typography>
             <Typography>Prix total : {price}€</Typography>
             <Typography>Details :</Typography>
+            <Details details={order.details}></Details>
             {email && <Typography>Contact : </Typography>}
           </div>
         </ExpansionPanelDetails>
