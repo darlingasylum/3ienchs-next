@@ -1,11 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Button = ({ children, isExternal = false, to, onClick }) => {
+const Button = ({
+  children,
+  isExternal = false,
+  to,
+  onClick,
+  withMarginBottom,
+}) => {
   const buttonContent = (
     <div
       onClick={onClick}
-      className='h-18 w-60 nickname flex justify-center align-center my-8 cursor-pointer bg-button mx-auto'
+      className={`h-18 w-60 nickname flex justify-center align-center my-8 cursor-pointer bg-button mx-auto ${
+        withMarginBottom ? 'mb-10' : ''
+      }`}
     >
       <div className='f4 pb-2'>{children}</div>
     </div>

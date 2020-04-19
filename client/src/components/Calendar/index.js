@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import fr from 'date-fns/locale/fr';
 
-const basketSelector = state => state.basket.articles;
+import Step from './../../pages/BasketPage/components/Step';
+
 registerLocale('fr', fr);
 
 const Calendar = ({ getDate, pickupDate }) => {
-  let products = useSelector(basketSelector);
-  // const [startDate, setDate] = useState(new Date());
-
-  const handleChange = date => {
+  const handleChange = (date) => {
     getDate(date);
   };
 
-  const enabledDates = date => {
+  const enabledDates = (date) => {
     return date.getDay() === 3 || date.getDay() === 5;
   };
 
   return (
     <div className='nickname mt-10 m-0 w-full text-align-center'>
-      <h3 className='m-0'>choisir la date de passage</h3>
+      <Step number={1} />
+      <h3 className='m-0 f2 inline-block'>Choisissez la date de passage</h3>
       <h3 className='font-light f3 mt-0 mb-10'>
         Les mercredi et vendredis, entre 17h et 20h
       </h3>

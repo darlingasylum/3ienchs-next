@@ -8,10 +8,11 @@ import Title from '../../components/Title';
 import Cards from './components/Cards';
 import Calendar from './../../components/Calendar';
 import Button from './../../components/Button';
+import Step from './components/Step';
 import { calculatePrice, countArticles } from './../../../utils/calculatePrice';
 import { ResetBasket } from '../../../redux/actions';
 
-const basketSelector = state => state.basket.articles;
+const basketSelector = (state) => state.basket.articles;
 
 const useStore = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ const BasketPage = () => {
 
   const [pickupDate, setDate] = useState(new Date());
   const [order, setOrder] = useState({});
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   // Generate a random new order number
   const generateOrderNumber = () => {
@@ -40,7 +43,7 @@ const BasketPage = () => {
     APICall(
       `http://localhost:4000/api/orders/checkOrderNumber/${newOrderNumber}`
     )
-      .then(response => {
+      .then((response) => {
         if (!response.success) {
           // if number order doesn't exist in database
           return newOrderNumber;
@@ -48,48 +51,54 @@ const BasketPage = () => {
           checkOrderNumber();
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
     return newOrderNumber;
   };
 
   // get order information with order id
-  const getOrder = orderId => {
+  const getOrder = (orderId) => {
     APICall(`http://localhost:4000/api/orders/getOrderNumber/${orderId}`)
-      .then(res => {
+      .then((res) => {
         setOrder(res.result[0]);
       })
       .then(() => reset())
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const handleValidate = () => {
     const orderNumber = checkOrderNumber();
 
+    if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      setEmailError('adresse e-mail invalide!');
+      return;
+    }
+
     const data = {
       order_number: orderNumber,
       order_pickupdate: pickupDate,
       order_price: calculatePrice(countArticles(basket)),
+      order_email: email,
       order_over: 0,
-      basket: basket
+      basket: basket,
     };
     const fetch_param = {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     };
 
     APICall('http://localhost:4000/api/orders/makeOrder', fetch_param)
-      .then(response => {
+      .then((response) => {
         return response.orderId;
       })
-      .then(orderId => {
+      .then((orderId) => {
         getOrder(orderId);
       })
       .then(window.scrollTo(0, document.body.scrollHeight))
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
-  const getDate = date => {
+  const getDate = (date) => {
     setDate(date);
   };
 
@@ -111,7 +120,31 @@ const BasketPage = () => {
           <Title title='Votre panier'></Title>
           <Cards products={basket}></Cards>
           <Calendar pickupDate={pickupDate} getDate={getDate} />
-          <Button onClick={handleValidate} className='f2'>
+          <div className=' my-10 w-full text-align-center'>
+            <Step number={2} />
+            <label for='email' className='my-8 f2 nickname'>
+              Renseignez votre adresse e-mail:
+            </label>
+
+            <input
+              type='text'
+              id='email'
+              name='email'
+              value={email}
+              className='block p-2 w-60 br-8 mx-auto bs-solid bw-2 bc-black'
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            {emailError}
+          </div>
+
+          <div className=' my-10 w-full flex justify-center'>
+            <Step number={3} />
+            <p className='my-0 f2 nickname'>
+              Vous reglerez la commande <br /> sur place (CB, chèque ou espèces)
+            </p>
+          </div>
+
+          <Button onClick={handleValidate} withMarginBottom>
             Valider la commande
           </Button>
         </div>

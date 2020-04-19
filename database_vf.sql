@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 08, 2020 at 07:47 PM
+-- Generation Time: Apr 19, 2020 at 08:49 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -69,6 +69,7 @@ CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `order_number` int(6) NOT NULL,
   `order_userid` smallint(6) DEFAULT NULL,
+  `order_email` varchar(50) DEFAULT NULL,
   `order_date` date DEFAULT NULL,
   `order_pickupdate` date DEFAULT NULL,
   `order_price` smallint(6) DEFAULT NULL,
@@ -79,48 +80,23 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `order_number`, `order_userid`, `order_date`, `order_pickupdate`, `order_price`, `order_over`) VALUES
-(8, 0, NULL, '2019-12-16', '2019-12-25', 6, 0),
-(9, 0, NULL, '2019-12-16', '2019-12-25', 9, 0),
-(10, 622719, NULL, '2019-12-16', '2019-12-27', 9, 0),
-(11, 433544, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(12, 339227, NULL, '2019-12-16', '2020-01-01', 6, 0),
-(13, 639009, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(14, 479037, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(15, 801333, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(16, 755309, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(17, 620302, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(18, 395585, NULL, '2019-12-16', '2019-12-16', 9, 0),
-(19, 759694, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(20, 730997, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(21, 477960, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(22, 894988, NULL, '2019-12-16', '2019-12-16', 6, 0),
-(23, 664557, NULL, '2019-12-16', '2019-12-16', 9, 0),
-(24, 133649, NULL, '2019-12-16', '2019-12-16', 3, 0),
-(25, 939734, NULL, '2019-12-16', '2019-12-16', 3, 0),
-(26, 289057, NULL, '2019-12-16', '2019-12-16', 3, 0),
-(27, 516359, NULL, '2019-12-16', '2019-12-16', 3, 0),
-(28, 992291, NULL, '2019-12-16', '2019-12-16', 3, 0),
-(29, 518879, NULL, '2019-12-16', '2019-12-27', 9, 0),
-(30, 663466, NULL, '2019-12-16', '2019-12-16', 9, 0),
-(31, 573727, NULL, '2019-12-16', '2019-12-16', 12, 0),
-(32, 884857, NULL, '2019-12-16', '2019-12-16', 9, 0),
-(33, 383374, NULL, '2019-12-16', '2019-12-25', 15, 0),
-(34, 332742, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(35, 945590, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(36, 544771, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(37, 645884, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(38, 255981, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(39, 120447, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(40, 492909, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(41, 727291, NULL, '2019-12-17', '2019-12-17', 15, 0),
-(42, 687848, NULL, '2019-12-18', '2019-12-25', 9, 0),
-(43, 288661, NULL, '2019-12-18', '2019-12-27', 23, 0),
-(44, 658498, NULL, '2019-12-18', '2019-12-27', 23, 0),
-(45, 383772, NULL, '2020-01-05', '2020-01-24', 20, 0),
-(46, 276991, NULL, '2020-01-06', '2020-01-15', 18, 0),
-(47, 600114, NULL, '2020-01-06', '2020-01-15', 18, 0),
-(48, 323042, NULL, '2020-02-01', '2020-02-19', 33, 0);
+INSERT INTO `orders` (`order_id`, `order_number`, `order_userid`, `order_email`, `order_date`, `order_pickupdate`, `order_price`, `order_over`) VALUES
+(51, 605901, NULL, NULL, '2020-02-10', '2020-02-19', 20, 1),
+(52, 574337, NULL, NULL, '2020-02-10', '2020-02-14', 6, 1),
+(54, 385130, NULL, NULL, '2020-02-10', '2020-02-19', 28, 1),
+(55, 947989, NULL, NULL, '2020-02-10', '2020-02-19', 28, 1),
+(56, 954058, NULL, NULL, '2020-02-20', '2020-02-21', 3, 0),
+(57, 849486, NULL, NULL, '2020-03-08', '2020-04-10', 12, 0),
+(58, 724050, NULL, NULL, '2020-03-28', '2020-03-28', 20, 0),
+(59, 593985, NULL, NULL, '2020-03-28', '2020-03-28', 20, 0),
+(60, 448734, NULL, NULL, '2020-03-28', '2020-03-28', 20, 0),
+(61, 854517, NULL, NULL, '2020-03-28', '2020-03-28', 20, 0),
+(62, 104223, NULL, NULL, '2020-03-28', '2020-03-27', 15, 0),
+(63, 594663, NULL, NULL, '2020-03-28', '2020-03-28', 23, 0),
+(64, 933780, NULL, NULL, '2020-03-28', '2020-04-03', 18, 0),
+(65, 964290, NULL, NULL, '2020-03-28', '2020-03-28', 15, 0),
+(66, 956679, NULL, NULL, '2020-03-28', '2020-03-25', 15, 0),
+(67, 500780, NULL, NULL, '2020-03-28', '2020-04-03', 15, 0);
 
 -- --------------------------------------------------------
 
@@ -140,81 +116,56 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`details_id`, `details_orderid`, `details_productid`, `details_productqty`) VALUES
-(3, NULL, 2, 3),
-(4, NULL, 2, 3),
-(5, NULL, 2, 6),
-(6, NULL, 3, 6),
-(7, NULL, 12, 6),
-(8, NULL, 2, 2),
-(9, NULL, 16, 2),
-(10, NULL, 2, 2),
-(11, NULL, 16, 2),
-(12, NULL, 2, 2),
-(13, 8, 2, 2),
-(14, 9, 2, 3),
-(15, 10, 2, 3),
-(16, 11, 2, 2),
-(17, 12, 2, 2),
-(18, 13, 2, 2),
-(19, 14, 16, 2),
-(20, 15, 16, 2),
-(21, 16, 16, 2),
-(22, 17, 16, 2),
-(23, 18, 2, 3),
-(24, 19, 16, 2),
-(25, 20, 2, 2),
-(26, 21, 2, 2),
-(27, 22, 2, 2),
-(28, 23, 2, 3),
-(29, 24, 2, 1),
-(30, 25, 2, 1),
-(31, 26, 2, 1),
-(32, 27, 2, 1),
-(33, 28, 2, 1),
-(34, 29, 2, 3),
-(35, 30, 16, 3),
-(36, 31, 16, 4),
-(37, 32, 2, 3),
-(38, 33, 2, 3),
-(39, 33, 16, 3),
-(40, 34, 2, 3),
-(41, 34, 16, 3),
-(42, 35, 2, 3),
-(43, 35, 16, 3),
-(44, 36, 2, 3),
-(45, 36, 16, 3),
-(46, 37, 2, 3),
-(47, 37, 16, 3),
-(48, 38, 2, 3),
-(49, 38, 16, 3),
-(50, 39, 2, 3),
-(51, 39, 16, 3),
-(52, 40, 2, 3),
-(53, 40, 16, 3),
-(54, 41, 2, 3),
-(55, 41, 16, 3),
-(56, 42, 2, 3),
-(57, 43, 2, 5),
-(58, 43, 15, 3),
-(59, 43, 16, 1),
-(60, 44, 2, 5),
-(61, 44, 15, 3),
-(62, 44, 16, 1),
-(63, 45, 2, 2),
-(64, 45, 15, 4),
-(65, 45, 16, 2),
-(66, 46, 2, 4),
-(67, 46, 14, 1),
-(68, 46, 13, 1),
-(69, 46, 16, 1),
-(70, 47, 2, 4),
-(71, 47, 14, 1),
-(72, 47, 13, 1),
-(73, 47, 16, 1),
-(74, 48, 2, 3),
-(75, 48, 15, 2),
-(76, 48, 14, 2),
-(77, 48, 13, 6);
+(83, 51, 2, 8),
+(84, 52, 2, 2),
+(86, 54, 2, 3),
+(87, 54, 14, 1),
+(88, 54, 13, 3),
+(89, 54, 12, 4),
+(90, 55, 2, 3),
+(91, 55, 14, 1),
+(92, 55, 13, 3),
+(93, 55, 12, 4),
+(94, 56, 2, 1),
+(95, 57, 2, 2),
+(96, 57, 16, 2),
+(97, 58, 2, 6),
+(98, 58, 16, 2),
+(99, 59, 2, 6),
+(100, 59, 16, 2),
+(101, 60, 2, 6),
+(102, 60, 16, 2),
+(103, 61, 2, 6),
+(104, 61, 16, 2),
+(105, 62, 2, 6),
+(106, 63, 16, 5),
+(107, 63, 31, 4),
+(108, 64, 2, 3),
+(109, 64, 29, 2),
+(110, 64, 26, 2),
+(111, 65, 2, 2),
+(112, 65, 15, 3),
+(113, 66, 2, 3),
+(114, 66, 31, 2),
+(115, 67, 2, 3),
+(116, 67, 3, 3),
+(117, NULL, 2, 3),
+(118, NULL, 3, 3),
+(119, NULL, 2, 3),
+(120, NULL, 2, 3),
+(121, NULL, 2, 3),
+(122, NULL, 2, 2),
+(123, NULL, 2, 3),
+(124, NULL, 2, 2),
+(125, NULL, 2, 3),
+(126, NULL, 2, 3),
+(127, NULL, 2, 3),
+(128, NULL, 2, 3),
+(129, NULL, 2, 3),
+(130, NULL, 2, 7),
+(131, NULL, 3, 5),
+(132, NULL, 2, 4),
+(133, NULL, 12, 14);
 
 -- --------------------------------------------------------
 
@@ -246,11 +197,16 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`product_id`, `product_name`, `product_type`, `product_price`, `product_proof`, `product_descr`, `product_img`, `product_bg`, `bg_color`, `title_color`, `text_color`, `featuring`, `partner`, `product_stock`) VALUES
 (2, 'Wa Wah', 'Indian Pale Ale', 3, '5.5', 'Notre IPA est une explosion de saveurs exotiques, fruits tropicaux très prenants au nez et en bouche !', 'wawah.png', 'wawah_bg.png', '#ff0066', '#f6d900', '#ffffff', 0, NULL, 500),
 (3, 'Big Daddy', 'Ambrée', 3, '6.0', 'Des arômes de malt caramels mis en évidence avec une finale sèche. La Big Daddy est une ambrée rafraîchissante qui étonne. Une base maltée inspirée de notre goût prononcé pour les recettes belges.', 'bigdaddy.png', 'bigdaddy_bg.png', '#42aadb', '#ff0066', '#ffffff', 0, NULL, 1000),
-(12, 'Aero Pale', 'American Pale Ale', 3, '5.5', 'Un peu de légèreté dans ce monde de brutes! Des notes de pamplemousse sur un corps léger d\'un blond doré. L\'aero Pale est une douceur qui ne manque pas de caractère.', 'aeropale.png', 'aeropale_bg.png', '#ec9a3d', '#ff0066', '#000000', 0, NULL, 500),
-(13, 'Jack Wheat', 'Wheat Ale', 3, '4.7', 'Bière de blé, notre wheat ale offre une légère acidité surune belle robe pâle avec un retour subtil d\'arômes de miel en fin de bouche, une bière à boire bien fraîche en terrasse!', 'jackwheat.png', 'jackwheat_bg.png', '#f6d900', '#ff0066', '#000000', 0, NULL, 500),
-(14, 'Jimmy Pale', 'Indian Pale Ale', 3, '5.5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ', 'jimmypale.png', 'jimmypale_bg.png', '#ff0066', '#f6d900', '#000000', 0, NULL, 500),
-(15, 'Jon Snout', 'Dry Stout', 3, '4.9', 'Une stout avec un corps léger qui offre de belles notes de café grillé et une finale chocolat.', 'jonsnout.png', 'jonsnout_bg.png', '#1b1b1b', '#ff0066', '#ffffff', 0, NULL, 0),
-(16, 'Dropkick Kiwi', 'Double IPA', 3, '8.0', 'Une stout avec un corps léger qui offre de belles notes de café grillé et une finale chocolat.', 'dropkickkiwi.png', 'dropkickkiwi_bg.png', '#7ec6ca', '#ff0066', '#ffffff', 1, 'Les bières de Belleville', 500);
+(12, 'Aero Pale', 'American Pale Ale', 3, '5.5', 'Un peu de légèreté dans ce monde de brutes! Des notes de pamplemousse sur un corps léger d\'un blond doré. L\'aero Pale est une douceur qui ne manque pas de caractère.', 'aeropale.png', 'aeropale_bg.png', '#ec9a3d', '#ff0066', '#000000', 0, '', 500),
+(13, 'Jack Wheat', 'Wheat Ale', 3, '4.7', 'Bière de blé, notre wheat ale offre une légère acidité surune belle robe pâle avec un retour subtil d\'arômes de miel en fin de bouche, une bière à boire bien fraîche en terrasse!', 'jackwheat.png', 'jackwheat_bg.png', '#f6d900', '#ff0066', '#000000', 0, '', 500),
+(14, 'Jimmy Pale', 'Indian Pale Ale', 3, '5.5', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ', 'jimmypale.png', 'jimmypale_bg.png', '#ff0066', '#f6d900', '#000000', 0, '', 500),
+(15, 'Jon Snout', 'Dry Stout', 3, '4.9', 'Une stout avec un corps léger qui offre de belles notes de café grillé et une finale chocolat.', 'jonsnout.png', 'jonsnout_bg.png', '#1b1b1b', '#ff0066', '#ffffff', 0, '', 0),
+(16, 'Dropkick Kiwi', 'Double IPA', 3, '8.0', 'Une stout avec un corps léger qui offre de belles notes de café grillé et une finale chocolat.', 'dropkickkiwi.png', 'dropkickkiwi_bg.png', '#7ec6ca', '#ff0066', '#ffffff', 1, 'Les bières de Belleville', 500),
+(23, 'ELISOU <3', 'Dry Stout', 4, '4.9', 'Une stout avec un corps léger qui offre de belles notes de café grillé et une finale chocolat.', 'jonsnout.png', 'jonsnout_bg.png', '#ff0066', '#ff0089', '#ffffff', 1, 'JLO', 56),
+(26, 'Big Daddy tididi', 'Bière fraîche', 3, '5.2', 'Bière super fraîche', 'jackwheat.png', 'jackwheat_bg.png', '', '#ff0066', '#000000', 0, '', 1000),
+(27, 'Big Daddy QUATRO', 'Bière fraîche', 3, '5.2', 'Bière super fraîche', 'dropkickkiwi.png', 'bigdaddy_bg.png', '', '#ff0066', '#ffffff', 1, 'lilalou', 1000),
+(29, 'Pouet', '', 3, '0.0', '', 'bigdaddy.png', 'bigdaddy_bg.png', '', '#fff000', '#000', 0, '', 0),
+(31, 'DIMANCHE', 'IPA double stout', 3, '6.7', 'Lialouj cqovbdbjle cbhi mais c\'est juste un test ça ne veut rien dire\n', 'bigdaddy.png', 'dropkickkiwi_bg.png', '', '#fff000', '#000', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -315,8 +271,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_details`
   ADD PRIMARY KEY (`details_id`),
-  ADD KEY `details_orderid` (`details_orderid`),
-  ADD KEY `details_productid` (`details_productid`);
+  ADD KEY `details_productid` (`details_productid`),
+  ADD KEY `details_orderid` (`details_orderid`);
 
 --
 -- Indexes for table `products`
@@ -345,25 +301,25 @@ ALTER TABLE `artists`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` smallint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `event_id` smallint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `product_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -385,5 +341,5 @@ ALTER TABLE `orders`
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
-  ADD CONSTRAINT `details_orderid` FOREIGN KEY (`details_orderid`) REFERENCES `orders` (`order_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `details_orderid` FOREIGN KEY (`details_orderid`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `details_productid` FOREIGN KEY (`details_productid`) REFERENCES `products` (`product_id`) ON DELETE SET NULL ON UPDATE CASCADE;

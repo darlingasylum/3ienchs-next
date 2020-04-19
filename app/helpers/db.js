@@ -216,7 +216,7 @@ db.deleteProduct = function (id, successCallback, failureCallback) {
 db.makeOrder = function (input, successCallback, failureCallback) {
   // const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
   const q =
-    'INSERT into orders (order_number, order_date, order_pickupdate, order_price, order_over) VALUES (?, now(), ?, ?, ?)';
+    'INSERT into orders (order_number, order_date, order_pickupdate, order_price, order_email, order_over) VALUES (?, now(), ?, ?, ?, ?)';
   const q2 =
     'INSERT into order_details (details_orderid, details_productid, details_productqty) VALUES (?, ?, ?)';
   const query1 = connection.query(
@@ -225,6 +225,7 @@ db.makeOrder = function (input, successCallback, failureCallback) {
       input.order_number,
       input.order_pickupdate,
       input.order_price,
+      input.order_email,
       input.order_over,
     ],
     function (err, resultsFromQ1, fields) {
