@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = ({ title }) => {
   return (
-    <div className='bg-title mx-auto h-30 mt-20 mb-10 pt-2 width-title w-60'>
+    <div className='bg-title mx-auto width-title '>
       <h2 className='nickname text-align-center text-white'> {title}</h2>
     </div>
   );
