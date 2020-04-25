@@ -65,8 +65,12 @@
   }
 }
 
-.display-none-above-md {
-  @media screen and (min-width: @breakpoint-md) {
+@media screen and (min-width: @breakpoint-md) {
+  .display-none-above-md {
     .display-none;
+  }
+
+  .display-flex-above-md {
+    .flex;
   }
 }

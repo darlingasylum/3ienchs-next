@@ -77,7 +77,7 @@ export default class Header extends Component {
     return (
       <>
         <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-10 fixed w-full nickname z-index-1'>
-          <div className='display-none block-xs'>
+          <div className='display-none block-md'>
             <Burger click={this.props.burgerClickHandler} />
           </div>
           <div>
@@ -96,22 +96,22 @@ export default class Header extends Component {
                   </a>
                 </Link>
               </li>
-              <li className='hover-pink-iench pr-10 pl-10 display-none-xs'>
+              <li className='hover-pink-iench pr-10 pl-10 display-none-md'>
                 <Link href='/#bieres'>
                   <a>Les bières</a>
                 </Link>
               </li>
-              <li className='pr-10 display-none-xs'>
+              <li className='pr-10 display-none-md'>
                 <Link href='/#agenda'>
                   <a>Agenda</a>
                 </Link>
               </li>
-              <li className='pr-10 display-none-xs'>
+              <li className='pr-10 display-none-md'>
                 <Link href='/#artwork'>
                   <a>Artwork</a>
                 </Link>
               </li>
-              <li className='pr-10 display-none-xs'>
+              <li className='pr-10 display-none-md'>
                 <Link href='/#music'>
                   <a>Pour les zicos</a>
                 </Link>
@@ -148,16 +148,16 @@ export default class Header extends Component {
                   <img src={userIcon} className='w-6 mr-2' alt='panier_icon' />
                 </Link>
               </li>
-              <li className='pr-10 display-none-xs'>
+              <li className='pr-10 display-none-md'>
                 <Link href='/login'>Connexion</Link>
               </li> */}
 
-              <li className='display-none-xs h-10 align-middle lh-navbar'>
+              <li className='display-none-md h-10 align-middle lh-navbar'>
                 <Link href='/commander' useActive>
                   <a>Commander</a>
                 </Link>
               </li>
-              <li className='pl-6 pr-6 mr-6 display-none-xs h-10'>
+              <li className='pl-6 pr-6 mr-6 display-none-md h-10'>
                 <Link href='/panier' useActive>
                   <a className='h-10'>
                     <img

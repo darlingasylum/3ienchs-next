@@ -8,9 +8,9 @@ const Cards = ({ products }) => {
 
   const unitPrice = totalPrice / numberOfArticles;
 
-  const cards = basket => {
+  const cards = (basket) => {
     if (basket.length > 0) {
-      return basket.map(product => (
+      return basket.map((product) => (
         <Card
           product={product}
           unitPrice={unitPrice}
@@ -23,15 +23,12 @@ const Cards = ({ products }) => {
   return (
     <div>
       {cards(products)}
-      <div className='mt-15'>
+      <div className='mt-15 mb-15'>
         <Card
           isTotal
           unitPrice={unitPrice}
           numberOfArticles={numberOfArticles}
         ></Card>
-        <div className='nickname text-align-center mt-15'>
-          Paiement sur place : CB, chèques et espèces
-        </div>
       </div>
     </div>
   );

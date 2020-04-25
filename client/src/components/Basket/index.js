@@ -6,14 +6,14 @@ import { calculatePrice, countArticles } from '@/utils/calculatePrice';
 import bottles from '@/static/icons/bottles.png';
 import Link from '@/src/components/Link';
 
-const basketSelector = state => state.basket.articles;
+const basketSelector = (state) => state.basket.articles;
 
 const Basket = () => {
   let basket = useSelector(basketSelector);
   const router = useRouter();
 
   return (
-    <div className='fixed r-10 t-15 background-greylight-transp p-6 br-40 flex flex-col align-center'>
+    <div className='display-none-md fixed r-10 t-15 background-greylight-transp p-6 br-40 display-flex-above-md flex-col align-center '>
       <img
         src={bottles}
         alt='logo_iench'

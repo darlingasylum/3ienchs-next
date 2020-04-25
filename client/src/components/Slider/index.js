@@ -11,15 +11,15 @@ import AddButton from './../AddButton';
 const Slider = ({ products, title, buttonsType, id, withPrices }) => {
   const [count, setCounter] = useState(0);
 
-  const handleSlide = next => {
+  const handleSlide = (next) => {
     const productsListLength = products.length;
     if (next) {
       count + 1 <= productsListLength - 1
-        ? setCounter(prevCount => prevCount + 1)
+        ? setCounter((prevCount) => prevCount + 1)
         : setCounter(0);
     } else {
       count - 1 >= 0
-        ? setCounter(prevCount => prevCount - 1)
+        ? setCounter((prevCount) => prevCount - 1)
         : setCounter(productsListLength - 1);
     }
   };
@@ -39,7 +39,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
           className='slider-width h-full'
           style={{
             backgroundImage: `url(/static/images/${products[count].product_bg})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
           }}
         >
           {withPrices && <Prices />}

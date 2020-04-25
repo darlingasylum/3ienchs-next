@@ -11,6 +11,7 @@ import Button from './../../components/Button';
 import Step from './components/Step';
 import { calculatePrice, countArticles } from './../../../utils/calculatePrice';
 import { ResetBasket } from '../../../redux/actions';
+import Link from '@/src/components/Link';
 
 const basketSelector = (state) => state.basket.articles;
 
@@ -108,6 +109,12 @@ const BasketPage = () => {
         <Basket></Basket>
         <Title title='Votre panier'></Title>
         <div className='text-align-center'> Votre panier est vide !</div>
+        <Link href='/commander'>
+          <div className='text-align-center display-none-above-md'>
+            {' '}
+            Retournez vite le remplir en cliquant ici
+          </div>
+        </Link>
       </div>
     );
   }
