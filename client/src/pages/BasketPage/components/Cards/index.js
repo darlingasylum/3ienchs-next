@@ -21,15 +21,13 @@ const Cards = ({ products }) => {
   };
 
   return (
-    <div>
+    <div className='cards-wrapper'>
       {cards(products)}
-      <div className='mt-15 mb-15'>
-        <Card
-          isTotal
-          unitPrice={unitPrice}
-          numberOfArticles={numberOfArticles}
-        ></Card>
-      </div>
+      <Card
+        isTotal
+        unitPrice={unitPrice}
+        numberOfArticles={numberOfArticles}
+      ></Card>
     </div>
   );
 };

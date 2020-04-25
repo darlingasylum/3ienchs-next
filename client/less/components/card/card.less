@@ -1,0 +1,52 @@
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-responsive {
+  .flex;
+  .align-center;
+  .br-10;
+  width: 90%;
+  font-size: 1rem;
+  height: 5rem;
+
+  @media screen and (min-width: @breakpoint-md) {
+    .h-25;
+    .mb-10;
+    .w-60-percent;
+    font-size: 1.5rem;
+  }
+}
+
+.total-card {
+  @media screen and (min-width: @breakpoint-xs) {
+    .mt-15;
+    .mb-15;
+  }
+}
+
+.title-beer-responsive {
+  .w-30-percent;
+  @media screen and (min-width: @breakpoint-md) {
+    .w-25-percent;
+  }
+}
+
+.image-responsive {
+  .h-20;
+  margin: 0 1rem 1rem 2rem;
+  @media screen and (min-width: @breakpoint-md) {
+    .mt-15;
+    .mb-15;
+    .h-30;
+  }
+}
+
+.counter {
+  width: 40%;
+  @media screen and (min-width: @breakpoint-md) {
+    .w-half;
+  }
+}

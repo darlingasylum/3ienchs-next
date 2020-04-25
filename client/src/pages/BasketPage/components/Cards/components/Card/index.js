@@ -16,31 +16,31 @@ const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
 
   return (
     <div
-      className='flex align-center w-70 h-25 mb-10 w-60-percent mx-auto br-10 nickname'
+      className={`nickname card-responsive ${isTotal && `total-card`}`}
       style={{
         backgroundImage: isTotal
           ? `url(/static/images/jonsnout_bg.png)`
-          : `url(/static/images/${product.product_bg})`
+          : `url(/static/images/${product.product_bg})`,
       }}
     >
-      <div className='w-25-percent flex justify-center align-center'>
+      <div className='title-beer-responsive flex justify-center align-center'>
         {!isTotal && (
           <img
-            className='h-30 mx-8 mb-8'
+            className='image-responsive'
             src={`/static/images/${product.product_img}`}
           ></img>
         )}
         <div
-          className={isTotal ? 'f1' : 'f2'}
+          className={isTotal ? 'f1 w-half' : 'f2 w-half'}
           style={{
-            color: color
+            color: color,
           }}
         >
           {isTotal ? 'Total' : product.product_name}
         </div>
       </div>
 
-      <div className='w-half flex justify-center'>
+      <div className='counter flex justify-center'>
         {!isTotal && (
           <HandleQuantity
             currentBeer={product}
@@ -53,7 +53,7 @@ const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
         <div
           className='f1'
           style={{
-            color: color
+            color: color,
           }}
         >
           {priceArticles}€
