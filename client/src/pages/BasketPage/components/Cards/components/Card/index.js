@@ -40,7 +40,7 @@ const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
         </div>
       </div>
 
-      <div className='counter flex justify-center'>
+      <div className='counter'>
         {!isTotal && (
           <HandleQuantity
             currentBeer={product}
@@ -48,10 +48,10 @@ const Card = ({ product, unitPrice, isTotal, numberOfArticles }) => {
           ></HandleQuantity>
         )}
       </div>
-      <div className='w-25-percent flex justify-center'>
-        <div className='w-1px h-10 mx-5 bg-white'></div>
+      <div className='price-container'>
+        <div className=' white-line'></div>
         <div
-          className='f1'
+          className='price'
           style={{
             color: color,
           }}

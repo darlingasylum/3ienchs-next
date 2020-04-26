@@ -1,19 +1,22 @@
 .cards-wrapper {
-  display: flex;
+  .flex;
   flex-direction: column;
   align-items: center;
 }
 
 .card-responsive {
   .flex;
-  .align-center;
+  .h-12;
   .br-10;
+  .mb-4;
+  align-items: center;
+  justify-content: space-between;
   width: 90%;
   font-size: 1rem;
-  height: 5rem;
+  background-position: 5% 87%;
 
   @media screen and (min-width: @breakpoint-md) {
-    .h-25;
+    .h-20;
     .mb-10;
     .w-60-percent;
     font-size: 1.5rem;
@@ -28,25 +31,50 @@
 }
 
 .title-beer-responsive {
-  .w-30-percent;
+  width: 35%;
   @media screen and (min-width: @breakpoint-md) {
     .w-25-percent;
   }
 }
 
 .image-responsive {
-  .h-20;
-  margin: 0 1rem 1rem 2rem;
+  height: 4rem;
+  margin: 0 1rem 1rem 1rem;
   @media screen and (min-width: @breakpoint-md) {
-    .mt-15;
-    .mb-15;
-    .h-30;
+    .h-28;
+    margin-bottom: 0.75rem;
   }
 }
 
 .counter {
-  width: 40%;
+  .flex;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+
   @media screen and (min-width: @breakpoint-md) {
     .w-half;
+  }
+}
+
+.price-container {
+  .flex;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  font-size: 1.2rem;
+  @media screen and (min-width: @breakpoint-md) {
+    padding-left: 3rem;
+    font-size: 2rem;
+  }
+}
+
+.white-line {
+  .w-1px;
+  .h-10;
+  .bg-white;
+  margin-right: 0.5rem;
+  @media screen and (min-width: @breakpoint-md) {
+    .mx-5;
   }
 }

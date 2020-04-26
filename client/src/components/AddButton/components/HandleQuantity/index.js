@@ -2,14 +2,14 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddToBasket, DeleteFromBasket } from '../../../../../redux/actions';
 
-const basketSelector = state => state.basket.articles;
+const basketSelector = (state) => state.basket.articles;
 
 const useStore = () => {
   const dispatch = useDispatch();
-  const add = product => {
+  const add = (product) => {
     dispatch(AddToBasket(product));
   };
-  const remove = product => {
+  const remove = (product) => {
     dispatch(DeleteFromBasket(product));
   };
 
@@ -26,12 +26,12 @@ const HandleQuantity = ({ currentBeer, withColoredText }) => {
     if (!isBasketEmpty) {
       //check if currentbeer is in basket
       const isCurrentBeerInBasket = articles.find(
-        e => e.product_id === currentBeer.product_id
+        (e) => e.product_id === currentBeer.product_id
       );
       // if so, check how many beers are already in basket
       if (isCurrentBeerInBasket) {
         let beerIndex = articles
-          .map(function(e) {
+          .map(function (e) {
             return e.product_id;
           })
           .indexOf(currentBeer.product_id);
@@ -45,26 +45,26 @@ const HandleQuantity = ({ currentBeer, withColoredText }) => {
     <>
       <button
         onClick={() => remove(currentBeer)}
-        className='border-none cursor-pointer f10 bg-transparent not-outlined'
+        className='cursors'
         style={{
-          color: withColoredText && `${currentBeer.text_color}`
+          color: withColoredText && `${currentBeer.text_color}`,
         }}
       >
         -
       </button>
       <div
-        className='w-15 text-align-center f10'
+        className='number'
         style={{
-          color: withColoredText && `${currentBeer.text_color}`
+          color: withColoredText && `${currentBeer.text_color}`,
         }}
       >
         {beerQuantity()}
       </div>
       <button
         onClick={() => add(currentBeer)}
-        className='border-none cursor-pointer f10 bg-transparent not-outlined'
+        className='cursors'
         style={{
-          color: withColoredText && `${currentBeer.text_color}`
+          color: withColoredText && `${currentBeer.text_color}`,
         }}
       >
         +
