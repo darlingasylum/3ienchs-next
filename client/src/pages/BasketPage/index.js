@@ -126,34 +126,38 @@ const BasketPage = () => {
           <Basket></Basket>
           <Title title='Votre panier'></Title>
           <Cards products={basket}></Cards>
-          <Calendar pickupDate={pickupDate} getDate={getDate} />
-          <div className=' my-10 w-full text-align-center'>
-            <Step number={2} />
-            <label for='email' className='my-8 f2 nickname'>
-              Renseignez votre adresse e-mail:
-            </label>
+          <div className='orderSteps'>
+            <Calendar pickupDate={pickupDate} getDate={getDate} />
+            <div className=' my-10 w-full text-align-center'>
+              <div className='stepsTitleWrapper'>
+                <Step number={2} />
+                <label for='email' className='stepsTitle'>
+                  Renseignez votre adresse e-mail
+                </label>
+              </div>
+              <input
+                type='text'
+                id='email'
+                name='email'
+                value={email}
+                className='block p-2 w-60 br-8 mx-auto bs-solid bw-2 bc-black'
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+              {emailError}
+            </div>
 
-            <input
-              type='text'
-              id='email'
-              name='email'
-              value={email}
-              className='block p-2 w-60 br-8 mx-auto bs-solid bw-2 bc-black'
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-            {emailError}
+            <div className='stepsTitleWrapper'>
+              <Step number={3} />
+              <p className='stepsTitle'>
+                Vous reglerez la commande <br /> sur place (CB, chèque ou
+                espèces)
+              </p>
+            </div>
+
+            <Button onClick={handleValidate} withMarginBottom>
+              Valider la commande
+            </Button>
           </div>
-
-          <div className=' my-10 w-full flex justify-center'>
-            <Step number={3} />
-            <p className='my-0 f2 nickname'>
-              Vous reglerez la commande <br /> sur place (CB, chèque ou espèces)
-            </p>
-          </div>
-
-          <Button onClick={handleValidate} withMarginBottom>
-            Valider la commande
-          </Button>
         </div>
       )}
       {order.order_number && (

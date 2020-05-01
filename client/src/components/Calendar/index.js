@@ -16,10 +16,13 @@ const Calendar = ({ getDate, pickupDate }) => {
   };
 
   return (
-    <div className='nickname mt-10 m-0 w-full text-align-center'>
-      <Step number={1} />
-      <h3 className='m-0 f2 inline-block'>Choisissez la date de passage</h3>
-      <h3 className='font-light f3 mt-0 mb-10'>
+    <div className='calendarWrapper'>
+      <div className='stepsTitleWrapper'>
+        <Step number={1} />
+        <h3 className='calendartitle'>Choisissez la date de passage</h3>
+      </div>
+
+      <h3 className='calendarSubtitle'>
         Les mercredi et vendredis, entre 17h et 20h
       </h3>
       <DatePicker
