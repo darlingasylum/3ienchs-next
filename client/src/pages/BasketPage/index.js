@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { APICall } from './../../../utils/APICall';
+import { ResetBasket } from '../../../redux/actions';
+import { calculatePrice, countArticles } from './../../../utils/calculatePrice';
 
 import Basket from '../../components/Basket';
 import Title from '../../components/Title';
@@ -9,8 +11,7 @@ import Cards from './components/Cards';
 import Calendar from './../../components/Calendar';
 import Button from './../../components/Button';
 import Step from './components/Step';
-import { calculatePrice, countArticles } from './../../../utils/calculatePrice';
-import { ResetBasket } from '../../../redux/actions';
+import DoneOrder from './components/DoneOrder';
 import Link from '@/src/components/Link';
 
 const basketSelector = (state) => state.basket.articles;
@@ -160,16 +161,7 @@ const BasketPage = () => {
           </div>
         </div>
       )}
-      {order.order_number && (
-        <div className='nickname mx-auto mt-30 w-30-percent text-align-center'>
-          <p className='m-0'>
-            Merci, votre commande a bien été prise en compte !
-          </p>
-          <p className='mt-2'>
-            Votre numéro de commande : {order.order_number}
-          </p>
-        </div>
-      )}
+      {order.order_number && <DoneOrder orderNumber={order.order_number} />}
     </div>
   );
 };
