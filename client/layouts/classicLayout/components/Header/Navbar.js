@@ -76,7 +76,7 @@ export default class Header extends Component {
 
     return (
       <>
-        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-10 fixed w-full nickname z-index-1'>
+        <nav className='items-center bg-black text-white f5 flex justify-around pin-t h-10 fixed w-full nickname z-index-4'>
           <div className='display-none block-md'>
             <Burger click={this.props.burgerClickHandler} />
           </div>

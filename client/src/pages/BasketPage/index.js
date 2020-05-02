@@ -153,7 +153,12 @@ const BasketPage = () => {
               </p>
             </div>
 
-            <Button onClick={handleValidate} withMarginBottom>
+            <Button
+              onClick={handleValidate}
+              withMarginBottom
+              smallFont
+              withHover
+            >
               Valider la commande
             </Button>
           </div>

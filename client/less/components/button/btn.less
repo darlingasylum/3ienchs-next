@@ -1,3 +1,54 @@
+.button {
+  width: 15rem;
+  height: 3.5rem;
+  .mt-8;
+  .flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid @grey-dark;
+  background-color: @grey-light;
+  .nickname;
+  position: relative;
+  z-index: 2;
+  .f3;
+  .cursor-pointer;
+}
+
+.button:hover ~ .buttonShadow {
+  transform: translate(0.6rem, -2.7rem);
+}
+
+.addButton {
+  width: 15rem;
+  height: 4rem;
+  .mt-8;
+  .flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid @grey-dark;
+  background-color: @grey-light;
+  .nickname;
+  position: relative;
+  z-index: 2;
+  .f3;
+  .cursor-pointer;
+}
+
+.buttonShadow {
+  transform: translate(0.4rem, -2.6rem);
+  position: relative;
+  z-index: 1;
+
+  height: 0;
+  width: 15rem;
+  border-top: 3rem solid @grey-dark;
+  border-left: 0px solid transparent;
+  border-right: 15rem solid @grey-dark;
+  border-bottom: 5px solid transparent;
+
+  transition: all 0.1s ease-out;
+}
+
 .btn {
   .f4;
   .font-bold;

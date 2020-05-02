@@ -7,15 +7,12 @@ const Button = ({
   to,
   onClick,
   withMarginBottom,
+  smallFont,
 }) => {
   const buttonContent = (
-    <div
-      onClick={onClick}
-      className={`h-18 w-60 nickname flex justify-center align-center my-8 cursor-pointer bg-button mx-auto ${
-        withMarginBottom ? 'mb-10' : ''
-      }`}
-    >
-      <div className='f4 pb-2'>{children}</div>
+    <div onClick={onClick}>
+      <button className={`button ${smallFont && 'f4'}`}>{children}</button>
+      <div className={`buttonShadow ${withMarginBottom && 'mb-10'}`}></div>
     </div>
   );
 
