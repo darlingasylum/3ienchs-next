@@ -106,16 +106,14 @@ const BasketPage = () => {
 
   if (basket && basket.length === 0 && !order.order_number) {
     return (
-      <div className='hero mt-10 w-full'>
+      <div className='emptyBasket'>
         <Basket></Basket>
         <Title title='Votre panier'></Title>
-        <div className='text-align-center'> Votre panier est vide !</div>
-        <Link href='/commander'>
-          <div className='text-align-center display-none-above-md'>
-            {' '}
-            Retournez vite le remplir en cliquant ici
-          </div>
-        </Link>
+        <p> Votre panier est vide !</p>
+
+        <div className='display-none-above-md'>
+          <Button to='/commander'>Retour aux bières</Button>
+        </div>
       </div>
     );
   }
