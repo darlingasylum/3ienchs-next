@@ -99,7 +99,6 @@
   .slider-beer-size;
   .relative;
   top: 0.5rem;
-  left: 8rem;
   @media screen and (min-width: @breakpoint-xs) {
     top: 0;
     left: 0;
@@ -120,6 +119,18 @@
   .text-grey-lighter;
   .f4;
   .nickname;
+}
+
+.hiddenMobile {
+  @media screen and (max-width: @breakpoint-md) {
+    display: none;
+  }
+}
+
+.hiddenDesktop {
+  position: static;
+  margin: auto;
   @media screen and (min-width: @breakpoint-md) {
+    display: none;
   }
 }

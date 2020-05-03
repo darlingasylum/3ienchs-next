@@ -1,13 +1,13 @@
 import React from 'react';
 import Slider from './../../components/Slider';
 import Basket from '../../components/Basket';
+import Prices from '../../components/Slider/components/Prices';
 
-const Order = props => {
+const Order = (props) => {
   return (
     <div className='hero mt-10 w-full h-100-vh'>
       <Basket />
       <div className='w-full pt-10 pb-10 flex flex-row items-center justify-between'>
-        {/* <div className='w-25-percent' /> */}
         <div className='w-full'>
           <h1 className='text-pink-iench nickname font-light f1 m-0 text-align-center'>
             Vente à emporter
@@ -20,6 +20,7 @@ const Order = props => {
           </h2>
         </div>
       </div>
+      <Prices />
       <Slider
         products={props.products.dogsProducts}
         title='Nos bières'

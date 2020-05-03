@@ -42,7 +42,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
             backgroundSize: 'cover',
           }}
         >
-          {withPrices && <Prices />}
+          {withPrices && <Prices hiddenMobile />}
           <SliderContent
             product={products[count]}
             count={count}
