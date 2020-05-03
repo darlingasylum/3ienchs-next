@@ -60,12 +60,12 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
       {products.length > 1 && (
         <div className='flex justify-center'>
           <img
-            className='cursor-pointer max-height-80 mr-20  display-none-above-md'
+            className='cursor-pointer max-height-80 mr-10  display-none-above-md'
             src={arrowLeft}
             onClick={() => handleSlide('next')}
           ></img>
           <img
-            className='cursor-pointer max-height-80 ml-20  display-none-above-md'
+            className='cursor-pointer max-height-80 ml-10  display-none-above-md'
             src={arrowRight}
             onClick={() => handleSlide()}
           ></img>

@@ -3,16 +3,16 @@ import React from 'react';
 const SliderContent = ({ product, withPrices }) => {
   return (
     <div
-      className='w-full h-full flex flex-col-md justify-center items-center px-10 py-10 beer-div '
+      className='sliderContentWrapper'
       style={{
-        position: withPrices ? 'relative' : 'static'
+        position: withPrices ? 'relative' : 'static',
       }}
     >
       <div className='flex flex-col justify-center px-5 pr-0-md min-h-50-vh-md'>
         <h3
-          className='nickname f0 m-0'
+          className='sliderProductName'
           style={{
-            color: `${product.title_color}`
+            color: `${product.title_color}`,
           }}
         >
           {product.product_name}
@@ -22,12 +22,12 @@ const SliderContent = ({ product, withPrices }) => {
           <h4
             className='nickname mb-8'
             style={{
-              color: `${product.text_color}`
+              color: `${product.text_color}`,
             }}
           >
             <span
               style={{
-                color: `${product.title_color}`
+                color: `${product.title_color}`,
               }}
             >
               feat {''}
@@ -39,7 +39,7 @@ const SliderContent = ({ product, withPrices }) => {
         <h4
           className='nickname m-0'
           style={{
-            color: `${product.text_color}`
+            color: `${product.text_color}`,
           }}
         >
           {product.product_type}
@@ -48,7 +48,7 @@ const SliderContent = ({ product, withPrices }) => {
           <h5
             className='nickname m-0 display-none-md'
             style={{
-              color: `${product.text_color}`
+              color: `${product.text_color}`,
             }}
           >
             {product.product_proof}%
@@ -59,7 +59,7 @@ const SliderContent = ({ product, withPrices }) => {
         <p
           className='nickname'
           style={{
-            color: `${product.text_color}`
+            color: `${product.text_color}`,
           }}
         >
           {product.product_descr}

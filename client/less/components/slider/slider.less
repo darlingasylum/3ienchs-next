@@ -55,9 +55,41 @@
 
 .sliderButtonsWrapper {
   .flex;
-  justify-content: center;
   .flex-col;
+  justify-content: center;
+  margin-bottom: 5rem;
   @media screen and (min-width: @breakpoint-xs) {
     .flex-row;
+    margin-bottom: 0;
+  }
+}
+
+// SLIDER CONTENT
+
+.sliderContentWrapper {
+  .w-full;
+  .h-full;
+  .flex;
+  .flex-col;
+
+  justify-content: center;
+  .items-center;
+  .px-4;
+  .py-6;
+  .beer-div;
+
+  @media screen and (min-width: @breakpoint-xs) {
+    .px-10;
+    .py-10;
+    .flex-row;
+  }
+}
+
+.sliderProductName {
+  .nickname;
+  .m-0;
+  .f2;
+  @media screen and (min-width: @breakpoint-xs) {
+    .f0;
   }
 }

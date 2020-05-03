@@ -6,6 +6,10 @@
 .cover-home {
   background-image: url('/static/drawing/home-page-drawing.png');
   background-size: cover;
+
+  @media screen and (max-width: @breakpoint-md) {
+    background-position: 45% 76%;
+  }
 }
 
 .bg-title {
