@@ -8,7 +8,14 @@ import Title from './../Title';
 import Button from './../Button';
 import AddButton from './../AddButton';
 
-const Slider = ({ products, title, buttonsType, id, withPrices }) => {
+const Slider = ({
+  products,
+  title,
+  buttonsType,
+  id,
+  withPrices,
+  withMarginBottom,
+}) => {
   const [count, setCounter] = useState(0);
 
   const handleSlide = (next) => {
@@ -84,7 +91,10 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
         </div>
       )}
       {buttonsType === 'addToBasket' && (
-        <AddButton currentBeer={products[count]}></AddButton>
+        <AddButton
+          currentBeer={products[count]}
+          withMarginBottom={withMarginBottom}
+        ></AddButton>
       )}
     </div>
   );

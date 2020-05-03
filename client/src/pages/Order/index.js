@@ -32,6 +32,7 @@ const Order = (props) => {
         title='Featuring'
         buttonsType='addToBasket'
         withPrices
+        withMarginBottom
       ></Slider>
     </div>
   );

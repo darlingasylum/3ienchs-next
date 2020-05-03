@@ -13,7 +13,7 @@ const Basket = () => {
   const router = useRouter();
 
   return (
-    <div className='display-none-md fixed r-10 t-15 background-greylight-transp p-6 br-40 display-flex-above-md flex-col align-center '>
+    <div className='basketWrapper'>
       <img
         src={bottles}
         alt='logo_iench'
@@ -27,16 +27,12 @@ const Basket = () => {
       </div>
       {router.pathname === '/commander' && (
         <Link href='/panier'>
-          <div className='w-44 text-align-center nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
-            Voir le panier
-          </div>
+          <div className='basketText'>Voir le panier</div>
         </Link>
       )}
       {router.pathname === '/panier' && (
         <Link href='/commander'>
-          <div className='w-44 text-align-center nickname text-white bg-purple-dark br-8 pl-1 pr-1 cursor-pointer'>
-            Retour choix
-          </div>
+          <div className='basketText'>Retour choix</div>
         </Link>
       )}
     </div>
