@@ -66,7 +66,7 @@ const SliderContent = ({ product, withPrices }) => {
         </p>
       </div>
       {product.product_img && (
-        <div className='min-height-150-px slider-beer-size relative'>
+        <div className='sliderImageWrapper'>
           <img
             className='absolute bottom-9 l-0'
             src={`/static/images/${product.product_img}`}
