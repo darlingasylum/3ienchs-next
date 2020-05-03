@@ -36,7 +36,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
           ></img>
         )}
         <div
-          className='slider-width h-full'
+          className='slider-width'
           style={{
             backgroundImage: `url(/static/images/${products[count].product_bg})`,
             backgroundSize: 'cover',
@@ -73,7 +73,7 @@ const Slider = ({ products, title, buttonsType, id, withPrices }) => {
       )}
 
       {buttonsType === 'buyingMode' && (
-        <div className='flex justify-center'>
+        <div className='sliderButtonsWrapper'>
           <Button
             isExternal={true}
             to='https://www.findabottle.fr/brasserie/brasserie-3ienchs/'

@@ -10,7 +10,7 @@ const Button = ({
   smallFont,
 }) => {
   const buttonContent = (
-    <div onClick={onClick}>
+    <div onClick={onClick} className='buttonWrapper'>
       <button className={`button ${smallFont && 'f4'}`}>{children}</button>
       <div className={`buttonShadow ${withMarginBottom && 'mb-10'}`}></div>
     </div>
@@ -20,7 +20,7 @@ const Button = ({
     return buttonContent;
   } else if (isExternal) {
     return (
-      <a href={to} target='_blank'>
+      <a href={to} target='_blank' className='buttonLink'>
         {buttonContent}
       </a>
     );
@@ -28,7 +28,7 @@ const Button = ({
 
   return (
     <Link href={to}>
-      <a className='px-5'>{buttonContent}</a>
+      <a className=' buttonLink'>{buttonContent}</a>
     </Link>
   );
 };
