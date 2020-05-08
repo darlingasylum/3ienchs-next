@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import style from "./burger.module.css";
 
 class Burger extends Component {
   render() {

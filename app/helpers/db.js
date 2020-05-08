@@ -214,7 +214,6 @@ db.deleteProduct = function (id, successCallback, failureCallback) {
 // ORDERS
 
 db.makeOrder = function (input, successCallback, failureCallback) {
-  // const sqlQuery = `DELETE FROM products WHERE product_id IN (?)`;
   const q =
     'INSERT into orders (order_number, order_date, order_pickupdate, order_price, order_email, order_over) VALUES (?, now(), ?, ?, ?, ?)';
   const q2 =

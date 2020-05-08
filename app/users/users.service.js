@@ -8,11 +8,10 @@ var db = require('../helpers/db');
 module.exports = {
   authenticate,
   register,
-  changeType
+  changeType,
 };
 
 function register(userParam, callback) {
-  // console.log('user param -->', userParam);
   if (
     !userParam.lastname ||
     !userParam.firstname ||
@@ -21,29 +20,29 @@ function register(userParam, callback) {
   ) {
     return callback({
       success: false,
-      message: 'Please enter firstname, lastname, email and password.'
+      message: 'Please enter firstname, lastname, email and password.',
     });
   } else {
     var newUser = {
       firstname: userParam.firstname,
       lastname: userParam.lastname,
       email: userParam.email,
-      password: userParam.password
+      password: userParam.password,
     };
 
     // Attempt to save the user
     db.createUser(
       newUser,
-      function(res) {
+      function (res) {
         return callback({
           success: true,
-          message: 'Successfully created new user.'
+          message: 'Successfully created new user.',
         });
       },
-      function(err) {
+      function (err) {
         return callback({
           success: false,
-          message: 'That email address already exists.'
+          message: 'That email address already exists.',
         });
       }
     );
@@ -53,36 +52,36 @@ function register(userParam, callback) {
 function authenticate({ email, password }, callback) {
   db.findUser(
     {
-      email: email
+      email: email,
     },
-    function(res) {
+    function (res) {
       var user = {
         user_id: res.user_id,
         user_email: res.email,
         is_active: res.is_active,
-        user_type: res.admin
+        user_type: res.admin,
       };
 
       // Check if password matches
-      crypt.compareHash(password, res.password, function(err, isMatch) {
+      crypt.compareHash(password, res.password, function (err, isMatch) {
         if (isMatch && !err) {
           // Create token if the password matched and no error was thrown
           var token = jwt.sign(user, config.secret, {
-            expiresIn: 10080 // in seconds
+            expiresIn: 10080, // in seconds
           });
           return callback({ success: true, token: token });
         } else {
           return callback({
             success: false,
-            message: 'Mot de passe incorrect'
+            message: 'Mot de passe incorrect',
           });
         }
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Adresse e-mail inconnue'
+        message: 'Adresse e-mail inconnue',
       });
     }
   );
@@ -92,13 +91,13 @@ function changeType(body, callback) {
   db.changeUserType(
     body.type,
     body.id,
-    function() {
+    function () {
       return callback({
         success: true,
-        message: 'Successfully updated user type.'
+        message: 'Successfully updated user type.',
       });
     },
-    function(err) {
+    function (err) {
       return callback({ success: false, message: 'The type update failed.' });
     }
   );

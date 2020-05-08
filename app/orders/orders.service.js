@@ -108,25 +108,6 @@ function updateStatus(id, callback) {
   );
 }
 
-// function getProduct(body, callback) {
-//   db.getProduct(
-//     body,
-//     function(res) {
-//       return callback({
-//         success: true,
-//         message: 'Successfully get product',
-//         product: res
-//       });
-//     },
-//     function(zeroResult) {
-//       return callback({
-//         success: false,
-//         message: zeroResult
-//       });
-//     }
-//   );
-// }
-
 function updateOrder(id, callback) {
   db.updateOrder(
     body,

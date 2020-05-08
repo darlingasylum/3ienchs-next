@@ -12,64 +12,41 @@ module.exports = {
   getAllProducts,
   getProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };
 
 function createProduct(body, callback) {
   db.createProduct(
     body,
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully created product.',
-        product: res
+        product: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'The product creation failed.'
+        message: 'The product creation failed.',
       });
     }
   );
 }
 
-// function getDogsProducts(callback) {
-//   console.log('on est dans service');
-
-//   const sqlQuery = `SELECT * FROM products`;
-
-//   connection.query(sqlQuery, function(err, data, fields) {
-//     console.log('onest dans connection query');
-//     if (err) {
-//       console.log('error');
-//       return callback({
-//         success: false,
-//         message: 'Cannot get list of products.'
-//       });
-//     }
-
-//     return callback({
-//       success: true,
-//       message: 'Successfully got list of products.',
-//       products: data
-//     });
-//   });
-// }
-
 function getDogsProducts(callback) {
   db.getDogsProducts(
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully got list of products.',
-        products: res
+        products: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot get list of products.'
+        message: 'Cannot get list of products.',
       });
     }
   );
@@ -77,17 +54,17 @@ function getDogsProducts(callback) {
 
 function getFeatProducts(callback) {
   db.getFeatProducts(
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully got list of featured products.',
-        products: res
+        products: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot get list of featured products.'
+        message: 'Cannot get list of featured products.',
       });
     }
   );
@@ -95,17 +72,17 @@ function getFeatProducts(callback) {
 
 function getAllProducts(callback) {
   db.getAllProducts(
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully got list of all products.',
-        products: res
+        products: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot get list of all products.'
+        message: 'Cannot get list of all products.',
       });
     }
   );
@@ -114,17 +91,17 @@ function getAllProducts(callback) {
 function getProduct(id, callback) {
   db.getProduct(
     id,
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully get product',
-        product: res
+        product: res,
       });
     },
-    function(zeroResult) {
+    function (zeroResult) {
       return callback({
         success: false,
-        message: zeroResult
+        message: zeroResult,
       });
     }
   );
@@ -133,17 +110,17 @@ function getProduct(id, callback) {
 function updateProduct(body, callback) {
   db.updateProduct(
     body,
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully updated product',
-        product: res
+        product: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot update product.'
+        message: 'Cannot update product.',
       });
     }
   );
@@ -152,17 +129,17 @@ function updateProduct(body, callback) {
 function deleteProduct(body, callback) {
   db.deleteProduct(
     body,
-    function(res) {
+    function (res) {
       return callback({
         success: true,
         message: 'Successfully deleted product',
-        product: res
+        product: res,
       });
     },
-    function(err) {
+    function (err) {
       return callback({
         success: false,
-        message: 'Cannot delete product.'
+        message: 'Cannot delete product.',
       });
     }
   );

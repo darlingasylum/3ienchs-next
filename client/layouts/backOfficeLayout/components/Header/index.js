@@ -1,18 +1,3 @@
-// import Link from "next/link";
-
-// const Header = () => (
-//   <div>
-//     <Link href="/">
-//       <a>Home</a>
-//     </Link>
-//     <Link href="/about">
-//       <a>About</a>
-//     </Link>
-//   </div>
-// );
-
-// export default Header;
-
 import React, { Component, Fragment } from 'react';
 
 import Navbar from './Navbar.js';
@@ -25,7 +10,7 @@ class Header extends Component {
   state = { sideMenuOpen: false };
 
   burgerToggleClickHandler = () => {
-    this.setState(previousState => {
+    this.setState((previousState) => {
       return { sideMenuOpen: !previousState.sideMenuOpen };
     });
   };

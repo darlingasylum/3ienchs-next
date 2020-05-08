@@ -29,10 +29,10 @@ const props = {
       text_color: '#ffffff',
       featuring: 0,
       partner: null,
-      product_stock: 500
-    }
+      product_stock: 500,
+    },
   ],
-  featproducts: []
+  featproducts: [],
 };
 
 describe('Home', () => {

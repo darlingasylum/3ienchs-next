@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-// import { Link, NavLink } from "react-router-dom"
 import Link from '../../../../src/components/Link';
-
-// import { connect } from "react-redux";
 
 import Burger from './components/BurgerMenu/Burger.js';
 import './../../../../less/style.less';
-
-import tinyLogo from './../../../../assets/logos/3ienchs_white_logo.png';
-import userIcon from './../../../../assets/icons/user_white.svg';
-import basketIcon from './../../../../assets/icons/basket_white.svg';
 
 export default class Header extends Component {
   render() {
@@ -54,20 +47,7 @@ export default class Header extends Component {
             </ul>
           </div>
         </nav>
-        {/* <div className='bg-red h-14 w-14 z-index-5'>
-          <Link to='/'>
-            <a>
-              <img
-                src={tinyLogo}
-                alt='logo_iench'
-                className='ml-4 max-width-50'
-              />
-            </a>
-          </Link>
-        </div> */}
       </>
     );
   }
 }
-
-// export default connect(mapStateToProps)(HeaderClass);

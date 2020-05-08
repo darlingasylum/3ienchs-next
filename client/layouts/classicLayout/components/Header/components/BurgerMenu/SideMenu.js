@@ -1,10 +1,7 @@
 import React from 'react';
-// import { NavLink } from "react-router-dom";
 import Link from 'next/link';
 
-// import style from "./sideMenu.module.css";
-
-const SideMenu = props => {
+const SideMenu = (props) => {
   return (
     <nav
       className={
