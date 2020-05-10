@@ -4,7 +4,7 @@ import Slider from './../../components/Slider';
 
 import './../../../less/style.less';
 
-const Home = props => {
+const Home = (props) => {
   return (
     <>
       <Head>
@@ -13,17 +13,21 @@ const Home = props => {
       {props.products && (
         <div className='hero w-full h-100-vh'>
           <div className='cover-home h-100-vh'></div>
-          <Slider
-            id='bieres'
-            products={props.products.dogsProducts}
-            title='Nos bières'
-            buttonsType='buyingMode'
-          ></Slider>
-          <Slider
-            products={props.products.featProducts}
-            title='Featuring'
-            buttonsType='buyingMode'
-          ></Slider>
+          {props.products.dogsProducts.length > 0 && (
+            <Slider
+              id='bieres'
+              products={props.products.dogsProducts}
+              title='Nos bières'
+              buttonsType='buyingMode'
+            ></Slider>
+          )}
+          {props.products.featProducts.length > 0 && (
+            <Slider
+              products={props.products.featProducts}
+              title='Featuring'
+              buttonsType='buyingMode'
+            ></Slider>
+          )}
         </div>
       )}
     </>

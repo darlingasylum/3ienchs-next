@@ -2,11 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>src/setupTests.js"
-    ]
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
