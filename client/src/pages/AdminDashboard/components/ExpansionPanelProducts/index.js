@@ -58,7 +58,7 @@ export default function ExpansionPanelProducts({ product, getItems }) {
         open={open}
         handleClose={handleClose}
         productName={product_name}
-        handleDelete={handleDelete}
+        handleDelete={() => handleDelete(product_id)}
         productId={product_id}
         wording={{
           alert:

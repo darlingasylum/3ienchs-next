@@ -1,15 +1,15 @@
 'use strict';
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcryptjs');
 
 var crypt = {};
 
-crypt.createHash = function(data, successCallback, failureCallback) {
-  bcrypt.genSalt(10, function(err, salt) {
+crypt.createHash = function (data, successCallback, failureCallback) {
+  bcrypt.genSalt(10, function (err, salt) {
     if (err) {
       failureCallback(err);
       return;
     }
-    bcrypt.hash(data, salt, null, function(err, hash) {
+    bcrypt.hash(data, salt, function (err, hash) {
       if (err) {
         failureCallback(err);
         return;
@@ -19,13 +19,13 @@ crypt.createHash = function(data, successCallback, failureCallback) {
   });
 };
 
-crypt.compareHash = function(
+crypt.compareHash = function (
   data,
   encrypted,
   successCallback,
   failureCallback
 ) {
-  bcrypt.compare(data, encrypted, function(err, isMatch) {
+  bcrypt.compare(data, encrypted, function (err, isMatch) {
     if (err) {
       failureCallback(err);
       return;
