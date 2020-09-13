@@ -4,7 +4,7 @@ const ordersService = require('./orders.service');
 
 // routes
 router.post('/makeOrder', makeOrder);
-router.post('/checkOrderNumber/:orderNumber', checkOrderNumber);
+router.get('/checkOrderNumber/:orderNumber', checkOrderNumber);
 router.get('/getOrderNumber/:id', getOrderNumber);
 router.get('/getAll', getAllOrders);
 router.patch('/updateStatus/:id', updateStatus);
@@ -22,7 +22,7 @@ function makeOrder(req, res) {
 }
 
 function checkOrderNumber(req, res) {
-  ordersService.checkOrderNumber(req.param.orderNumber, (result) => {
+  ordersService.checkOrderNumber(req.params.orderNumber, (result) => {
     result.success
       ? res.status(201).json(result)
       : res.status(201).json(result);
