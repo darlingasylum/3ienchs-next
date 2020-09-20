@@ -67,8 +67,8 @@ export default function ExpansionPanelOrders({ order, getItems }) {
         handleDelete={handleOver}
         id={id}
         wording={{
-          alert: 'Vous êtes sur le point de passer une commande en "terminée"',
-          question: 'La commande bien été délivrée',
+          alert: 'Vous êtes sur le point de passer une commande en "terminée".',
+          question: 'La commande a-t-elle bien été délivrée ?',
           answerYes: 'Oui',
           answerNo: 'Non',
         }}
