@@ -17,6 +17,7 @@ export const formatOrders = (orders) => {
         pickupdate: order.pickupdate,
         price: order.price,
         over: order.over,
+        email: order.email,
         details: [
           {
             product_id: order.product_id,

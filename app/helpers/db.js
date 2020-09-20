@@ -268,7 +268,7 @@ db.getOrderNumber = function (orderId, successCallback, failureCallback) {
 };
 
 db.getAllOrders = function (successCallback, failureCallback) {
-  const sqlQuery = `SELECT order_id AS id, order_number AS number, order_date AS date, order_pickupdate AS pickupdate, order_price AS price, order_over AS over, details_productqty AS product_qty, product_id, product_name FROM order_details JOIN orders ON order_details.details_orderid = orders.order_id JOIN products ON details_productid = products.product_id ORDER BY pickupdate;`;
+  const sqlQuery = `SELECT order_id AS id, order_number AS number, order_date AS date, order_pickupdate AS pickupdate, order_price AS price, order_email AS email, order_over AS over, details_productqty AS product_qty, product_id, product_name FROM order_details JOIN orders ON order_details.details_orderid = orders.order_id JOIN products ON details_productid = products.product_id ORDER BY pickupdate;`;
   connection.query(sqlQuery, function (err, data, fields) {
     if (err) {
       failureCallback(err);

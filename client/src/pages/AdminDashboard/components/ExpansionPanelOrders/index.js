@@ -19,7 +19,7 @@ export default function ExpansionPanelOrders({ order, getItems }) {
   const [openDelete, setOpenDelete] = useState(false);
   const [openOver, setOpenOver] = useState(false);
 
-  const { id, number, date, pickupdate, price, details, email } = order;
+  const { id, number, date, pickupdate, price, email } = order;
 
   const handleOver = (id) => {
     const fetch_param = {
@@ -106,12 +106,24 @@ export default function ExpansionPanelOrders({ order, getItems }) {
             <Typography variant='h6'></Typography>
 
             <Typography>
-              Date de la commande : <Moment format='DD/MM/YYYY'>{date}</Moment>
+              <strong>Date de la commande :</strong>{' '}
+              <Moment format='DD/MM/YYYY'>{date}</Moment>
             </Typography>
-            <Typography>Prix total : {price}€</Typography>
-            <Typography>Details :</Typography>
+            {email && (
+              <Typography>
+                {' '}
+                <strong>Contact : </strong> {email}{' '}
+              </Typography>
+            )}
+
+            <Typography>
+              <strong>Prix total : </strong>
+              {price}€
+            </Typography>
+            <Typography>
+              <strong>Details :</strong>
+            </Typography>
             <Details details={order.details}></Details>
-            {email && <Typography>Contact : </Typography>}
           </div>
         </ExpansionPanelDetails>
         <Divider />
