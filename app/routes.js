@@ -6,7 +6,7 @@ var express = require('express');
 var requireAuth = passport.authenticate('jwt', { session: false });
 
 // Export the routes for our app to use
-module.exports = function(app) {
+module.exports = function (app) {
   // API Route Section
 
   // Initialize passport for use
@@ -23,6 +23,7 @@ module.exports = function(app) {
   var adminRoutes = require('./admin/admin.controller');
   var eventsRoutes = require('./events/events.controller');
   var artistsRoutes = require('./artists/artists.controller');
+  var emailerRoute = require('./emailer/index.js');
 
   //Protected authenticated route with JWT
   //   apiRoutes.get('/dashboard', requireAuth, function(request, response) {
@@ -55,4 +56,5 @@ module.exports = function(app) {
   app.use('/api/admin', adminRoutes);
   app.use('/api/events', eventsRoutes);
   app.use('/api/artists', artistsRoutes);
+  app.use('/api/emailer', emailerRoute);
 };

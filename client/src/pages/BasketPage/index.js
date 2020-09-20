@@ -62,9 +62,28 @@ const BasketPage = () => {
     APICall(`http://localhost:4000/api/orders/getOrderNumber/${orderId}`)
       .then((res) => {
         setOrder(res.result[0]);
+        return res.result[0];
       })
+      .then((params) => sendMail(params))
       .then(() => reset())
       .catch((err) => console.log(err));
+  };
+
+  const sendMail = (mailParams) => {
+    const data = {
+      from: 'contact@3ienchs.com',
+      to: mailParams.order_email,
+      subject: 'Votre commande 3ienchs',
+      text: `Votre commande n°${mailParams.order_number} a bien été validée ! `,
+    };
+    const fetch_param = {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data),
+    };
+    APICall('http://localhost:4000/api/emailer/', fetch_param).catch((err) =>
+      console.log(err)
+    );
   };
 
   const handleValidate = () => {
