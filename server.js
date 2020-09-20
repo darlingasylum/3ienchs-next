@@ -1,5 +1,9 @@
 const express = require('express');
+const helmet = require('helmet');
+
 const app = express();
+app.use(helmet());
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 4000;
@@ -21,7 +25,7 @@ app.use(cors());
 
 require('./app/routes')(app);
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(
     'node server running @ http://localhost:' + port + ', yeah, you rock!'
   );
