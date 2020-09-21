@@ -7,6 +7,7 @@ router.post('/makeOrder', makeOrder);
 router.get('/checkOrderNumber/:orderNumber', checkOrderNumber);
 router.get('/getOrderNumber/:id', getOrderNumber);
 router.get('/getAll', getAllOrders);
+router.get('/getById/:id', getOrderById);
 router.patch('/updateStatus/:id', updateStatus);
 router.patch('/updateOrder/:id', updateOrder);
 router.delete('/delete/:id', deleteOrder);
@@ -39,6 +40,14 @@ function getOrderNumber(req, res) {
 
 function getAllOrders(req, res) {
   ordersService.getAllOrders((result) => {
+    result.success
+      ? res.status(201).json(result)
+      : res.status(401).json(result);
+  });
+}
+
+function getOrderById(req, res) {
+  ordersService.getOrderById(req.params.id, (result) => {
     result.success
       ? res.status(201).json(result)
       : res.status(401).json(result);

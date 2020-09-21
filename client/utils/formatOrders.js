@@ -1,3 +1,5 @@
+// format list of all orders for admin dashboard
+// sort between over and actual orders
 export const formatOrders = (orders) => {
   let formattedOrders = [];
   orders.forEach((order, i) => {
@@ -40,4 +42,22 @@ export const formatOrders = (orders) => {
   });
 
   return { overOrders, actualOrders };
+};
+
+// format order when a mail is send to user and admin
+export const formatOrder = (order) => {
+  const products = [];
+  order.map((item) =>
+    products.push({ qty: item.product_qty, name: item.product_name })
+  );
+  const formattedOrder = {
+    email: order[0].email,
+    id: order[0].id,
+    number: order[0].number,
+    pickupdate: order[0].pickupdate,
+    price: order[0].price,
+    products: products,
+  };
+
+  return formattedOrder;
 };

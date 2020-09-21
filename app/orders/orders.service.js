@@ -10,6 +10,7 @@ module.exports = {
   checkOrderNumber,
   getOrderNumber,
   getAllOrders,
+  getOrderById,
   updateStatus,
   updateOrder,
   deleteOrder,
@@ -84,6 +85,25 @@ function getAllOrders(callback) {
       return callback({
         success: false,
         message: 'Cannot get list of all orders.',
+      });
+    }
+  );
+}
+
+function getOrderById(OrderId, callback) {
+  db.getOrderById(
+    OrderId,
+    function (res) {
+      return callback({
+        success: true,
+        message: 'Successfully got details of order.',
+        order: res,
+      });
+    },
+    function (err) {
+      return callback({
+        success: false,
+        message: 'Cannot get details of order.',
       });
     }
   );

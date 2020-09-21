@@ -278,6 +278,17 @@ db.getAllOrders = function (successCallback, failureCallback) {
   });
 };
 
+db.getOrderById = function (orderId, successCallback, failureCallback) {
+  const sqlQuery = `SELECT order_id AS id, order_number AS number, order_pickupdate AS pickupdate, order_price AS price, order_email AS email, details_productqty AS product_qty, product_name FROM order_details JOIN orders ON order_details.details_orderid = orders.order_id JOIN products ON details_productid = products.product_id WHERE details_orderid = ?;`;
+  connection.query(sqlQuery, [orderId], function (err, data, fields) {
+    if (err) {
+      failureCallback(err);
+      return;
+    }
+    successCallback(data);
+  });
+};
+
 db.updateStatus = function (id, successCallback, failureCallback) {
   const sqlQuery = `UPDATE orders SET order_over = 1 WHERE order_id = ?;`;
   const payload = [id];

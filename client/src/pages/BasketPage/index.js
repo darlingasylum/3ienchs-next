@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 
 import { APICall } from './../../../utils/APICall';
+import { formatOrder } from './../../../utils/formatOrders';
 import { ResetBasket } from '../../../redux/actions';
 import { calculatePrice, countArticles } from './../../../utils/calculatePrice';
 
@@ -57,33 +59,59 @@ const BasketPage = () => {
     return newOrderNumber;
   };
 
-  // get order information with order id
+  // get all order informations with order id
   const getOrder = (orderId) => {
-    APICall(`http://localhost:4000/api/orders/getOrderNumber/${orderId}`)
+    APICall(`http://localhost:4000/api/orders/getById/${orderId}`)
       .then((res) => {
-        setOrder(res.result[0]);
-        return res.result[0];
+        setOrder(formatOrder(res.order));
+        return formatOrder(res.order);
       })
-      .then((params) => sendMail(params))
+      .then((params) => sendMails(params))
       .then(() => reset())
       .catch((err) => console.log(err));
   };
 
-  const sendMail = (mailParams) => {
-    const data = {
+  const sendMails = (mailParams) => {
+    const { email, number, price, products, pickupdate } = mailParams;
+    const date = moment(pickupdate).format('DD/MM/YYYY');
+
+    const dataBuyer = {
       from: 'contact@3ienchs.com',
-      to: mailParams.order_email,
+      to: email,
       subject: 'Votre commande 3ienchs',
-      text: `Votre commande n°${mailParams.order_number} a bien été validée ! `,
+      text: `Votre commande n°${number} a bien été validée, pour un total de ${price}€. Vous pourrez la récupérer le ${date} entre 17h et 20h. Vous pourrez régler par chèque, espèces, ou carte bancaire. Bienvenue dans la meute !`,
+      html: `<h2>Bonjour ! </h2><p> Votre commande n°${number} a bien été validée, pour un total de ${price}€.</p> <p>Vous pourrez la récupérer le <strong> ${date} entre 17h et 20h. </strong><p/> <p> Vous pourrez régler votre commande par chèque, espèces, ou carte bancaire. </p> <br> <p> à très bientôt !</p> <br> <p> Tom et Thib, de l'équipe 3iench</p>`,
     };
-    const fetch_param = {
+
+    const data3ienchs = {
+      from: email,
+      to: 'contact@3ienchs.com',
+      subject: 'Nouvelle commande !',
+      text: `Nouvelle commande n°${number}, pour un total de ${price}€. Date de récupération : ${date} entre 17h et 20h.`,
+      html: `<h2>Hello les ienchs! </h2><p> Une nouvelle commande vien d'être passée ! Voici les détails : </p> <br> <p>N° commande : ${number} </p> <p> Prix total : ${price}€ </p> <p> Date de récupération à la brasserie : <strong> ${date} entre 17h et 20h.</strong> </p> <br> <p> Toutes les infos sont comme d'habitude disponibles sur le back-office. </p> <br> <p> Wouf !</p> `,
+    };
+
+    const fetch_param_buyer = {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(data),
+      body: JSON.stringify(dataBuyer),
     };
-    APICall('http://localhost:4000/api/emailer/', fetch_param).catch((err) =>
-      console.log(err)
-    );
+
+    const fetch_param_3ienchs = {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data3ienchs),
+    };
+
+    APICall(
+      'http://localhost:4000/api/emailer/',
+      fetch_param_buyer
+    ).catch((err) => console.log(err));
+
+    APICall(
+      'http://localhost:4000/api/emailer/',
+      fetch_param_3ienchs
+    ).catch((err) => console.log(err));
   };
 
   const handleValidate = () => {
@@ -123,7 +151,7 @@ const BasketPage = () => {
     setDate(date);
   };
 
-  if (basket && basket.length === 0 && !order.order_number) {
+  if (basket && basket.length === 0 && !order.number) {
     return (
       <div className='emptyBasket'>
         <Basket></Basket>
@@ -139,7 +167,7 @@ const BasketPage = () => {
 
   return (
     <div className='hero mt-10 w-full'>
-      {!order.order_number && (
+      {!order.number && (
         <div>
           <Basket></Basket>
           <Title title='Votre panier'></Title>
@@ -149,7 +177,7 @@ const BasketPage = () => {
             <div className=' my-10 w-full text-align-center'>
               <div className='stepsTitleWrapper'>
                 <Step number={2} />
-                <label for='email' className='stepsTitle'>
+                <label htmlFor='email' className='stepsTitle'>
                   Renseignez votre adresse e-mail
                 </label>
               </div>
@@ -183,7 +211,7 @@ const BasketPage = () => {
           </div>
         </div>
       )}
-      {order.order_number && <DoneOrder orderNumber={order.order_number} />}
+      {order.number && <DoneOrder orderNumber={order.number} />}
     </div>
   );
 };
